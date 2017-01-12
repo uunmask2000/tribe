@@ -1,0 +1,77 @@
+/* SETTING */
+table.tablesorter tbody tr:hover {
+    background: #eee!important;
+}
+/* view table */
+table.tablesorter {
+	margin:10px 0pt 15px;
+	width: 100%;
+	border-collapse: collapse;
+}
+table.tablesorter th,td { }
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+	vertical-align:middle;
+}
+th.table_tt.tablesorter-header.tablesorter-headerUnSorted {
+	background-image: url(../images/bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+table.tablesorter tbody td {
+	background-color: #FFF;
+	vertical-align: middle;
+}
+table.tablesorter tbody tr.odd td {
+	background-color:#eee;
+}
+th.tablesorter-header.tablesorter-headerAsc {
+	background: url(../../images/desc.gif) no-repeat right center;
+}
+th.tablesorter-header.tablesorter-headerDesc {
+	background: url(../../images/asc.gif) no-repeat right center;
+}
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+background-color: #9adee8;
+}
+
+colgroup {display: none;}
+#pager {
+    padding: 10px 0;
+    border-top: #ddd 1px dashed;
+}
+
+/* page */
+.pager.tablesorter-pager { text-align:center;}
+
+/* add,edit */
+.works_tab {
+    margin-top: 10px!important;
+    width: 98%;
+}
+
+.pic_amount {
+    margin: 0;
+    position: relative;
+    left: 250px;
+    top: 50px;
+    width: 400px;
+	z-index:5;
+}
+
+table.increase {
+	border-collapse: collapse;
+}
+table.increase th,td { border: 1px solid black;}
+table.increase th {
+	background: #c75c5c;
+    color: #fff;
+	padding: 10px;
+	vertical-align:middle;
+}
+
+
+/*按鈕與表格間距*/
+.dt-buttons {
+    margin: 0 0 5px;
+}

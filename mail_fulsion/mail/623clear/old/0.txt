@@ -1,0 +1,17 @@
+include_once("../mail/contact_function.php");
+include_once("../mail/class.phpmailer.php");
+include_once("../mail/send_phpmail.php");
+include_once("../mail/send_mail.php");
+
+	$contact_field=array('姓名'=>$s3,'工作日期'=>$s1,'專案名稱'=>$s5,'工作地點'=>$s6,'工作內容'=>$s7);  //信件表格內容
+ 
+ 	$subject = "這是測試"; //主旨
+ 
+  $mail_html=make_contact_html("工作日誌",$contact_field);
+ // $mail_info=array('from_mail'=>$x2,'a'=>"寄件者(".$s3.")",'to_mail'=>"yashon@juncheng.tw".",",'mail_html'=>$mail_html);//參考用
+  // $mail_info=array('from_mail'=>$x2,'form_name'=>$s3,'to_mail'=>$x2,'mail_html'=>$mail_html); //測試用
+  $mail_info=array('to_subject'=>$s1."工作日誌",'from_mail'=>$x2,'form_name'=>$s3,'to_mail'=>"yashon@juncheng.tw".",",'cc_mail_must'=>$x2,'mail_html'=>$mail_html); //有副本給自己
+  //$mail_info=array('from_mail'=>$x2,'form_name'=>$s3,'to_mail'=>"yashon@juncheng.tw".",",'mail_html'=>$mail_html);
+	//(寄件人Email,寄件人名稱,收件人Email,收件人名稱,副本,密件副本,郵件標題,郵件內容)
+   send_phpmail($mail_info);  //寄鄭本給交辦人和承辦人   副本給其他的人
+ 	  //

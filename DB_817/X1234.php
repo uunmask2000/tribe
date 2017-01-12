@@ -1,0 +1,1 @@
+°ÝÃD1:<?php echo $_COOKIE['num'];?>

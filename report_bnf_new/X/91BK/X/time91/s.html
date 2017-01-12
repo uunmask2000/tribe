@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]>
+<script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>jQuery UI 測試</title>
+  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/themes/hot-sneaks/jquery-ui.css" rel="stylesheet">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+  <link href='css/jquery-ui-timepicker-addon.css' rel='stylesheet'>
+  <script type="text/javascript" src="js/jquery-ui-timepicker-addon.js"></script>
+  <script type='text/javascript' src='js/jquery-ui-sliderAccess.js'></script>
+  <style>
+    article,aside,figure,figcaption,footer,header,hgroup,menu,nav,section {display:block;}
+    body {font: 62.5% "Trebuchet MS", sans-serif; margin: 50px;}
+  </style>
+</head>
+<body>
+  <input id="datetimepicker1" type="text" />
+  <script language="JavaScript">
+    $(document).ready(function(){ 
+      $.datepicker.regional['zh-TW']={
+        dayNames:["星期日","星期一","星期二","星期三","星期四","星期五","星期六"],
+        dayNamesMin:["日","一","二","三","四","五","六"],
+        monthNames:["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"],
+        monthNamesShort:["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"],
+        prevText:"上月",
+        nextText:"次月",
+        weekHeader:"週"
+        };
+      $.timepicker.regional['zh-TW']={
+        timeOnlyTitle:"選擇時分秒",
+        timeText:"時間",
+        hourText:"時",
+        minuteText:"分",
+        secondText:"秒",
+        millisecText:"毫秒",
+        timezoneText:"時區",
+        currentText:"現在時間",
+        closeText:"確定",
+        amNames:["上午","AM","A"],
+        pmNames:["下午","PM","P"]
+        };
+      $.datepicker.setDefaults($.datepicker.regional["zh-TW"]);
+      $.timepicker.setDefaults($.timepicker.regional["zh-TW"]);
+      $("#datetimepicker1").datetimepicker({dateFormat:"yy-mm-dd",
+                                            timeFormat:"HH:mm:ss", 
+                                            showSecond:true
+                                            });
+      });
+  </script>
+</body>
+</html>

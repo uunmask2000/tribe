@@ -1,0 +1,493 @@
+[14-Nov-2016 03:43:00 UTC] PHP Notice:  Undefined index: logout in /var/www/html/include/top.php on line 86
+[14-Nov-2016 03:43:00 UTC] PHP Stack trace:
+[14-Nov-2016 03:43:00 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 03:43:00 UTC] PHP   2. include() /var/www/html/device_defend/view_all_device.php:31
+[14-Nov-2016 03:43:00 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 101
+[14-Nov-2016 03:43:00 UTC] PHP Stack trace:
+[14-Nov-2016 03:43:00 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 03:43:00 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 104
+[14-Nov-2016 03:43:00 UTC] PHP Stack trace:
+[14-Nov-2016 03:43:00 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 03:43:00 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 105
+[14-Nov-2016 03:43:00 UTC] PHP Stack trace:
+[14-Nov-2016 03:43:00 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 03:43:00 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 111
+[14-Nov-2016 03:43:00 UTC] PHP Stack trace:
+[14-Nov-2016 03:43:00 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 03:43:00 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 143
+[14-Nov-2016 03:43:00 UTC] PHP Stack trace:
+[14-Nov-2016 03:43:00 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 03:43:00 UTC] PHP Notice:  Undefined index: cookie_A in /var/www/html/device_defend/view_all_device.php on line 143
+[14-Nov-2016 03:43:00 UTC] PHP Stack trace:
+[14-Nov-2016 03:43:00 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 03:43:00 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 147
+[14-Nov-2016 03:43:00 UTC] PHP Stack trace:
+[14-Nov-2016 03:43:00 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 03:43:00 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 154
+[14-Nov-2016 03:43:00 UTC] PHP Stack trace:
+[14-Nov-2016 03:43:00 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 03:43:00 UTC] PHP Warning:  date(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. in /var/www/html/include/bottom.php on line 3
+[14-Nov-2016 03:43:00 UTC] PHP Stack trace:
+[14-Nov-2016 03:43:00 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 03:43:00 UTC] PHP   2. include() /var/www/html/device_defend/view_all_device.php:653
+[14-Nov-2016 03:43:00 UTC] PHP   3. date() /var/www/html/include/bottom.php:3
+[14-Nov-2016 07:08:41 UTC] PHP Notice:  Undefined index: logout in /var/www/html/include/top.php on line 86
+[14-Nov-2016 07:08:41 UTC] PHP Stack trace:
+[14-Nov-2016 07:08:41 UTC] PHP   1. {main}() /var/www/html/device_defend/show_ap.php:0
+[14-Nov-2016 07:08:41 UTC] PHP   2. include() /var/www/html/device_defend/show_ap.php:32
+[14-Nov-2016 07:08:46 UTC] PHP Warning:  date(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. in /var/www/html/device_defend/show_ap.php on line 282
+[14-Nov-2016 07:08:46 UTC] PHP Stack trace:
+[14-Nov-2016 07:08:46 UTC] PHP   1. {main}() /var/www/html/device_defend/show_ap.php:0
+[14-Nov-2016 07:08:46 UTC] PHP   2. date() /var/www/html/device_defend/show_ap.php:282
+[14-Nov-2016 07:08:46 UTC] PHP Warning:  date(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. in /var/www/html/include/bottom.php on line 3
+[14-Nov-2016 07:08:46 UTC] PHP Stack trace:
+[14-Nov-2016 07:08:46 UTC] PHP   1. {main}() /var/www/html/device_defend/show_ap.php:0
+[14-Nov-2016 07:08:46 UTC] PHP   2. include() /var/www/html/device_defend/show_ap.php:296
+[14-Nov-2016 07:08:46 UTC] PHP   3. date() /var/www/html/include/bottom.php:3
+[14-Nov-2016 09:14:19 UTC] PHP Notice:  Undefined index: logout in /var/www/html/include/top.php on line 86
+[14-Nov-2016 09:14:19 UTC] PHP Stack trace:
+[14-Nov-2016 09:14:19 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:14:19 UTC] PHP   2. include() /var/www/html/device_defend/view_all_device.php:31
+[14-Nov-2016 09:14:19 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 101
+[14-Nov-2016 09:14:19 UTC] PHP Stack trace:
+[14-Nov-2016 09:14:19 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:14:19 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 104
+[14-Nov-2016 09:14:19 UTC] PHP Stack trace:
+[14-Nov-2016 09:14:19 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:14:19 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 105
+[14-Nov-2016 09:14:19 UTC] PHP Stack trace:
+[14-Nov-2016 09:14:19 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:14:19 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 111
+[14-Nov-2016 09:14:19 UTC] PHP Stack trace:
+[14-Nov-2016 09:14:19 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:14:19 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 143
+[14-Nov-2016 09:14:19 UTC] PHP Stack trace:
+[14-Nov-2016 09:14:19 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:14:19 UTC] PHP Notice:  Undefined index: cookie_A in /var/www/html/device_defend/view_all_device.php on line 143
+[14-Nov-2016 09:14:19 UTC] PHP Stack trace:
+[14-Nov-2016 09:14:19 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:14:19 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 147
+[14-Nov-2016 09:14:19 UTC] PHP Stack trace:
+[14-Nov-2016 09:14:19 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:14:19 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 154
+[14-Nov-2016 09:14:19 UTC] PHP Stack trace:
+[14-Nov-2016 09:14:19 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:14:19 UTC] PHP Warning:  date(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. in /var/www/html/include/bottom.php on line 3
+[14-Nov-2016 09:14:19 UTC] PHP Stack trace:
+[14-Nov-2016 09:14:19 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:14:19 UTC] PHP   2. include() /var/www/html/device_defend/view_all_device.php:653
+[14-Nov-2016 09:14:19 UTC] PHP   3. date() /var/www/html/include/bottom.php:3
+[14-Nov-2016 09:14:57 UTC] PHP Notice:  Undefined index: logout in /var/www/html/include/top.php on line 86
+[14-Nov-2016 09:14:57 UTC] PHP Stack trace:
+[14-Nov-2016 09:14:57 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:14:57 UTC] PHP   2. include() /var/www/html/device_defend/view_all_device.php:31
+[14-Nov-2016 09:14:57 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 101
+[14-Nov-2016 09:14:57 UTC] PHP Stack trace:
+[14-Nov-2016 09:14:57 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:14:57 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 104
+[14-Nov-2016 09:14:57 UTC] PHP Stack trace:
+[14-Nov-2016 09:14:57 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:14:57 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 105
+[14-Nov-2016 09:14:57 UTC] PHP Stack trace:
+[14-Nov-2016 09:14:57 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:14:57 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 111
+[14-Nov-2016 09:14:57 UTC] PHP Stack trace:
+[14-Nov-2016 09:14:57 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:14:57 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 143
+[14-Nov-2016 09:14:57 UTC] PHP Stack trace:
+[14-Nov-2016 09:14:57 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:14:57 UTC] PHP Notice:  Undefined index: cookie_A in /var/www/html/device_defend/view_all_device.php on line 143
+[14-Nov-2016 09:14:57 UTC] PHP Stack trace:
+[14-Nov-2016 09:14:57 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:14:57 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 147
+[14-Nov-2016 09:14:57 UTC] PHP Stack trace:
+[14-Nov-2016 09:14:57 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:14:57 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 154
+[14-Nov-2016 09:14:57 UTC] PHP Stack trace:
+[14-Nov-2016 09:14:57 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:14:57 UTC] PHP Warning:  date(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. in /var/www/html/include/bottom.php on line 3
+[14-Nov-2016 09:14:57 UTC] PHP Stack trace:
+[14-Nov-2016 09:14:57 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:14:57 UTC] PHP   2. include() /var/www/html/device_defend/view_all_device.php:653
+[14-Nov-2016 09:14:57 UTC] PHP   3. date() /var/www/html/include/bottom.php:3
+[14-Nov-2016 09:16:18 UTC] PHP Notice:  Undefined index: logout in /var/www/html/include/top.php on line 86
+[14-Nov-2016 09:16:18 UTC] PHP Stack trace:
+[14-Nov-2016 09:16:18 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:16:18 UTC] PHP   2. include() /var/www/html/device_defend/view_all_device.php:31
+[14-Nov-2016 09:16:18 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 101
+[14-Nov-2016 09:16:18 UTC] PHP Stack trace:
+[14-Nov-2016 09:16:18 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:16:18 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 104
+[14-Nov-2016 09:16:18 UTC] PHP Stack trace:
+[14-Nov-2016 09:16:18 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:16:18 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 105
+[14-Nov-2016 09:16:18 UTC] PHP Stack trace:
+[14-Nov-2016 09:16:18 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:16:18 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 111
+[14-Nov-2016 09:16:18 UTC] PHP Stack trace:
+[14-Nov-2016 09:16:18 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:16:18 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 143
+[14-Nov-2016 09:16:18 UTC] PHP Stack trace:
+[14-Nov-2016 09:16:18 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:16:18 UTC] PHP Notice:  Undefined index: cookie_A in /var/www/html/device_defend/view_all_device.php on line 143
+[14-Nov-2016 09:16:18 UTC] PHP Stack trace:
+[14-Nov-2016 09:16:18 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:16:18 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 147
+[14-Nov-2016 09:16:18 UTC] PHP Stack trace:
+[14-Nov-2016 09:16:18 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:16:18 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 154
+[14-Nov-2016 09:16:18 UTC] PHP Stack trace:
+[14-Nov-2016 09:16:18 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:16:18 UTC] PHP Warning:  date(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. in /var/www/html/include/bottom.php on line 3
+[14-Nov-2016 09:16:18 UTC] PHP Stack trace:
+[14-Nov-2016 09:16:18 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:16:18 UTC] PHP   2. include() /var/www/html/device_defend/view_all_device.php:653
+[14-Nov-2016 09:16:18 UTC] PHP   3. date() /var/www/html/include/bottom.php:3
+[14-Nov-2016 09:16:38 UTC] PHP Notice:  Undefined index: logout in /var/www/html/include/top.php on line 86
+[14-Nov-2016 09:16:38 UTC] PHP Stack trace:
+[14-Nov-2016 09:16:38 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:16:38 UTC] PHP   2. include() /var/www/html/device_defend/view_all_device.php:31
+[14-Nov-2016 09:16:38 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 101
+[14-Nov-2016 09:16:38 UTC] PHP Stack trace:
+[14-Nov-2016 09:16:38 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:16:38 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 104
+[14-Nov-2016 09:16:38 UTC] PHP Stack trace:
+[14-Nov-2016 09:16:38 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:16:38 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 105
+[14-Nov-2016 09:16:38 UTC] PHP Stack trace:
+[14-Nov-2016 09:16:38 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:16:38 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 111
+[14-Nov-2016 09:16:38 UTC] PHP Stack trace:
+[14-Nov-2016 09:16:38 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:16:38 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 143
+[14-Nov-2016 09:16:38 UTC] PHP Stack trace:
+[14-Nov-2016 09:16:38 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:16:38 UTC] PHP Notice:  Undefined index: cookie_A in /var/www/html/device_defend/view_all_device.php on line 143
+[14-Nov-2016 09:16:38 UTC] PHP Stack trace:
+[14-Nov-2016 09:16:38 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:16:38 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 147
+[14-Nov-2016 09:16:38 UTC] PHP Stack trace:
+[14-Nov-2016 09:16:38 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:16:38 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 154
+[14-Nov-2016 09:16:38 UTC] PHP Stack trace:
+[14-Nov-2016 09:16:38 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:16:38 UTC] PHP Warning:  date(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. in /var/www/html/include/bottom.php on line 3
+[14-Nov-2016 09:16:38 UTC] PHP Stack trace:
+[14-Nov-2016 09:16:38 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:16:38 UTC] PHP   2. include() /var/www/html/device_defend/view_all_device.php:653
+[14-Nov-2016 09:16:38 UTC] PHP   3. date() /var/www/html/include/bottom.php:3
+[14-Nov-2016 09:17:23 UTC] PHP Notice:  Undefined index: logout in /var/www/html/include/top.php on line 86
+[14-Nov-2016 09:17:23 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:23 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:23 UTC] PHP   2. include() /var/www/html/device_defend/view_all_device.php:31
+[14-Nov-2016 09:17:23 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 101
+[14-Nov-2016 09:17:23 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:23 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:23 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 104
+[14-Nov-2016 09:17:23 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:23 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:23 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 105
+[14-Nov-2016 09:17:23 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:23 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:23 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 111
+[14-Nov-2016 09:17:23 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:23 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:23 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 143
+[14-Nov-2016 09:17:23 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:23 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:23 UTC] PHP Notice:  Undefined index: cookie_A in /var/www/html/device_defend/view_all_device.php on line 143
+[14-Nov-2016 09:17:23 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:23 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:23 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 147
+[14-Nov-2016 09:17:23 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:23 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:23 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 154
+[14-Nov-2016 09:17:23 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:23 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:23 UTC] PHP Warning:  date(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. in /var/www/html/include/bottom.php on line 3
+[14-Nov-2016 09:17:23 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:23 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:23 UTC] PHP   2. include() /var/www/html/device_defend/view_all_device.php:653
+[14-Nov-2016 09:17:23 UTC] PHP   3. date() /var/www/html/include/bottom.php:3
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: logout in /var/www/html/include/top.php on line 86
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP   2. include() /var/www/html/device_defend/view_all_device.php:31
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 123
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP Warning:  date(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. in /var/www/html/include/bottom.php on line 3
+[14-Nov-2016 09:17:24 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:24 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:24 UTC] PHP   2. include() /var/www/html/device_defend/view_all_device.php:653
+[14-Nov-2016 09:17:24 UTC] PHP   3. date() /var/www/html/include/bottom.php:3
+[14-Nov-2016 09:17:26 UTC] PHP Notice:  Undefined index: logout in /var/www/html/include/top.php on line 86
+[14-Nov-2016 09:17:26 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:26 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:26 UTC] PHP   2. include() /var/www/html/device_defend/view_all_device.php:31
+[14-Nov-2016 09:17:26 UTC] PHP Warning:  date(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. in /var/www/html/include/bottom.php on line 3
+[14-Nov-2016 09:17:26 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:26 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:26 UTC] PHP   2. include() /var/www/html/device_defend/view_all_device.php:653
+[14-Nov-2016 09:17:26 UTC] PHP   3. date() /var/www/html/include/bottom.php:3
+[14-Nov-2016 09:17:44 UTC] PHP Notice:  Undefined index: logout in /var/www/html/include/top.php on line 86
+[14-Nov-2016 09:17:44 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:44 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:44 UTC] PHP   2. include() /var/www/html/device_defend/view_all_device.php:31
+[14-Nov-2016 09:17:44 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 101
+[14-Nov-2016 09:17:44 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:44 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:44 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 104
+[14-Nov-2016 09:17:44 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:44 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:44 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 105
+[14-Nov-2016 09:17:44 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:44 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:44 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 111
+[14-Nov-2016 09:17:44 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:44 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:44 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 143
+[14-Nov-2016 09:17:44 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:44 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:44 UTC] PHP Notice:  Undefined index: cookie_A in /var/www/html/device_defend/view_all_device.php on line 143
+[14-Nov-2016 09:17:44 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:44 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:44 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 147
+[14-Nov-2016 09:17:44 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:44 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:44 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 154
+[14-Nov-2016 09:17:44 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:44 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:44 UTC] PHP Warning:  date(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. in /var/www/html/include/bottom.php on line 3
+[14-Nov-2016 09:17:44 UTC] PHP Stack trace:
+[14-Nov-2016 09:17:44 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:17:44 UTC] PHP   2. include() /var/www/html/device_defend/view_all_device.php:653
+[14-Nov-2016 09:17:44 UTC] PHP   3. date() /var/www/html/include/bottom.php:3
+[14-Nov-2016 09:18:13 UTC] PHP Notice:  Undefined index: logout in /var/www/html/include/top.php on line 86
+[14-Nov-2016 09:18:13 UTC] PHP Stack trace:
+[14-Nov-2016 09:18:13 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:18:13 UTC] PHP   2. include() /var/www/html/device_defend/view_all_device.php:31
+[14-Nov-2016 09:18:13 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 101
+[14-Nov-2016 09:18:13 UTC] PHP Stack trace:
+[14-Nov-2016 09:18:13 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:18:13 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 104
+[14-Nov-2016 09:18:13 UTC] PHP Stack trace:
+[14-Nov-2016 09:18:13 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:18:13 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 105
+[14-Nov-2016 09:18:13 UTC] PHP Stack trace:
+[14-Nov-2016 09:18:13 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:18:13 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 111
+[14-Nov-2016 09:18:13 UTC] PHP Stack trace:
+[14-Nov-2016 09:18:13 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:18:13 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 143
+[14-Nov-2016 09:18:13 UTC] PHP Stack trace:
+[14-Nov-2016 09:18:13 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:18:13 UTC] PHP Notice:  Undefined index: cookie_A in /var/www/html/device_defend/view_all_device.php on line 143
+[14-Nov-2016 09:18:13 UTC] PHP Stack trace:
+[14-Nov-2016 09:18:13 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:18:13 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 147
+[14-Nov-2016 09:18:13 UTC] PHP Stack trace:
+[14-Nov-2016 09:18:13 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:18:13 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 154
+[14-Nov-2016 09:18:13 UTC] PHP Stack trace:
+[14-Nov-2016 09:18:13 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:18:13 UTC] PHP Warning:  date(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. in /var/www/html/include/bottom.php on line 3
+[14-Nov-2016 09:18:13 UTC] PHP Stack trace:
+[14-Nov-2016 09:18:13 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[14-Nov-2016 09:18:13 UTC] PHP   2. include() /var/www/html/device_defend/view_all_device.php:653
+[14-Nov-2016 09:18:13 UTC] PHP   3. date() /var/www/html/include/bottom.php:3
+[15-Nov-2016 00:55:36 UTC] PHP Notice:  Undefined index: logout in /var/www/html/include/top.php on line 86
+[15-Nov-2016 00:55:36 UTC] PHP Stack trace:
+[15-Nov-2016 00:55:36 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[15-Nov-2016 00:55:36 UTC] PHP   2. include() /var/www/html/device_defend/view_all_device.php:31
+[15-Nov-2016 00:55:36 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 101
+[15-Nov-2016 00:55:36 UTC] PHP Stack trace:
+[15-Nov-2016 00:55:36 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[15-Nov-2016 00:55:36 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 104
+[15-Nov-2016 00:55:36 UTC] PHP Stack trace:
+[15-Nov-2016 00:55:36 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[15-Nov-2016 00:55:36 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 105
+[15-Nov-2016 00:55:36 UTC] PHP Stack trace:
+[15-Nov-2016 00:55:36 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[15-Nov-2016 00:55:36 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 111
+[15-Nov-2016 00:55:36 UTC] PHP Stack trace:
+[15-Nov-2016 00:55:36 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[15-Nov-2016 00:55:36 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 143
+[15-Nov-2016 00:55:36 UTC] PHP Stack trace:
+[15-Nov-2016 00:55:36 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[15-Nov-2016 00:55:36 UTC] PHP Notice:  Undefined index: cookie_A in /var/www/html/device_defend/view_all_device.php on line 143
+[15-Nov-2016 00:55:36 UTC] PHP Stack trace:
+[15-Nov-2016 00:55:36 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[15-Nov-2016 00:55:36 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 147
+[15-Nov-2016 00:55:36 UTC] PHP Stack trace:
+[15-Nov-2016 00:55:36 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[15-Nov-2016 00:55:36 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 154
+[15-Nov-2016 00:55:36 UTC] PHP Stack trace:
+[15-Nov-2016 00:55:36 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[15-Nov-2016 00:55:36 UTC] PHP Warning:  date(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. in /var/www/html/include/bottom.php on line 3
+[15-Nov-2016 00:55:36 UTC] PHP Stack trace:
+[15-Nov-2016 00:55:36 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[15-Nov-2016 00:55:36 UTC] PHP   2. include() /var/www/html/device_defend/view_all_device.php:653
+[15-Nov-2016 00:55:36 UTC] PHP   3. date() /var/www/html/include/bottom.php:3
+[15-Nov-2016 02:37:31 UTC] PHP Notice:  Undefined index: logout in /var/www/html/include/top.php on line 86
+[15-Nov-2016 02:37:31 UTC] PHP Stack trace:
+[15-Nov-2016 02:37:31 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[15-Nov-2016 02:37:31 UTC] PHP   2. include() /var/www/html/device_defend/view_all_device.php:31
+[15-Nov-2016 02:37:31 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 101
+[15-Nov-2016 02:37:31 UTC] PHP Stack trace:
+[15-Nov-2016 02:37:31 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[15-Nov-2016 02:37:31 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 104
+[15-Nov-2016 02:37:31 UTC] PHP Stack trace:
+[15-Nov-2016 02:37:31 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[15-Nov-2016 02:37:31 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 105
+[15-Nov-2016 02:37:31 UTC] PHP Stack trace:
+[15-Nov-2016 02:37:31 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[15-Nov-2016 02:37:31 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 111
+[15-Nov-2016 02:37:31 UTC] PHP Stack trace:
+[15-Nov-2016 02:37:31 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[15-Nov-2016 02:37:31 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 143
+[15-Nov-2016 02:37:31 UTC] PHP Stack trace:
+[15-Nov-2016 02:37:31 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[15-Nov-2016 02:37:31 UTC] PHP Notice:  Undefined index: cookie_A in /var/www/html/device_defend/view_all_device.php on line 143
+[15-Nov-2016 02:37:31 UTC] PHP Stack trace:
+[15-Nov-2016 02:37:31 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[15-Nov-2016 02:37:31 UTC] PHP Notice:  Undefined index: tribe in /var/www/html/device_defend/view_all_device.php on line 147
+[15-Nov-2016 02:37:31 UTC] PHP Stack trace:
+[15-Nov-2016 02:37:31 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[15-Nov-2016 02:37:31 UTC] PHP Notice:  Undefined index: A in /var/www/html/device_defend/view_all_device.php on line 154
+[15-Nov-2016 02:37:31 UTC] PHP Stack trace:
+[15-Nov-2016 02:37:31 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[15-Nov-2016 02:37:31 UTC] PHP Warning:  date(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. in /var/www/html/include/bottom.php on line 3
+[15-Nov-2016 02:37:31 UTC] PHP Stack trace:
+[15-Nov-2016 02:37:31 UTC] PHP   1. {main}() /var/www/html/device_defend/view_all_device.php:0
+[15-Nov-2016 02:37:31 UTC] PHP   2. include() /var/www/html/device_defend/view_all_device.php:653
+[15-Nov-2016 02:37:31 UTC] PHP   3. date() /var/www/html/include/bottom.php:3

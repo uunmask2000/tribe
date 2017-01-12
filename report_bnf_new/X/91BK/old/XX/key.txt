@@ -1,0 +1,7 @@
+Dear Frank, 
+    資料庫帳密如下 : 
+User: reporter , passwd: 8825252qE 
+主機from : 172.20.0.12 . 
+Database : radius 
+開放table : radacct 
+  

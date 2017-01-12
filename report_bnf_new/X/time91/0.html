@@ -1,0 +1,35 @@
+<html>
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+
+
+<!--------
+<link rel="stylesheet" href="css/jquery-ui-1.10.4.min.css">
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.10.4.min.js"></script>
+
+
+-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="css/jquery-ui-timepicker-addon.css">
+
+
+<script type="text/javascript" src="js/jquery-ui-timepicker-addon.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $('#mydate').datetimepicker({
+            "dateFormat": "yy-mm-dd",
+            "timeFormat": "HH:mm"
+        });
+        //$('#mydate').timepicker({"timeFormat": "HH:mm"}); //只有 時、分、秒 用 timepicker
+    });
+</script>
+</head>
+<body>
+    <input type="text" id="mydate">
+</body>
+</html>

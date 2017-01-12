@@ -1,0 +1,23 @@
+H1,H2 {
+    text-align:center;
+    padding: 5px;
+}
+
+table,td {
+    border: 1px solid black;
+    padding: 5vh;
+	vertical-align:middle;
+	font-size:1cm;
+}
+table {
+    border-spacing: 15px;
+	margin-left:auto; 
+	margin-right:auto;
+}
+ th{
+    border: 1px solid black;
+    padding: 2vw;
+	background-color: #f2f2f2;
+	
+}
+tr:nth-child(even){background-color: #e1f9f1}
