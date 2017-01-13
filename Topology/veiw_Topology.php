@@ -52,6 +52,16 @@
          background-color: green;
          font-size: 10px;
        }
+		.button_A {
+		background-color: #4CAF50; /* Green */
+		border: none;
+		color: white;
+		padding: 15px 32px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		}
      </style> 
 	 <script>
 			$(document).ready(function(){
@@ -71,7 +81,8 @@
 		</script>
 	 
   </head>  
-  <body>  
+  <body> 
+  
   <?php
 include("../SQL/dbtools_ps.php");
 require_once("../SQL/dbtools.inc.php");
@@ -141,7 +152,13 @@ for($ii = 0 ; $ii < count($array) ; $ii++ )
 			echo '目前ICMP失連數量:'. count($array);	  
 	  ?> 
     </header>  
-    <nav>  
+    <nav> 
+<button id="PageRefresh">刷新頁面</button>
+<script type="text/javascript"> 
+	$('#PageRefresh').click(function() {
+    	      location.reload();
+	});
+</script>	
       <ul>
 	  <?php
 				for($ii = 0 ; $ii < count($array) ; $ii++ )
@@ -214,7 +231,8 @@ where  B.ass_ap_ip = '$key_ip'";
 				}
 
 	  ?>
-      </ul>  
+      </ul> 
+	  
     </nav>
     <section>
       <article>
@@ -250,7 +268,7 @@ where  B.ass_ap_ip = '$key_ip'";
 							<h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion" 
 							href="#collapseThree_township_<?=$tribe;?>">
-							地區資料
+							地區資料 <↓展開>
 							</a>
 							</h4>
 							</div>
@@ -304,7 +322,7 @@ where  B.ass_ap_ip = '$key_ip'";
 								<h4 class="panel-title">
 								<a data-toggle="collapse" data-parent="#accordion" 
 								href="#collapseThree_tribe_<?=$assets_address;?>">
-								部落聯絡資料
+								部落聯絡資料 <↓展開>
 								</a>
 								</h4>
 								</div>
@@ -343,7 +361,7 @@ where  B.ass_ap_ip = '$key_ip'";
 								<h4 class="panel-title">
 								<a data-toggle="collapse" data-parent="#accordion" 
 								href="#collapseThree_isp_<?=$assets_address;?>">
-								ISP資料
+								ISP資料 <↓展開>
 								</a>
 								</h4>
 								</div>
@@ -379,7 +397,7 @@ where  B.ass_ap_ip = '$key_ip'";
 								<h4 class="panel-title">
 								<a data-toggle="collapse" data-parent="#accordion" 
 								href="#collapseThree_power_<?=$assets_address;?>">
-								用電資料
+								用電資料 <↓展開>
 								</a>
 								</h4>
 								</div>
@@ -413,7 +431,7 @@ where  B.ass_ap_ip = '$key_ip'";
 								?>
 								<?php
 								
-								$sql_query2 = "SELECT * FROM ass_grouter where ass_grouter_tribe='$assets_address' ";
+								$sql_query2 = "SELECT * FROM ass_4Ggrouter where ass_4Ggrouter_tribe='$assets_address' ";
 									$result_query2 = execute_sql($database_name, $sql_query2, $link);
 									while ($row_query2 = mysql_fetch_assoc($result_query2))
 									{
@@ -424,7 +442,7 @@ where  B.ass_ap_ip = '$key_ip'";
 								<h4 class="panel-title">
 								<a data-toggle="collapse" data-parent="#accordion" 
 								href="#collapseThree_4Ggrouter_<?=$assets_address;?>">
-								4G Router資料
+								4G Router資料 <↓展開>
 								</a>
 								</h4>
 								</div>
@@ -486,7 +504,7 @@ where  B.ass_ap_ip = '$key_ip'";
 			}
 	
 ?>
-<p><a class='iframe' href="iframe/iframe_FW.php?ip=<?=$check ;?>">觀看FW紀錄</a></p>
+<p><a class='iframe button_A' href="iframe/iframe_FW.php?ip=<?=$check ;?>">觀看FW紀錄</a></p>
 <?php
 	
 	}
@@ -509,7 +527,7 @@ $check = $row_3_2['ass_4Gip'] ;
 
 	//echo '<li>'.$row_3_2['ass_4Gname'].$row_3_2['ass_4Gip'].'</li>';
 ?>
-<p><a class='iframe' href="iframe/iframe_4G.php?ip=<?=$check ;?>">觀看4G紀錄</a></p>
+<p><a class='iframe button_A' href="iframe/iframe_4G.php?ip=<?=$check ;?>">觀看4G紀錄</a></p>
 <?php		
 	}
 	//ass_poesw
@@ -530,7 +548,7 @@ $check = $row_3_3['ass_poesw_ip'] ;
 			}
 	//echo '<li>'.$row_3_3['ass_poesw_name'].$row_3_3['ass_poesw_ip'].'</li>';
 ?>
-<p><a class='iframe' href="iframe/iframe_poesw.php?ip=<?=$check ;?>">觀看poesw紀錄</a></p>
+<p><a class='iframe button_A' href="iframe/iframe_poesw.php?ip=<?=$check ;?>">觀看poesw紀錄</a></p>
 <?php		
 	}
 	//ass_pdu
@@ -552,7 +570,7 @@ $check = $row_3_4['ass_pdu_ip'] ;
 
 	//echo '<li>'.$row_3_4['ass_pdu_name'].$row_3_4['ass_pdu_ip'].'</li>';
 ?>
-<p><a class='iframe' href="iframe/iframe_pdu.php?ip=<?=$check ;?>">觀看pdu紀錄</a></p>
+<p><a class='iframe button_A' href="iframe/iframe_pdu.php?ip=<?=$check ;?>">觀看pdu紀錄</a></p>
 <?php	
 	}
 	//ass_ap
@@ -574,7 +592,7 @@ $check = $row_3_5['ass_ap_ip'] ;
 
 	//echo '<li>'.$row_3_5['ass_ap_name'].$row_3_5['ass_ap_ip'].'</li>';
 ?>
-<p><a class='iframe' href="iframe/iframe_AP.php?ip=<?=$check ;?>">觀看AP紀錄</a></p>
+<p><a class='iframe button_A' href="iframe/iframe_AP.php?ip=<?=$check ;?>">觀看AP紀錄</a></p>
 <?php
 	
 	}

@@ -17,7 +17,12 @@
 	
 	
 	<div class="defend">
-
+<button id="PageRefresh">刷新頁面</button>
+<script type="text/javascript"> 
+	$('#PageRefresh').click(function() {
+    	      location.reload();
+	});
+</script>
 <?php
 
 //echo $_GET['ip'];
@@ -35,9 +40,9 @@
 		$ass_pdu_ip =  $row_router['ass_pdu_ip'];
 		$ass_pdu_name =  $row_router['ass_pdu_name'];
 		$ass_pdu_id =  $row_router['ass_pdu_id'];
-		//echo $ass_pdu_name ;
+		echo $ass_pdu_name ;
 		
-		echo '<a href="../ap_data.php?ip='.$ass_pdu_ip.'">'.$ass_pdu_name.'</a>';
+		//echo '<a href="../ap_data.php?ip='.$ass_pdu_ip.'">'.$ass_pdu_name.'</a>';
 	}
 	echo '</H1>';
 	echo '<H2>';

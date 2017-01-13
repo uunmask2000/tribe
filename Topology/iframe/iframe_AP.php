@@ -17,7 +17,12 @@
 	
 	
 		<div class="defend">
-
+<button id="PageRefresh">刷新頁面</button>
+<script type="text/javascript"> 
+	$('#PageRefresh').click(function() {
+    	      location.reload();
+	});
+</script>
 <?php
 
 //echo $_GET['ip'];

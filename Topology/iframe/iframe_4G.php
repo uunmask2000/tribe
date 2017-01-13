@@ -16,7 +16,12 @@
 	<script type="text/javascript" src="http://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 	
 	<div class="defend">
-
+<button id="PageRefresh">¨ê·s­¶­±</button>
+<script type="text/javascript"> 
+	$('#PageRefresh').click(function() {
+    	      location.reload();
+	});
+</script>
 <?php
 
 //echo $_GET['ip'];

@@ -16,7 +16,12 @@
 	<script type="text/javascript" src="http://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 	
 	<div class="defend">
-
+<button id="PageRefresh">刷新頁面</button>
+<script type="text/javascript"> 
+	$('#PageRefresh').click(function() {
+    	      location.reload();
+	});
+</script>
 <?php
 
 //echo $_GET['ip'];
@@ -34,8 +39,8 @@
 		$ass_ip =  $row_router['ass_ip'];
 		$ass_name =  $row_router['ass_name'];
 		$ass_grouter_id =  $row_router['ass_grouter_id'];
-		//echo $ass_name ;
-		echo '<a href="http://'.$ass_ip.'">'.$ass_name.'</a>';
+		echo $ass_name ;
+		//echo '<a href="http://'.$ass_ip.'">'.$ass_name.'</a>';
 	}
 	echo '</H1>';
 	echo '<H2>';
