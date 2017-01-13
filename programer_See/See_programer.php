@@ -110,7 +110,7 @@ tr:nth-child(even) {
 					<td><?=$alert_ap_date_ap_ip ;?></td>
 					
 					
-					<td><?=$alert_written_time ;?></td>
+					<td><?=$alert_ap_date_time_dead ;?></td>
 					<td>服務中斷</td>
 					</tr>				
 					<?php

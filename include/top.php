@@ -332,16 +332,26 @@ if(preg_match("/login/i", $_SERVER['PHP_SELF']))
 			}
 	?>
 	<?php		
-			if( ($_SESSION['user_lv'])==1   )
+			if( ($_SESSION['user_id'])==1 or ($_SESSION['user_id'])==11 )
 			{
 			?>
 			<a href="../PDU_check/pdu_date.php">PDU PING 檢查</a> | 
 			<a href="../Topology/veiw_Topology.php" target='_blank'>網站拓譜圖</a> | 
+			
 			<?php
 			}
 	?>
-
-
+	
+	<?php		
+			if( ($_SESSION['user_id'])==11   )
+			{
+			?>
+			<a href="../programer_See/show_AP_date_form_2.php">
+				AP中斷維修紀錄表<過去紀錄>
+				</a> |
+			<?php
+			}
+	?>
 <?php
 			if( ($_SESSION['user_lv'])==1 or ($_SESSION['user_lv'])==2  or  ($_SESSION['user_lv'])==3  or ($_SESSION['user_lv'])==4  )
 			{

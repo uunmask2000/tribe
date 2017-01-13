@@ -90,15 +90,15 @@ $check_ip_death = implode(",",$array);
 ?>
 	  var locations = [
 <?php
-$sql = "SELECT *  FROM  assets_address  ";
-		/*
+///$sql = "SELECT *  FROM  assets_address  ";
+	
 		if(($_SESSION['user_lv'])<=2)
 		{
 		$sql = "SELECT *  FROM  assets_address  ";
 		}else{
-		$sql = "SELECT *  FROM  assets_address where type =1 and `tribe_ass_own` < 43 or `tribe_ass_own` IN (73,75,76,77,79,80) and `type`=1 "; //目前排除三期資料
+		$sql = "SELECT *  FROM  assets_address where type =1  "; //目前排除三期資料
 		}
-		*/
+
 	
 	
 	$result = execute_sql($database_name, $sql, $link);
