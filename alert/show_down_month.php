@@ -114,7 +114,7 @@ table.alert_tb tr td ,table.alert_tb th {
 											INNER JOIN (SELECT * FROM city_township) AS city_township ON   tribe.township_id= city_township.township_id
 											INNER JOIN (SELECT * FROM city_array) AS city_array ON   tribe.city_id= city_array.id 
 											where  ass_ap_ip='$key_ip'  ";											
-											$sql_router = "SELECT ass_name,	ass_ip,tribe_name,township_name,city_name,ass_grouter_city FROM (SELECT * FROM  ass_grouter) AS   ass_grouter
+											$sql_router = "SELECT ass_name,	ass_ip,tribe_name,township_name,city_name,ass_grouter_tribe FROM (SELECT * FROM  ass_grouter) AS   ass_grouter
 											INNER JOIN (SELECT * FROM tribe) AS tribe ON    ass_grouter.ass_grouter_tribe=tribe.tribe_id
 											INNER JOIN (SELECT * FROM city_township) AS city_township ON   tribe.township_id= city_township.township_id
 											INNER JOIN (SELECT * FROM city_array) AS city_array ON   tribe.city_id= city_array.id 
@@ -160,7 +160,7 @@ table.alert_tb tr td ,table.alert_tb th {
 																{
 																	 // echo $row_router['ass_name']; ass_grouter_city
 																	  ?>
-																	  <td><a class="tb_link" href="../view_date/view_tribe_msg.php?key=<?=$row_router['ass_grouter_city'];?>" target="_blank"><?=$row_router['tribe_name'];?></a></td>
+																	  <td><a class="tb_link" href="../view_date/view_tribe_msg.php?key=<?=$row_router['ass_grouter_tribe'];?>" target="_blank"><?=$row_router['tribe_name'];?></a></td>
 																		<td><a class="tb_link" href="../view_date/view_tribe_FW_date.php?ip=<?=$key_ip ;?>" target="_blank"> <?=$row_router['ass_name'];?></a></td>
 																	  <?php
 																}
