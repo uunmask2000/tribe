@@ -77,8 +77,9 @@
 	</div>
 
 <?php
-$conn = pg_connect("host=127.0.0.1 port=5432 dbname=opennms user=opennms password=0932969495");
-//include("../SQL/dbtools_ps.php");
+/*
+//$conn = pg_connect("host=127.0.0.1 port=5432 dbname=opennms user=opennms password=0932969495");
+include("../SQL/dbtools_ps.php");
 $sql_text ="SELECT  iflostservice,ifserviceid,ifregainedservice,outageid,serviceid,svclosteventid  FROM (SELECT * FROM outages ) AS  outages 
 INNER JOIN (SELECT * FROM ifservices) AS ifservices ON   outages.ifserviceid=ifservices.id
 where serviceid=2 and  svcregainedeventid is NULL ";
@@ -119,10 +120,24 @@ while ($row_events = pg_fetch_row($result_events) )
 }
 
 }
-$check_ip_death = implode(",",$array);
+//$check_ip_death = implode(",",$array);
+*/
+include("../SQL/dbtools_ps.php");
+$sql_text ="SELECT ipaddr FROM outages  as A
+join ifservices  as B  on  A.ifserviceid = B.id 
+join ipinterface  as C on  B.ipinterfaceid = C.id
+where A.ifregainedservice is NULL  and B.serviceid = 2
+ORDER BY  A.svclosteventid desc
+";
+//$result = pg_query($conn, " SELECT iflostservice,ifserviceid     FROM outages     where  	svcregainedeventid is NULL  ");
+$result = pg_query($conn,$sql_text );
+$j = 0;
+while ($row = pg_fetch_row($result)) 
+{
+$array[$j] = $row[0];
+$j++;
 
-							
-
+}
 
 ?>
 
@@ -229,17 +244,13 @@ if($_POST['A']==NULL)
 			<td>
 		<?php
 		  $IP1=  $row_AP['ass_ap_ip'];
-	if(preg_match("/$IP1/i","$check_ip_death")) {
-				//echo "OK";
-				//echo '<br>';
-				//$OK =1;
-				echo '服務中斷中';
-				} else {
-				//echo "error";
+				if (in_array($IP1, $array)) 
+				{
+				echo "服務中斷中";
+				}else {
 				echo '正常';
-				//echo '<br>';
-				//$OK =0;
 				}
+
 		?>
 		</td>
 		</tr>
@@ -316,6 +327,7 @@ if(($_SESSION['user_lv'])==1)
 				<td>					
 			<?php
 			$IP1= $row_FW['ass_ip'];
+			/*
 			if(preg_match("/$IP1/i","$check_ip_death")) {
 				//echo "OK";
 				//echo '<br>';
@@ -326,6 +338,13 @@ if(($_SESSION['user_lv'])==1)
 				echo '正常';
 				//echo '<br>';
 				//$OK =0;
+				}
+				*/
+				if (in_array($IP1, $array)) 
+				{
+				echo "服務中斷中";
+				}else {
+				echo '正常';
 				}
 			?>
 			</td>
@@ -401,6 +420,13 @@ if(($_SESSION['user_lv'])==1)
 		<td>					
 		<?php
 		$IP1=  $row_4G_Router['ass_4Gip'];
+		if (in_array($IP1, $array)) 
+				{
+				echo "服務中斷中";
+				}else {
+				echo '正常';
+				}
+		/*
 	if(preg_match("/$IP1/i","$check_ip_death")) {
 				//echo "OK";
 				//echo '<br>';
@@ -412,6 +438,7 @@ if(($_SESSION['user_lv'])==1)
 				//echo '<br>';
 				//$OK =0;
 				}
+				*/
 		?>
 		</td>
 		</tr>
@@ -488,6 +515,13 @@ if(($_SESSION['user_lv'])==1)
 		<td>					
 		<?php
 		  $IP1=  $row_POEWS['ass_poesw_ip'];
+		  if (in_array($IP1, $array)) 
+				{
+				echo "服務中斷中";
+				}else {
+				echo '正常';
+				}
+		  /*
 			if(preg_match("/$IP1/i","$check_ip_death")) {
 				//echo "OK";
 				//echo '<br>';
@@ -499,6 +533,7 @@ if(($_SESSION['user_lv'])==1)
 				//echo '<br>';
 				//$OK =0;
 				}
+				*/
 		?>
 		</td>
 		</tr>
@@ -572,6 +607,13 @@ if(($_SESSION['user_lv'])==1)
 				<td>					
 				<?php
 			 $IP1=  $row_pdu['ass_pdu_ip'];
+			   if (in_array($IP1, $array)) 
+				{
+				echo "服務中斷中";
+				}else {
+				echo '正常';
+				}
+			/*
 				if(preg_match("/$IP1/i","$check_ip_death")) {
 				//echo "OK";
 				//echo '<br>';
@@ -583,6 +625,7 @@ if(($_SESSION['user_lv'])==1)
 				//echo '<br>';
 				//$OK =0;
 				}
+				*/
 				?>
 				</td>						
 			</tr>
