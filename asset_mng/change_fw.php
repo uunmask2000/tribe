@@ -138,7 +138,7 @@ if($_GET['mode']=='change_router')
 					<td>理由</td>
 					<td>期別</td>
 	<?php
-	if( ($_SESSION['user_lv'])==1  )
+	if( ($_SESSION['user_id'])==1  )
 	{
 echo  '<td>編輯</td>';
 	}
@@ -179,7 +179,7 @@ echo  '<td>編輯</td>';
 					<td><?=$ass_change_label_router ;?></td>
 					
 					<?php
-					if( ($_SESSION['user_lv'])==1  )
+					if( ($_SESSION['user_id'])==1  )
 					{
 					//echo  '<td><a href="../html-link.htm" target="popup" onclick="window.open('../html-link.htm','name','width=600,height=400')">Open page in new window</a></td>';
 					//echo  '<td>刪除</td>';
