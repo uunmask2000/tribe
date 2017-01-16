@@ -137,13 +137,6 @@ echo"<script>alert('資料已更換');history.back();document.URL=location.href;
 					</td>
 					<td>理由</td>
 					<td>期別</td>
-										<?php
-if( ($_SESSION['user_lv'])==1  )
-{
-echo  '<td>編輯</td>';
-}
-
-?>
 					</tr>
 					<?php
 					$id= $_GET['id'];
@@ -175,18 +168,6 @@ echo  '<td>編輯</td>';
 					</td>
 					<td><?=$ass_change_note_poe_sw ;?></td>
 					<td><?=$ass_change_label_poe_sw ;?></td>
-					<?php
-if( ($_SESSION['user_lv'])==1  )
-{
-//echo  '<td><a href="../html-link.htm" target="popup" onclick="window.open('../html-link.htm','name','width=600,height=400')">Open page in new window</a></td>';
-//echo  '<td>刪除</td>';
-?>
-<td><a href="#" target="popup" onclick="window.open('frame/edit_history_poe.php?uid=<?=$row['ass_change_id_poe_sw'];?>','name','width=600,height=400')">編輯</a></td>
-<?php
-
-}
-?>
-
 					</tr>
 					<?php
 					}
