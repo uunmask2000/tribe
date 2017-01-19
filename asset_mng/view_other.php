@@ -217,14 +217,14 @@
 			<table id="show_date" class="asset">
 			      <thead>
 				<tr>
-					<th>縣市</th>
-					<th>地區</th>
+					<th width="40">縣市</th>
+					<th width="40">地區</th>
 					<th>部落</th>
 					<th>控制箱</th>
-					<th>資產名稱</th>
-					<th>編輯</th>
-					<th>更換</th>
-					<th>刪除</th>
+					<th width="80">資產名稱</th>
+					<th width="40">編輯</th>
+					<th width="40">更換</th>
+					<th width="40">刪除</th>
 					<th>更新紀錄</th>
 					<th  style="display: none;">S/N</th>
 					<th  style="display: none;">MAC</th>
@@ -387,8 +387,8 @@
 					</td>
 					
 					<td><?=	$ass_other_name;?></td>
-					<td><a href="fix_other.php?LONG_TXT=<?=$LONG_TXT ;?>&id=<?=$ass_other_id;?>"><img src="../images/icon_edit.png" class="adm_icon" align="absmiddle"></a></td>
-					<td><a href="change_other.php?LONG_TXT=<?=$LONG_TXT ;?>&id=<?=$ass_other_id;?>"><img src="../images/icon_change.png" class="adm_icon" align="absmiddle"></a></td>
+					<td><a href="fix_other.php?LONG_TXT=<?=$LONG_TXT ;?>&id=<?=$ass_other_id;?>" target="blank"><img src="../images/icon_edit.png" class="adm_icon" align="absmiddle"></a></td>
+					<td><a href="change_other.php?LONG_TXT=<?=$LONG_TXT ;?>&id=<?=$ass_other_id;?>" target="blank"><img src="../images/icon_change.png" class="adm_icon" align="absmiddle"></a></td>
 					
 					<td>
 					<a href="javascript:if(confirm('確定要刪除嗎?'))location='?mode=del_other&id=<?=$ass_other_id;?>'"><img src="../images/icon_del.png" class="adm_icon" align="absmiddle"></a>

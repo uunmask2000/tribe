@@ -52,7 +52,7 @@
 			
 	?>
 	<div class="report_bar">
-		<form action="<?php echo $_SERVER['PHP_SELF'];?>?mode=query" method="GET" style="margin:0 0 10px;">
+		<form action="<?php echo $_SERVER['PHP_SELF'];?>?mode=query" method="GET">
 				<select name="A"  onchange="this.form.submit();">
 				<option value=" " selected  disabled>請選擇期別</option>
 				<option value="2" <?php if($_GET['A']=='2'){echo 'selected';}else{};	?> >第二期</option>					
@@ -77,7 +77,7 @@
 		<thead>
 		<tr>
 		<th>No.</th>
-		<th>叫修編號</th>
+		<th width="40">叫修編號</th>
 		<!----
 		<th>中断代號</th>
 		<th>事件代號</th>
@@ -86,14 +86,14 @@
 		--->
 		<th>期別</th>
 		<th>部落</th>
-		<th>設備名稱</th>
+		<th width="40">設備名稱</th>
 		<th>IP</th>
 		<th>服務中斷時間</th>
 		<th>處理編號</th>				
 		<!--
 		<th>寄信狀態</th>
 		-->
-		<th>處置狀態</th>
+		<th width="40">處置狀態</th>
 		<th>處理</th>
 		<th>處理流程</th>
 		<!---
@@ -143,8 +143,8 @@
 			<td><?=$zzz ;?>   </td>
 			<td><?=$row_alert_ap_date['alert_ap_date_filter_id'];?></td>
 			<td><?=$row_alert_ap_date['Period_AP'];?></td>
-			<td><a class="tb_link" href="../view_date/view_tribe_msg.php?key=<?=$str_sec[2];?>" target="_self" ><?=$row_alert_ap_date['alert_ap_date_tribe']; ?></a></td>
-			<td><a class="tb_link" href="../view_date/view_tribe_AP_date.php?ip=<?=$row_alert_ap_date['alert_ap_date_ap_ip'];?>" target="_self" ><?=$row_alert_ap_date['alert_ap_date_ap_name']; ?></a></td>
+			<td><a class="tb_link" href="../view_date/view_tribe_msg.php?key=<?=$str_sec[2];?>" target="_blank" ><?=$row_alert_ap_date['alert_ap_date_tribe']; ?></a></td>
+			<td><a class="tb_link" href="../view_date/view_tribe_AP_date.php?ip=<?=$row_alert_ap_date['alert_ap_date_ap_ip'];?>" target="_blank" ><?=$row_alert_ap_date['alert_ap_date_ap_name']; ?></a></td>
 			<td><?=$row_alert_ap_date['alert_ap_date_ap_ip']; ?></td>
 			<td><?=$row_alert_ap_date['alert_written_time']; ?> </td> <!---信件送出時間--->
 			<td>
@@ -268,8 +268,8 @@
 			<td><?=$zzz ;?></td>
 			<td><?=$row_alert_ap_date['alert_ap_date_filter_id'];?></td>
 			<td><?=$row_alert_ap_date['Period_AP'];?></td>
-			<td><a class="tb_link" href="../view_date/view_tribe_msg.php?key=<?=$str_sec[2];?>" target="_self" ><?=$row_alert_ap_date['alert_ap_date_tribe']; ?></a></td>
-			<td><a class="tb_link" href="../view_date/view_tribe_AP_date.php?ip=<?=$row_alert_ap_date['alert_ap_date_ap_ip'];?>" target="_self" ><?=$row_alert_ap_date['alert_ap_date_ap_name']; ?></a></td>
+			<td><a class="tb_link" href="../view_date/view_tribe_msg.php?key=<?=$str_sec[2];?>" target="_blank" ><?=$row_alert_ap_date['alert_ap_date_tribe']; ?></a></td>
+			<td><a class="tb_link" href="../view_date/view_tribe_AP_date.php?ip=<?=$row_alert_ap_date['alert_ap_date_ap_ip'];?>" target="_blank" ><?=$row_alert_ap_date['alert_ap_date_ap_name']; ?></a></td>
 			<td><?=$row_alert_ap_date['alert_ap_date_ap_ip']; ?></td>
 			<td><?=$row_alert_ap_date['alert_written_time']; ?> </td> <!---信件送出時間--->
 			<td>

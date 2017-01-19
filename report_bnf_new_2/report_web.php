@@ -31,16 +31,30 @@
 	<script src="../highcharts/exporting.js"></script>
 	<!---highcharts套件-->
 	<!---------------------->
-<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/themes/hot-sneaks/jquery-ui.css" rel="stylesheet">
-<!-----<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>---->
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
-<script type="text/javascript" src="./jquery/jquery.ui.datepicker-zh-TW.js"></script>
+	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/themes/hot-sneaks/jquery-ui.css" rel="stylesheet">
+	<!-----<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>---->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="./jquery/jquery.ui.datepicker-zh-TW.js"></script>
 	
-	
-	<!------------------------>
-	
+	<!-----------LOADING套件------------->
+	<link href="../blockUI/load.css" rel="stylesheet" type="text/css" />
+	<script>
+	function showloading(){
+	document.getElementById('loading').style.display = 'block';
+	}
+	function init(){
+	document.getElementById("loading").style.display = "none";
+	}
+	if(window.attachEvent)
+	{window.attachEvent('onload', init);}
+	else
+	{window.addEventListener('load', init, false);}
+	</script>
 </head>
-<body>
+<body onload="init()" >
+<div class="loadingdiv" id="loading">
+<img class="loading" src="../blockUI/ajax-loader.gif" alt="">
+</div>
 
 <div id="wrap">
 <!-------------------------------------- TOP -->

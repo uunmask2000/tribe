@@ -469,8 +469,8 @@ div#show_old_date_filter, div#show_date_filter, div#table1_filter, div#datatable
     margin-bottom: 10px;
 }
 
-#show_old_date_wrapper table th { background: #ddd;}
-table#show_date th { background: #ddd;}
+#show_old_date_wrapper table th { background: #ddd; vertical-align: middle;}
+table#show_date th { background: #ddd; vertical-align: middle;}
 
 table#show_old_date td, table#show_date td { text-align: center; vertical-align: middle;}
 table#show_date tr:nth-child(even), table#table1 tr:nth-child(even),table#table2excel tr:nth-child(even)  {background: #e1f5af;}

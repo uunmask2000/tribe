@@ -296,7 +296,7 @@
 				<tr>
 					<td colspan="6" align="center">
 						<input class="edit_btn" type="submit" value="儲存">
-						<input class="edit_btn" type="button" onClick="history.back()" value="回上頁">
+						<input class="edit_btn" type="button" onClick="window.close()" value="關閉視窗">
 					</td>
 				</tr>
 			</table>

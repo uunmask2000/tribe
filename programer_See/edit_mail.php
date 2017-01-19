@@ -143,7 +143,7 @@ if($_GET['mode']=='sennd_mail_A' )
 	
 		//Processing_time_A
 				//$sql = "UPDATE  alert_ap_date_filter SET mail_type_re='1' WHERE alert_ap_date_filter_id='$key' ";
-				$sql = "UPDATE  alert_ap_date_filter SET Processing_status='首回覆' ,Processing_time_A='$Processing_time_A',note_A='$item_wrong_text',calling_bar_id='$calling_bar_id',Processor_A='$name' WHERE alert_ap_date_filter_id='$key' ";
+				$sql = "UPDATE  alert_ap_date_filter SET Processing_status='首回覆' ,Processing_time_A='$Processing_time_A',note_A='$item_wrong_text',calling_bar_id='$calling_bar_id',calling_bar_id_check='$calling_bar_id',Processor_A='$name' WHERE alert_ap_date_filter_id='$key' ";
 				execute_sql($database_name, $sql, $link);
 				//echo $sql ;
 				$Period_AP  =$_POST['Period_AP'];

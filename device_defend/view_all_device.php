@@ -22,9 +22,26 @@
 <script type="text/javascript" src="http://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
 <script type="text/javascript" src="http://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
 <script type="text/javascript" src="http://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+<!-----------LOADING套件------------->
+<link href="../blockUI/load.css" rel="stylesheet" type="text/css" />
+<script>
+function showloading(){
+document.getElementById('loading').style.display = 'block';
+}
+function init(){
+document.getElementById("loading").style.display = "none";
+}
+if(window.attachEvent)
+{window.attachEvent('onload', init);}
+else
+{window.addEventListener('load', init, false);}
+</script>
 </head>
+<body onload="init()" >
+<div class="loadingdiv" id="loading">
+<img class="loading" src="../blockUI/ajax-loader.gif" alt="">
+</div>
 
-<body>
 <div id="wrap">
 
 <!-------------------------------------- TOP -->
