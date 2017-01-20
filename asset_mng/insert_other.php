@@ -66,8 +66,9 @@
 				 $a6   =trim($_POST['data6']);
 				 $a7   = trim($_POST['data7']);
 				 $a8   = trim($_POST['data8']);
+				 $ass_other_label = $_POST['ass_other_label'];
 			
-			$sql = " INSERT INTO `ass_other`( `ass_other_city`, `ass_other_twon`, `ass_other_tribe`, `ass_other_address`, `ass_other_name`, `ass_other_opennms`, `ass_other_version`, `ass_other_sn`, `ass_other_ip`, `ass_other_mac`, `ass_other_note`, `ass_other_pn`) VALUES('$city','$town','$tribe','$address','$a1','$a2','$a3','$a4','$a5','$a6','$a7','$a8')";
+			$sql = " INSERT INTO `ass_other`( `ass_other_city`, `ass_other_twon`, `ass_other_tribe`, `ass_other_address`, `ass_other_name`, `ass_other_opennms`, `ass_other_version`, `ass_other_sn`, `ass_other_ip`, `ass_other_mac`, `ass_other_note`, `ass_other_pn`,ass_other_label) VALUES('$city','$town','$tribe','$address','$a1','$a2','$a3','$a4','$a5','$a6','$a7','$a8','$ass_other_label')";
 		 	$result = execute_sql($database_name, $sql, $link);
 			
 			$sql = "SELECT  MAX(ass_other_id) FROM ass_other  ";
@@ -82,7 +83,7 @@
 			
 			
 			//$sql2 = " INSERT INTO ass_change_other(`ass_change_tribe_other`, `ass_change_own_other`, `ass_change_name_other`, `ass_change_sn_other`, `ass_change_mac_other`, `ass_change_pn_other`, `ass_change_note_other`, `ass_change_time_other`, `ass_change_label_other ) VALUES($tribe,$MAX_id,'$a1','$a4','$a6','$a7','建立','$now_time','2')";
-		 	$sql2 = " INSERT INTO ass_change_other(`ass_change_tribe_other`, `ass_change_own_other`, `ass_change_name_other`, `ass_change_sn_other`, `ass_change_mac_other`, `ass_change_pn_other`, `ass_change_note_other`, `ass_change_time_other`, ass_change_label_other) VALUES('$tribe','$MAX_id','$a1','$a4','$a6','$a8','建立','$now_time','3')";
+		 	$sql2 = " INSERT INTO ass_change_other(`ass_change_tribe_other`, `ass_change_own_other`, `ass_change_name_other`, `ass_change_sn_other`, `ass_change_mac_other`, `ass_change_pn_other`, `ass_change_note_other`, `ass_change_time_other`, ass_change_label_other) VALUES('$tribe','$MAX_id','$a1','$a4','$a6','$a8','建立','$now_time','$ass_other_label')";
 		 	
 			$result2 = execute_sql($database_name, $sql2, $link);
 			
@@ -209,6 +210,14 @@
 					<td>資產名稱</td>
 					<td><input type="text" name="data1"  value="" ></td>
 				</tr>
+				
+			<tr>
+			<td>設備來源</td>
+			<td>
+			<input type="radio" name="ass_other_label" value="2"   > 2<br>
+			<input type="radio" name="ass_other_label" value="3"  checked > 3
+			</td>
+			<tr>
 				<tr>
 					<td>OPEN NMS</td>
 					<td>

@@ -62,10 +62,10 @@ if($_GET['mode']=='fix_ap')
 				 $a6   =trim($_POST['data6']);
 				 $a7   = trim($_POST['data7']);
 				 $a8   = trim($_POST['data8']);
-	
+	$ass_ap_label   = $_POST['ass_ap_label'];
 	
 			
-			$sql = " UPDATE `ass_ap` SET `ass_ap_name`='$a1',`ass_ap_opennms`='$a2',`ass_ap_version`='$a3',`ass_ap_sn`='$a4',`ass_ap_ip`='$a5',`ass_ap_mac`='$a6',`ass_ap_note`='$a7',`ass_ap_pn`='$a8' WHERE ass_ap_id='$uid'";
+			$sql = " UPDATE `ass_ap` SET `ass_ap_name`='$a1',`ass_ap_opennms`='$a2',`ass_ap_version`='$a3',`ass_ap_sn`='$a4',`ass_ap_ip`='$a5',`ass_ap_mac`='$a6',`ass_ap_note`='$a7',`ass_ap_pn`='$a8',ass_ap_label='$ass_ap_label' WHERE ass_ap_id='$uid'";
 		 	$result = execute_sql($database_name, $sql, $link);
 						
 			//echo"<script>alert('AP修改成功');window.location.href = 'view_ap.php';</script>";
@@ -97,6 +97,8 @@ if($_GET['mode']=='fix_ap')
 					$a6 = $row['ass_ap_mac'];
 				     $a7 = $row['ass_ap_note'];
 					$a8 = $row['ass_ap_pn'];
+					//設備來源期別
+						$ass_ap_label = $row['ass_ap_label'];
 				}
 
 
@@ -110,6 +112,13 @@ if($_GET['mode']=='fix_ap')
 					<td>資產名稱</td>
 					<td><input type="text" name="data1"  value="<?=$a1;?>" ></td>
 				</tr>
+					<tr>
+						<td>設備來源</td>
+							<td>
+							<input type="radio" name="ass_ap_label" value="2"  <?php if($ass_ap_label =='2' ){echo 'checked';}?> > 2<br>
+							<input type="radio" name="ass_ap_label" value="3"  <?php if($ass_ap_label =='3' ){echo 'checked';}?>> 3
+							</td>
+						<tr>
 				<tr>
 					<td>OPEN NMS</td>
 					<td>

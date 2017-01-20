@@ -65,11 +65,11 @@ if($_GET['mode']=='fix_4Ggrouter')
 				///
 				$phone_number   = trim($_POST['phone_number']);
 				$phone_imei   = trim($_POST['phone_imei']);
-				
+				$ass_4Ggrouter_label   = $_POST['ass_4Ggrouter_label'];
 				
 
 			
-			$sql = " UPDATE `ass_4Ggrouter` SET `ass_4Gname`='$a1',`ass_4Gopennms`='$a2',`ass_4Gversion`='$a3',`ass_4Gsn`='$a4',`ass_4Gip`='$a5',`ass_4Gmac`='$a6',`ass_4Gnote`='$a7',`ass_4Gpn`='$a8' ,`phone_number`='$phone_number',`phone_imei`='$phone_imei' WHERE ass_4Ggrouter_id='$uid'";
+			$sql = " UPDATE `ass_4Ggrouter` SET `ass_4Gname`='$a1',`ass_4Gopennms`='$a2',`ass_4Gversion`='$a3',`ass_4Gsn`='$a4',`ass_4Gip`='$a5',`ass_4Gmac`='$a6',`ass_4Gnote`='$a7',`ass_4Gpn`='$a8' ,`phone_number`='$phone_number',`phone_imei`='$phone_imei',ass_4Ggrouter_label='$ass_4Ggrouter_label' WHERE ass_4Ggrouter_id='$uid'";
 		 	$result = execute_sql($database_name, $sql, $link);
 						
 			//echo"<script>alert('4GRouter修改成功');window.location.href = 'view_4grouter.php';</script>";
@@ -104,6 +104,8 @@ if($_GET['mode']=='fix_4Ggrouter')
 							//
 							$phone_number = $row['phone_number'];
 							$phone_imei = $row['phone_imei'];
+							//設備來源期別
+						$ass_4Ggrouter_label = $row['ass_4Ggrouter_label'];
 				}
 
 
@@ -117,6 +119,13 @@ if($_GET['mode']=='fix_4Ggrouter')
 					<td>資產名稱</td>
 					<td><input type="text" name="data1"  value="<?=$a1;?>" ></td>
 				</tr>
+					<tr>
+						<td>設備來源</td>
+							<td>
+							<input type="radio" name="ass_4Ggrouter_label" value="2"  <?php if($ass_4Ggrouter_label =='2' ){echo 'checked';}?> > 2<br>
+							<input type="radio" name="ass_4Ggrouter_label" value="3"  <?php if($ass_4Ggrouter_label =='3' ){echo 'checked';}?>> 3
+							</td>
+						<tr>
 				<tr>
 					<td>OPEN NMS</td>
 					<td>

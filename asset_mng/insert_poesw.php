@@ -66,8 +66,9 @@
 				 $a6   =trim($_POST['data6']);
 				 $a7   = trim($_POST['data7']);
 				 $a8   = trim($_POST['data8']);
+				 $ass_poesw_label = $_POST['ass_poesw_label'];
 			
-			$sql = " INSERT INTO `ass_poesw`( `ass_poesw_city`, `ass_poesw_twon`, `ass_poesw_tribe`, `ass_poesw_address`, `ass_poesw_name`, `ass_poesw_opennms`, `ass_poesw_version`, `ass_poesw_sn`, `ass_poesw_ip`, `ass_poesw_mac`, `ass_poesw_note`, `ass_poesw_pn`) VALUES('$city','$town','$tribe','$address','$a1','$a2','$a3','$a4','$a5','$a6','$a7','$a8')";
+			$sql = " INSERT INTO `ass_poesw`( `ass_poesw_city`, `ass_poesw_twon`, `ass_poesw_tribe`, `ass_poesw_address`, `ass_poesw_name`, `ass_poesw_opennms`, `ass_poesw_version`, `ass_poesw_sn`, `ass_poesw_ip`, `ass_poesw_mac`, `ass_poesw_note`, `ass_poesw_pn`,ass_poesw_label) VALUES('$city','$town','$tribe','$address','$a1','$a2','$a3','$a4','$a5','$a6','$a7','$a8','$ass_poesw_label')";
 		 	$result = execute_sql($database_name, $sql, $link);
 			
 			$sql = "SELECT  MAX(ass_poesw_id) FROM ass_poesw  ";
@@ -79,7 +80,7 @@
 				 
 			}
 			$now_time = date("Y-m-d H:i:s");
-			$sql2 = " INSERT INTO ass_change_poe_sw(`ass_change_tribe_poe_sw`, `ass_change_own_poe_sw`, `ass_change_name_poe_sw`, `ass_change_sn_poe_sw`, `ass_change_mac_poe_sw`, `ass_change_pn_poe_sw`, `ass_change_note_poe_sw`, `ass_change_time_poe_sw`, ass_change_label_poe_sw) VALUES('$tribe','$MAX_id','$a1','$a4','$a6','$a8','建立','$now_time','3')";
+			$sql2 = " INSERT INTO ass_change_poe_sw(`ass_change_tribe_poe_sw`, `ass_change_own_poe_sw`, `ass_change_name_poe_sw`, `ass_change_sn_poe_sw`, `ass_change_mac_poe_sw`, `ass_change_pn_poe_sw`, `ass_change_note_poe_sw`, `ass_change_time_poe_sw`, ass_change_label_poe_sw) VALUES('$tribe','$MAX_id','$a1','$a4','$a6','$a8','建立','$now_time','$ass_poesw_label')";
 		 	
 			$result2 = execute_sql($database_name, $sql2, $link);
 			
@@ -207,6 +208,14 @@
 					<td>資產名稱</td>
 					<td><input type="text" name="data1"  value="" ></td>
 				</tr>
+				
+			<tr>
+			<td>設備來源</td>
+			<td>
+			<input type="radio" name="ass_poesw_label" value="2"   > 2<br>
+			<input type="radio" name="ass_poesw_label" value="3"  checked > 3
+			</td>
+			<tr>
 				<tr>
 					<td>OPEN NMS</td>
 					<td>

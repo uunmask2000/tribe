@@ -62,10 +62,10 @@ if($_GET['mode']=='fix_poesw')
 				 $a6   =trim($_POST['data6']);
 				 $a7   = trim($_POST['data7']);
 				 $a8   = trim($_POST['data8']);
-	
+				$ass_poesw_label   = $_POST['ass_poesw_label'];
 	
 			
-			$sql = " UPDATE `ass_poesw` SET `ass_poesw_name`='$a1',`ass_poesw_opennms`='$a2',`ass_poesw_version`='$a3',`ass_poesw_sn`='$a4',`ass_poesw_ip`='$a5',`ass_poesw_mac`='$a6',`ass_poesw_note`='$a7',`ass_poesw_pn`='$a8' WHERE ass_poesw_id='$uid'";
+			$sql = " UPDATE `ass_poesw` SET `ass_poesw_name`='$a1',`ass_poesw_opennms`='$a2',`ass_poesw_version`='$a3',`ass_poesw_sn`='$a4',`ass_poesw_ip`='$a5',`ass_poesw_mac`='$a6',`ass_poesw_note`='$a7',`ass_poesw_pn`='$a8',ass_poesw_label='$ass_poesw_label' WHERE ass_poesw_id='$uid'";
 		 	$result = execute_sql($database_name, $sql, $link);
 						
 			//echo"<script>alert('poesw修改成功');window.location.href = 'view_poesw.php';</script>";
@@ -97,6 +97,8 @@ if($_GET['mode']=='fix_poesw')
 					$a6 = $row['ass_poesw_mac'];
 				     $a7 = $row['ass_poesw_note'];
 					$a8 = $row['ass_poesw_pn'];
+					//設備來源期別
+						$ass_poesw_label = $row['ass_poesw_label'];
 				}
 
 
@@ -110,6 +112,13 @@ if($_GET['mode']=='fix_poesw')
 					<td>資產名稱</td>
 					<td><input type="text" name="data1"  value="<?=$a1;?>" ></td>
 				</tr>
+					<tr>
+						<td>設備來源</td>
+							<td>
+							<input type="radio" name="ass_poesw_label" value="2"  <?php if($ass_poesw_label =='2' ){echo 'checked';}?> > 2<br>
+							<input type="radio" name="ass_poesw_label" value="3"  <?php if($ass_poesw_label =='3' ){echo 'checked';}?>> 3
+							</td>
+						<tr>
 				<tr>
 					<td>OPEN NMS</td>
 					<td>

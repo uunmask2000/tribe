@@ -72,6 +72,7 @@
 				 $a6   =trim($_POST['data6']);
 				 $a7   = trim($_POST['data7']);
 				 $a8   = trim($_POST['data8']);
+				 $ass_grouter_label = $_POST['ass_grouter_label'];
 				 ///ISP 資料
 				 $isp_type   = trim($_POST['isp_type']);
 				 $isp_members   = trim($_POST['isp_members']);
@@ -84,7 +85,7 @@
 				 
 				 
 			
-			$sql = " INSERT INTO `ass_grouter`(`ass_grouter_city`, `ass_grouter_twon`, `ass_grouter_tribe`, `ass_grouter_address`, `ass_name`, `ass_opennms`, `ass_version`, `ass_sn`, `ass_ip`, `ass_mac`, `ass_note`,ass_pn,ass_grouter_label,isp_type,isp_members,isp_pohoe,isp_note,power_position,name_of_subsidy,contact_telephone_number) VALUES('$city','$town','$tribe','$address','$a1','$a2','$a3','$a4','$a5','$a6','$a7','$a8','2','$isp_type','$isp_members','$isp_pohoe','$isp_note','$power_position','$name_of_subsidy','$contact_telephone_number')";
+			$sql = " INSERT INTO `ass_grouter`(`ass_grouter_city`, `ass_grouter_twon`, `ass_grouter_tribe`, `ass_grouter_address`, `ass_name`, `ass_opennms`, `ass_version`, `ass_sn`, `ass_ip`, `ass_mac`, `ass_note`,ass_pn,ass_grouter_label,isp_type,isp_members,isp_pohoe,isp_note,power_position,name_of_subsidy,contact_telephone_number,ass_grouter_label) VALUES('$city','$town','$tribe','$address','$a1','$a2','$a3','$a4','$a5','$a6','$a7','$a8','2','$isp_type','$isp_members','$isp_pohoe','$isp_note','$power_position','$name_of_subsidy','$contact_telephone_number','$ass_grouter_label')";
 		 	$result = execute_sql($database_name, $sql, $link);
 			
 			
@@ -97,7 +98,7 @@
 				 
 			}
 			$now_time = date("Y-m-d H:i:s");
-			$sql2 = " INSERT INTO ass_change_router(`ass_change_tribe_router`, `ass_change_own_router`, `ass_change_name_router`, `ass_change_sn_router`, `ass_change_mac_router`, `ass_change_pn_router`, `ass_change_note_router`, `ass_change_time_router`, ass_change_label_router) VALUES('$tribe','$MAX_id','$a1','$a4','$a6','$a8','建立','$now_time','3')";
+			$sql2 = " INSERT INTO ass_change_router(`ass_change_tribe_router`, `ass_change_own_router`, `ass_change_name_router`, `ass_change_sn_router`, `ass_change_mac_router`, `ass_change_pn_router`, `ass_change_note_router`, `ass_change_time_router`, ass_change_label_router) VALUES('$tribe','$MAX_id','$a1','$a4','$a6','$a8','建立','$now_time','$ass_grouter_label')";
 		 	
 			$result2 = execute_sql($database_name, $sql2, $link);
 			
@@ -224,6 +225,14 @@
 					<td>資產名稱</td>
 					<td><input type="text" name="data1"  value="" ></td>
 				</tr>
+				
+			<tr>
+			<td>設備來源</td>
+			<td>
+			<input type="radio" name="ass_grouter_label" value="2"   > 2<br>
+			<input type="radio" name="ass_grouter_label" value="3"  checked > 3
+			</td>
+			<tr>
 				<tr>
 					<td>OPEN NMS</td>
 					<td>

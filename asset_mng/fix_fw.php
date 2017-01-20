@@ -71,8 +71,9 @@ if($_GET['mode']=='fix_fw')
 				$power_position   = trim($_POST['power_position']);
 				$name_of_subsidy   = trim($_POST['name_of_subsidy']);
 				$contact_telephone_number   = trim($_POST['contact_telephone_number']);	
+				$ass_grouter_label   = $_POST['ass_grouter_label'];
 
-			$sql = " UPDATE `ass_grouter` SET `ass_name`='$a1',`ass_opennms`='$a2',`ass_version`='$a3',`ass_sn`='$a4',`ass_ip`='$a5',`ass_mac`='$a6',`ass_note`='$a7',`ass_pn`='$a8',isp_type='$isp_type',isp_members='$isp_members',isp_pohoe='$isp_pohoe',isp_note='$isp_note',power_position='$power_position',name_of_subsidy='$name_of_subsidy',contact_telephone_number='$contact_telephone_number' WHERE ass_grouter_id='$uid'";
+			$sql = " UPDATE `ass_grouter` SET `ass_name`='$a1',`ass_opennms`='$a2',`ass_version`='$a3',`ass_sn`='$a4',`ass_ip`='$a5',`ass_mac`='$a6',`ass_note`='$a7',`ass_pn`='$a8',isp_type='$isp_type',isp_members='$isp_members',isp_pohoe='$isp_pohoe',isp_note='$isp_note',power_position='$power_position',name_of_subsidy='$name_of_subsidy',contact_telephone_number='$contact_telephone_number',ass_grouter_label='$ass_grouter_label' WHERE ass_grouter_id='$uid'";
 		 	$result = execute_sql($database_name, $sql, $link);
 			//echo"<script>alert('Router修改成功');window.location.href = 'view_fw.php';</script>";
 		echo"<script>alert('資料已更新');history.back();document.URL=location.href;</script>";
@@ -113,7 +114,8 @@ if($_GET['mode']=='fix_fw')
 						$power_position   = trim($row['power_position']);
 						$name_of_subsidy   = trim($row['name_of_subsidy']);
 						$contact_telephone_number   = trim($row['contact_telephone_number']);	
-						
+						//設備來源期別
+						$ass_grouter_label = $row['ass_grouter_label'];
 						
 				}
 
@@ -128,6 +130,13 @@ if($_GET['mode']=='fix_fw')
 					<td>資產名稱</td>
 					<td><input type="text" name="data1"  value="<?=$a1;?>" ></td>
 				</tr>
+						<tr>
+						<td>設備來源</td>
+							<td>
+							<input type="radio" name="ass_grouter_label" value="2"  <?php if($ass_grouter_label =='2' ){echo 'checked';}?> > 2<br>
+							<input type="radio" name="ass_grouter_label" value="3"  <?php if($ass_grouter_label =='3' ){echo 'checked';}?>> 3
+							</td>
+						<tr>
 				<tr>
 					<td>OPEN NMS</td>
 					<td>

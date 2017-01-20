@@ -62,10 +62,11 @@ if($_GET['mode']=='fix_other')
 				 $a6   =trim($_POST['data6']);
 				 $a7   = trim($_POST['data7']);
 				 $a8   = trim($_POST['data8']);
+			$ass_other_label   = $_POST['ass_other_label'];	 
 	
 	
 			
-			$sql = " UPDATE `ass_other` SET `ass_other_name`='$a1',`ass_other_opennms`='$a2',`ass_other_version`='$a3',`ass_other_sn`='$a4',`ass_other_ip`='$a5',`ass_other_mac`='$a6',`ass_other_note`='$a7',`ass_other_pn`='$a8' WHERE ass_other_id='$uid'";
+			$sql = " UPDATE `ass_other` SET `ass_other_name`='$a1',`ass_other_opennms`='$a2',`ass_other_version`='$a3',`ass_other_sn`='$a4',`ass_other_ip`='$a5',`ass_other_mac`='$a6',`ass_other_note`='$a7',`ass_other_pn`='$a8',ass_other_label='$ass_other_label' WHERE ass_other_id='$uid'";
 		 	$result = execute_sql($database_name, $sql, $link);
 						
 			//echo"<script>alert('other修改成功');window.location.href = 'view_other.php';</script>";
@@ -98,6 +99,8 @@ if($_GET['mode']=='fix_other')
 					$a6 = $row['ass_other_mac'];
 				     $a7 = $row['ass_other_note'];
 					$a8 = $row['ass_other_pn'];
+					//設備來源期別
+						$ass_other_label = $row['ass_other_label'];
 				}
 
 
@@ -111,6 +114,13 @@ if($_GET['mode']=='fix_other')
 					<td>資產名稱</td>
 					<td><input type="text" name="data1"  value="<?=$a1;?>" ></td>
 				</tr>
+					<tr>
+						<td>設備來源</td>
+							<td>
+							<input type="radio" name="ass_other_label" value="2"  <?php if($ass_other_label =='2' ){echo 'checked';}?> > 2<br>
+							<input type="radio" name="ass_other_label" value="3"  <?php if($ass_other_label =='3' ){echo 'checked';}?>> 3
+							</td>
+						<tr>
 				<tr>
 					<td>OPEN NMS</td>
 					<td>

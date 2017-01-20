@@ -65,8 +65,9 @@
 				 $a6   =trim($_POST['data6']);
 				 $a7   = trim($_POST['data7']);
 				 $a8   = trim($_POST['data8']);
+				 $ass_ap_label = $_POST['ass_ap_label'];
 			
-			$sql = " INSERT INTO `ass_ap`( `ass_ap_city`, `ass_ap_twon`, `ass_ap_tribe`, `ass_ap_address`, `ass_ap_name`, `ass_ap_opennms`, `ass_ap_version`, `ass_ap_sn`, `ass_ap_ip`, `ass_ap_mac`, `ass_ap_note`, `ass_ap_pn`) VALUES('$city','$town','$tribe','$address','$a1','$a2','$a3','$a4','$a5','$a6','$a7','$a8')";
+			$sql = " INSERT INTO `ass_ap`( `ass_ap_city`, `ass_ap_twon`, `ass_ap_tribe`, `ass_ap_address`, `ass_ap_name`, `ass_ap_opennms`, `ass_ap_version`, `ass_ap_sn`, `ass_ap_ip`, `ass_ap_mac`, `ass_ap_note`, `ass_ap_pn`,ass_ap_label) VALUES('$city','$town','$tribe','$address','$a1','$a2','$a3','$a4','$a5','$a6','$a7','$a8','$ass_ap_label')";
 		 	$result = execute_sql($database_name, $sql, $link);
 			
 			
@@ -79,7 +80,7 @@
 				 
 			}
 			$now_time = date("Y-m-d H:i:s");
-			$sql2 = " INSERT INTO ass_change_ap(`ass_change_tribe_ap`, `ass_change_own_ap`, `ass_change_name_ap`, `ass_change_sn_ap`, `ass_change_mac_ap`, `ass_change_pn_ap`, `ass_change_note_ap`, `ass_change_time_ap`, ass_change_label_ap) VALUES('$tribe','$MAX_id','$a1','$a4','$a6','$a8','建立','$now_time','3')";
+			$sql2 = " INSERT INTO ass_change_ap(`ass_change_tribe_ap`, `ass_change_own_ap`, `ass_change_name_ap`, `ass_change_sn_ap`, `ass_change_mac_ap`, `ass_change_pn_ap`, `ass_change_note_ap`, `ass_change_time_ap`, ass_change_label_ap) VALUES('$tribe','$MAX_id','$a1','$a4','$a6','$a8','建立','$now_time','$ass_ap_label')";
 		 	
 			$result2 = execute_sql($database_name, $sql2, $link);
 			
@@ -206,6 +207,14 @@
 					<td>資產名稱</td>
 					<td><input type="text" name="data1"  value="" ></td>
 				</tr>
+				
+			<tr>
+			<td>設備來源</td>
+			<td>
+			<input type="radio" name="ass_ap_label" value="2"   > 2<br>
+			<input type="radio" name="ass_ap_label" value="3"  checked > 3
+			</td>
+			<tr>
 				<tr>
 					<td>OPEN NMS</td>
 					<td>

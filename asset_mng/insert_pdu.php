@@ -95,12 +95,13 @@
 				 $a6   =trim($_POST['data6']);
 				 $a7   = trim($_POST['data7']);
 				 $a8   = trim($_POST['data8']);
+				 $ass_pdu_label = $_POST['ass_pdu_label'];
 				$port =   trim($port);
 				$portname =  trim($portname);
 				$portip =  trim($portip);
 				
 			
-			$sql = " INSERT INTO `ass_pdu`( `ass_pdu_city`, `ass_pdu_twon`, `ass_pdu_tribe`, `ass_pdu_address`, `ass_pdu_name`, `ass_pdu_opennms`, `ass_pdu_version`, `ass_pdu_sn`, `ass_pdu_ip`, `ass_pdu_mac`, `ass_pdu_note`, `ass_pdu_pn`, `port`, `portname`, `portip`) VALUES('$city','$town','$tribe','$address','$a1','$a2','$a3','$a4','$a5','$a6','$a7','$a8','$port','$portname','$portip')";
+			$sql = " INSERT INTO `ass_pdu`( `ass_pdu_city`, `ass_pdu_twon`, `ass_pdu_tribe`, `ass_pdu_address`, `ass_pdu_name`, `ass_pdu_opennms`, `ass_pdu_version`, `ass_pdu_sn`, `ass_pdu_ip`, `ass_pdu_mac`, `ass_pdu_note`, `ass_pdu_pn`, `port`, `portname`, `portip`,ass_pdu_label) VALUES('$city','$town','$tribe','$address','$a1','$a2','$a3','$a4','$a5','$a6','$a7','$a8','$port','$portname','$portip','$ass_pdu_label')";
 		 	$result = execute_sql($database_name, $sql, $link);
 			
 			$sql = "SELECT  MAX(ass_pdu_id) FROM ass_pdu  ";
@@ -112,7 +113,7 @@
 				 
 			}
 			$now_time = date("Y-m-d H:i:s");
-			$sql2 = " INSERT INTO ass_change_PDU(`ass_change_tribe_PDU`, `ass_change_own_PDU`, `ass_change_name_PDU`, `ass_change_sn_PDU`, `ass_change_mac_PDU`, `ass_change_pn_PDU`, `ass_change_note_PDU`, `ass_change_time_PDU`, ass_change_label_PDU) VALUES('$tribe','$MAX_id','$a1','$a4','$a6','$a8','建立','$now_time','3')";
+			$sql2 = " INSERT INTO ass_change_PDU(`ass_change_tribe_PDU`, `ass_change_own_PDU`, `ass_change_name_PDU`, `ass_change_sn_PDU`, `ass_change_mac_PDU`, `ass_change_pn_PDU`, `ass_change_note_PDU`, `ass_change_time_PDU`, ass_change_label_PDU) VALUES('$tribe','$MAX_id','$a1','$a4','$a6','$a8','建立','$now_time','$ass_pdu_label')";
 		 	
 			$result2 = execute_sql($database_name, $sql2, $link);
 			
@@ -241,6 +242,14 @@
 					<td colspan="2">資產名稱</td>
 					<td colspan="4"><input type="text" name="data1"  value="" ></td>
 				</tr>
+				
+			<tr>
+			<td>設備來源</td>
+			<td>
+			<input type="radio" name="ass_pdu_label" value="2"   > 2<br>
+			<input type="radio" name="ass_pdu_label" value="3"  checked > 3
+			</td>
+			<tr>
 				<tr>
 					<td colspan="2">OPEN NMS</td>
 					<td colspan="4">

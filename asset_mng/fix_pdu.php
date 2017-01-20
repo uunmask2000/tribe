@@ -64,8 +64,8 @@
 						 $a6   =trim($_POST['data6']);
 						 $a7   = trim($_POST['data7']);
 						 $a8   = trim($_POST['data8']);
-
-			$sql = " UPDATE `ass_pdu` SET `ass_pdu_name`='$a1',`ass_pdu_opennms`='$a2',`ass_pdu_version`='$a3',`ass_pdu_sn`='$a4',`ass_pdu_ip`='$a5',`ass_pdu_mac`='$a6',`ass_pdu_note`='$a7',`ass_pdu_pn`='$a8' , `port`='$port ',`portname`='$portname',`portip`='$portip' WHERE ass_pdu_id='$uid'";
+$ass_pdu_label   = $_POST['ass_pdu_label'];
+			$sql = " UPDATE `ass_pdu` SET `ass_pdu_name`='$a1',`ass_pdu_opennms`='$a2',`ass_pdu_version`='$a3',`ass_pdu_sn`='$a4',`ass_pdu_ip`='$a5',`ass_pdu_mac`='$a6',`ass_pdu_note`='$a7',`ass_pdu_pn`='$a8' , `port`='$port ',`portname`='$portname',`portip`='$portip',ass_pdu_label='$ass_pdu_label' WHERE ass_pdu_id='$uid'";
 		 	$result = execute_sql($database_name, $sql, $link);
 						
 			//echo"<script>alert('pdu修改成功');window.location.href = 'view_pdu.php';</script>";
@@ -104,6 +104,8 @@
 				       $port = explode("-",$port);
 					   $portname = explode("-",$portname);
 				 	   $portip = explode("-",$portip);
+					   //設備來源期別
+						$ass_pdu_label = $row['ass_pdu_label'];
 				}
 
 
@@ -117,6 +119,13 @@
 					<td colspan="2">資產名稱</td>
 					<td colspan="4"><input type="text" name="data1"  value="<?=$a1;?>" ></td>
 				</tr>
+					<tr>
+						<td>設備來源</td>
+							<td>
+							<input type="radio" name="ass_pdu_label" value="2"  <?php if($ass_pdu_label =='2' ){echo 'checked';}?> > 2<br>
+							<input type="radio" name="ass_pdu_label" value="3"  <?php if($ass_pdu_label =='3' ){echo 'checked';}?>> 3
+							</td>
+						<tr>
 				<tr>
 					<td colspan="2">OPEN NMS</td>
 					<td colspan="4">

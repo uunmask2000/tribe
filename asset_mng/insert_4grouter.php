@@ -65,13 +65,14 @@
 					$a6   =trim($_POST['data6']);
 					$a7   = trim($_POST['data7']);
 					$a8   = trim($_POST['data8']);
+					$ass_4Ggrouter_label = $_POST['ass_4Ggrouter_label'] ;
 					///
 					$phone_number   = trim($_POST['phone_number']);
 					$phone_imei   = trim($_POST['phone_imei']);
 					//phone_number
 				    //phone_imei
 			
-			$sql = " INSERT INTO `ass_4Ggrouter`(`ass_4Ggrouter_city`, `ass_4Ggrouter_twon`, `ass_4Ggrouter_tribe`, `ass_4Ggrouter_address`, `ass_4Gname`, `ass_4Gopennms`, `ass_4Gversion`, `ass_4Gsn`, `ass_4Gip`, `ass_4Gmac`, `ass_4Gnote`, `ass_4Gpn`, `ass_4G_grouter_type`, `phone_number`) VALUES ('$city','$town','$tribe','$address','$a1','$a2','$a3','$a4','$a5','$a6','$a7','$a8','$phone_number','$phone_imei')";
+			$sql = " INSERT INTO `ass_4Ggrouter`(`ass_4Ggrouter_city`, `ass_4Ggrouter_twon`, `ass_4Ggrouter_tribe`, `ass_4Ggrouter_address`, `ass_4Gname`, `ass_4Gopennms`, `ass_4Gversion`, `ass_4Gsn`, `ass_4Gip`, `ass_4Gmac`, `ass_4Gnote`, `ass_4Gpn`, `ass_4G_grouter_type`, `phone_number`,ass_4Ggrouter_label) VALUES ('$city','$town','$tribe','$address','$a1','$a2','$a3','$a4','$a5','$a6','$a7','$a8','$phone_number','$phone_imei','$ass_4Ggrouter_label')";
 		 	$result = execute_sql($database_name, $sql, $link);
 			
 			
@@ -79,16 +80,16 @@
 			$result = execute_sql($database_name, $sql, $link);
 			while ($row = mysql_fetch_assoc($result))
 			{
-			     //ass_other_id
+			     ///ass_other_id
 				 $MAX_id = $row['MAX(ass_4Ggrouter_id)'];
 				 
 			}
 			$now_time = date("Y-m-d H:i:s");
-			$sql2 = " INSERT INTO ass_change_4Grouter(`ass_change_tribe_4Grouter`, `ass_change_own_4Grouter`, `ass_change_name_4Grouter`, `ass_change_sn_4Grouter`, `ass_change_mac_4Grouter`, `ass_change_pn_4Grouter`, `ass_change_note_4Grouter`, `ass_change_time_4Grouter`, ass_change_label_4Grouter) VALUES('$tribe','$MAX_id','$a1','$a4','$a6','$a8','建立','$now_time','3')";
+			$sql2 = " INSERT INTO ass_change_4Grouter(`ass_change_tribe_4Grouter`, `ass_change_own_4Grouter`, `ass_change_name_4Grouter`, `ass_change_sn_4Grouter`, `ass_change_mac_4Grouter`, `ass_change_pn_4Grouter`, `ass_change_note_4Grouter`, `ass_change_time_4Grouter`, ass_change_label_4Grouter) VALUES('$tribe','$MAX_id','$a1','$a4','$a6','$a8','建立','$now_time','$ass_4Ggrouter_label')";
 		 	
 			$result2 = execute_sql($database_name, $sql2, $link);
 			
-			echo"<script>alert('新增grouter');window.location.href = 'view_4grouter.php';</script>";
+			echo"<script>alert('新增4G - grouter');window.location.href = 'view_4grouter.php';</script>";
 			
 		
 		}
@@ -210,6 +211,14 @@
 					<td>資產名稱</td>
 					<td><input type="text" name="data1"  value="" ></td>
 				</tr>
+				
+						<tr>
+						<td>設備來源</td>
+						<td>
+						<input type="radio" name="ass_4Ggrouter_label " value="2"   > 2<br>
+						<input type="radio" name="ass_4Ggrouter_label " value="3"  checked > 3
+						</td>
+						<tr>
 				<tr>
 					<td>OPEN NMS</td>
 					<td>
