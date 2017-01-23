@@ -169,8 +169,9 @@ for($ii = 0 ; $ii < count($array) ; $ii++ )
 join ass_grouter as B
 on A.tribe_id  =  B.ass_grouter_tribe 
 where  B.ass_ip = '$key_ip'";
+
 							$result_sow_FW = execute_sql($database_name, $sql_sow_FW, $link);
-							while ($row_sow_AP = mysql_fetch_assoc($row_sow_AP))
+							while ($row_sow_FW = mysql_fetch_assoc($result_sow_FW))
 							{
 							//$row_sow_FW['ass_ap_name'];
 							echo '<li><a href="#History'.$array[$ii].'">'.$row_sow_FW['tribe_name'].$row_sow_FW['ass_name'].'</a></li>';

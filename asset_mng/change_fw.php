@@ -136,7 +136,7 @@ if($_GET['mode']=='change_router')
 					P/N
 					</td>
 					<td>理由</td>
-					<td>期別</td>
+					<td>設備來源</td>
 	<?php
 	if( ($_SESSION['user_id'])==1  )
 	{

@@ -136,7 +136,7 @@ if($_GET['mode']=='change_ap')
 					P/N
 					</td>
 					<td>更換原因</td>
-					<td>期別</td>
+					<td>設備來源</td>
 										<?php
 if( ($_SESSION['user_id'])==1  )
 {

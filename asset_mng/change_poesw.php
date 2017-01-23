@@ -136,7 +136,7 @@ echo"<script>alert('資料已更換');history.back();document.URL=location.href;
 					P/N
 					</td>
 					<td>理由</td>
-					<td>期別</td>
+					<td>設備來源</td>
 										<?php
 if( ($_SESSION['user_id'])==1  )
 {

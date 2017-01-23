@@ -51,7 +51,7 @@ function create_ps_connection()
 <?php
 			///檢查真正沒有大於三十分鐘的
 				$sql_d  = "DELETE FROM alert_ap_date_filter WHERE TIMEDIFF(alert_ap_date_time_ok,alert_ap_date_time_dead)<'00:30:00' ";
-				///$result_d  = execute_sql($database_name, $sql_d, $link);
+				$result_d  = execute_sql($database_name, $sql_d, $link);
 				execute_sql($database_name, $sql_d, $link);
 				///檢查真正沒有大於三十分鐘的 	
 				sleep(1);	

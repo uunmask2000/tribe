@@ -184,7 +184,11 @@ if($_GET['mode']=='fix_4Ggrouter')
 		<tr>
 		<td>備註</td>
 		<td>
-		<input type="text" name="data7"  value="<?=$a7 ;?>" >	
+		<textarea rows="4" cols="50" name="data7" >
+		<?=$a7 ;?>
+		
+		</textarea>
+		<!---<input type="text" name="data7"  value="">	-->
 		</td>
 		</tr>		
 				<tr>

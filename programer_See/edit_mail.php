@@ -110,7 +110,7 @@ if($_GET['mode']=='sennd_mail_A' )
 			$mail->From = 'itribe2016@gamil.com';
 			$mail->FromName = $mail_title1;
 			$mail->Subject = $mail_title2;
-			$mail->Body = '問題設備 : '.$title.'選擇項目   :  '.$item_wrong.'  內容   :   '.$item_wrong_text;
+			$mail->Body = 	'處理編號 : '.$re_time.'<br>問題設備 : '.$title.'<br>選擇項目   :  '.$item_wrong.'<br>內容   :   '.$item_wrong_text;
 			$mail->IsHTML(true);
 			$mail->AddAttachment("", "");
 					$mail->AddAddress('seanchen@tiis.com.tw','seanchen');
@@ -128,11 +128,11 @@ if($_GET['mode']=='sennd_mail_A' )
 		//exit;
 		if(!$mail->Send())
 		{
-		//echo "<p align=center>傳送Error1: ".$errorx=$mail->ErrorInfo."</p>";
+		echo "<p align=center>傳送Error1: ".$errorx=$mail->ErrorInfo."</p>";
 		}else
 		{	
 
-		//echo "<p align=center><b>傳送成功。</b></p>";
+		echo "<p align=center><b>傳送成功。</b></p>";
 		}
 		
 		
@@ -354,17 +354,21 @@ if( intval( $KEY ) )
 					case '已發信':
 					//echo "已發信";
 					?>
+					
+					<div class="place_time"><?=$alert_ap_date_city .$alert_ap_date_township .$alert_ap_date_tribe .$alert_ap_date_ap_name .'服務中斷時間: ' .$alert_written_time  ;?></div>
+					<div class="common_img"></div>
+					
 					<form action="?mode=sennd_mail_A" method="POST">
 					
-					<table cellpadding="5" cellspacing="0" class="edit">
+					<table cellpadding="5" cellspacing="0" class="edit" width="500">
 					<tr>
-						<th><?=$alert_ap_date_city .$alert_ap_date_township .$alert_ap_date_tribe .$alert_ap_date_ap_name .'服務中斷時間: ' .$alert_written_time  ;?>
+						<th>
 							<select name="item_wrong">
 								<option value="首回覆" selected >首回覆</option>
 							</select>
 						</th>
 						<th>回覆時間 
-						<input id="start_date" type="text"  name="re_time" />
+						<input id="start_date" type="text"  name="re_time" value="<?php echo date("Y-m-d H:i:s ")?>" />
 							<script language="JavaScript">
 								/*							
 								$('#start_date').datepicker({
@@ -425,11 +429,15 @@ if( intval( $KEY ) )
 					
 					case '首回覆':
 					?>
+					
+					<div class="place_time"><?=$alert_ap_date_city .$alert_ap_date_township .$alert_ap_date_tribe .$alert_ap_date_ap_name .'服務中斷時間: ' .$alert_written_time  ;?></div>
+					<div class="common_img"></div>
+					
 					<form action="?mode=sennd_mail_B" method="POST">
-					<table cellpadding="5" cellspacing="0" class="edit">
+					<table cellpadding="5" cellspacing="0" class="edit" style="width:700px;">
 					
 					<tr>
-						<th><?=$alert_ap_date_city .$alert_ap_date_township .$alert_ap_date_tribe .$alert_ap_date_ap_name .'服務中斷時間: ' .$alert_written_time  ;?>
+						<th>
 							<select name="item_wrong">
 							<option value="已派工" selected >已派工</option>
 							</select>
@@ -517,10 +525,14 @@ if( intval( $KEY ) )
 				
 					case '已派工':
 					?>
+					
+					<div class="place_time"><?=$alert_ap_date_city .$alert_ap_date_township .$alert_ap_date_tribe .$alert_ap_date_ap_name .'服務中斷時間: ' .$alert_written_time  ;?></div>
+					<div class="common_img"></div>
+					
 					<form action="?mode=sennd_mail_C" method="POST">
 					<table cellpadding="5" cellspacing="0" class="edit">
 					<tr>
-						<th colspan="2"><?=$alert_ap_date_city .$alert_ap_date_township .$alert_ap_date_tribe .$alert_ap_date_ap_name .'服務中斷時間: ' .$alert_written_time  ;?>
+						<th colspan="2">
 							<select name="item_wrong">
 							<option value="已到達" selected >已到達</option>
 							</select>
@@ -609,11 +621,15 @@ if( intval( $KEY ) )
 					case '已到達':
 					
 					?>
+					
+					<div class="place_time"><?=$alert_ap_date_city .$alert_ap_date_township .$alert_ap_date_tribe .$alert_ap_date_ap_name .'服務中斷時間: ' .$alert_written_time  ;?></div>
+					<div class="common_img"></div>
+					
 					<form action="?mode=sennd_mail_D" method="POST">
 					<table cellpadding="5" cellspacing="0" class="edit">
 					
 					<tr>
-						<th colspan="2"><?=$alert_ap_date_city .$alert_ap_date_township .$alert_ap_date_tribe .$alert_ap_date_ap_name .'服務中斷時間: ' .$alert_written_time  ;?>
+						<th colspan="2">
 							<select name="item_wrong">
 							<option value="處理中" selected >處理中</option>
 							</select>
@@ -684,11 +700,15 @@ if( intval( $KEY ) )
 					case '處理中':
 					
 					?>
+					
+					<div class="place_time"><?=$alert_ap_date_city .$alert_ap_date_township .$alert_ap_date_tribe .$alert_ap_date_ap_name .'服務中斷時間: ' .$alert_written_time  ;?></div>
+					<div class="common_img"></div>
+					
 					<form action="?mode=sennd_mail_E" method="POST">
 					<table cellpadding="5" cellspacing="0" class="edit">
 					
 					<tr>
-						<th colspan="2"><?=$alert_ap_date_city .$alert_ap_date_township .$alert_ap_date_tribe .$alert_ap_date_ap_name .'服務中斷時間: ' .$alert_written_time  ;?>
+						<th colspan="2">
 							<select name="item_wrong">
 							<option value="已結案" selected >已結案</option>
 							</select>

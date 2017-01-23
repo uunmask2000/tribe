@@ -44,9 +44,11 @@ function create_ps_connection()
 ?>
 
 <?php
+$today = date("Y-m-d");   
+
 //DELETE FROM `alert_ap_date` WHERE `alert_ap_date_time_ok` <>'0000-00-00 00:00:00'
-//$sql_d ="DELETE FROM `alert_ap_date` WHERE `alert_ap_date_time_ok` <>'0000-00-00 00:00:00'";
-//execute_sql($database_name, $sql_d, $link);
+$sql_d ="DELETE FROM `alert_ap_date` WHERE `alert_ap_date_time_ok` <>'0000-00-00 00:00:00' and alert_ap_date_time_ok < '$today'  ";
+execute_sql($database_name, $sql_d, $link);
 ///檢查真正沒有大於三十分鐘的
 $sql_d  = "DELETE FROM alert_ap_date_filter WHERE TIMEDIFF(alert_ap_date_time_ok,alert_ap_date_time_dead)<'00:30:00' ";
 $result_d  = execute_sql($database_name, $sql_d, $link);

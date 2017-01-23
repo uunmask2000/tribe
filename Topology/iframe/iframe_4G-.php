@@ -1,4 +1,4 @@
-<!--------dataTablesw套件---------->
+<!--------dataTablesw�M��---------->
 	<link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet">
 	<link href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" rel="stylesheet">
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.12.3.js"></script>
@@ -16,7 +16,7 @@
 	<script type="text/javascript" src="http://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 	
 	<div class="defend">
-<button id="PageRefresh">刷新頁面</button>
+<button id="PageRefresh">��s����</button>
 <script type="text/javascript"> 
 	$('#PageRefresh').click(function() {
     	      location.reload();
@@ -71,7 +71,7 @@
 		?>
 			<table  id="show_old_date">
 			<thead>
-					<tr><th colspan="7" style="background:#efe125;">更換履歷</th></tr>
+			<tr><th colspan="7" style="background:#efe125;">更換履歷</th></tr>
 			<tr>
 			<th>時間</th>
 			<th>資產名稱</th>
@@ -89,13 +89,13 @@
 			{
 				?>
 				<tr>
-				<td>?琿??1<?=$ii ;?></td>
-				<td>敺拚??2<?=$ii ;?></td>
-				<td>?琿??3<?=$ii ;?></td>
-				<td>敺拚??4<?=$ii ;?></td>
-				<td>?琿??5<?=$ii ;?></td>
-				<td>敺拚??6<?=$ii ;?></td>
-				<td>?琿??7<?=$ii ;?></td>
+				<td>斷電時間1<?=$ii ;?></td>
+				<td>復電時間2<?=$ii ;?></td>
+				<td>斷電時間3<?=$ii ;?></td>
+				<td>復電時間4<?=$ii ;?></td>
+				<td>斷電時間5<?=$ii ;?></td>
+				<td>復電時間6<?=$ii ;?></td>
+				<td>斷電時間7<?=$ii ;?></td>
 				</tr>
 				<?php
 			}
@@ -179,7 +179,7 @@
 
 						$AAAA1 = $row_ipinterface['iflostservice'];
 						$str1=$AAAA1;
-						$front1 = substr($str1,0,strpos($str1,"."));//?strpos敺? ??????瑕漲嚗??究ubstr ?脣?敺洵銝雿?0銵函內敺洵銝雿?憪?韏瘀??啣?????蝵?
+						$front1 = substr($str1,0,strpos($str1,"."));//先用strpos得到? 問號前面文字長度，再用substr 獲取從第一位（0表示從第一位開始）起，到問號前的位置
 						//echo $front ;	
 
 						$date1=date_create("$front1");
@@ -193,7 +193,7 @@
 						}else{
 							//echo 'NO';
 							$str1=$AAAA1;
-							$front1 = substr($str1,0,strpos($str1,"."));//?strpos敺? ??????瑕漲嚗??究ubstr ?脣?敺洵銝雿?0銵函內敺洵銝雿?憪?韏瘀??啣?????蝵?
+							$front1 = substr($str1,0,strpos($str1,"."));//先用strpos得到? 問號前面文字長度，再用substr 獲取從第一位（0表示從第一位開始）起，到問號前的位置
 							//echo $front ;	
 							$date1=date_create("$front1");
 							echo date_format($date1,"Y-m-d H:i:s");	
@@ -216,7 +216,6 @@
 	
 	
 	
-
 <script language="JavaScript">
 $(document).ready(function(){ 
   var opt={ "oLanguage":{"sProcessing":"處理中...",
@@ -238,7 +237,7 @@ $(document).ready(function(){
 				],
 			 dom: 'Bfrtip',	 buttons: 
 			 [
-				{ extend: 'excelHtml5', text: '匯出斷線歷史紀錄' ,title: '<?= date("Y-m-d");?> AP斷線歷史紀錄' },
+				{ extend: 'excelHtml5', text: '匯出斷線歷史紀錄' ,title: '<?= date("Y-m-d");?> 4G Router斷線歷史紀錄' },
 				'pageLength',				
 			],
 	   };
