@@ -270,10 +270,29 @@ if($_GET['mode']=='sennd_mail_A' )
 
 			}
 			
+			$item_wrong_text = '處理時間 : '.$time.'處理內容: '.$item_wrong_text.'<br>';
+			$note_D = trim($_POST['note_D']);
+			$Processing_time_D = $_POST['Processing_time_D'];
+			$item_wrong_text = $note_D.'處理時間 : '.$time.'處理內容: '.$item_wrong_text;
+			
+			if($Processing_time_D !='0000-00-00 00:00:00')
+			{
+				//echo '不等於0';
+				//exit();
+					$sql = "UPDATE  alert_ap_date_filter SET Processing_status='$item_wrong' ,note_D='$item_wrong_text',Processor_D='$name' WHERE alert_ap_date_filter_id='$key' ";
+					execute_sql($database_name, $sql, $link);
+					//echo $sql ;
+					$Period_AP  =$_POST['Period_AP'];	
+			}else{
+				//echo '等於0';
+				//exit();
 			$sql = "UPDATE  alert_ap_date_filter SET Processing_status='$item_wrong' ,Processing_time_D='$time',note_D='$item_wrong_text',Processor_D='$name' WHERE alert_ap_date_filter_id='$key' ";
 			execute_sql($database_name, $sql, $link);
 			//echo $sql ;
-			$Period_AP  =$_POST['Period_AP'];
+			$Period_AP  =$_POST['Period_AP'];	
+				
+			}
+		
 				//header('Location: show_AP_date_form.php?A='.$Period_AP);
 				?>
 				<script>
@@ -345,6 +364,10 @@ if( intval( $KEY ) )
 				$Processing_status =  $row_alert_ap_date['Processing_status'];
 				$Period_AP =  $row_alert_ap_date['Period_AP'];
 				$alert_written_time  = $row_alert_ap_date['alert_written_time']; //告警發信時間
+				
+				$note_D =  $row_alert_ap_date['note_D'];
+				$Processing_time_D  =  $row_alert_ap_date['Processing_time_D'];
+				//$note_D =  str_replace ("<br>","",$row_alert_ap_date['note_D']); ;
 			}
     
 	  // echo $alert_ap_date_city .$alert_ap_date_township .$alert_ap_date_tribe .$alert_ap_date_ap_name  ;
@@ -439,7 +462,7 @@ if( intval( $KEY ) )
 					<tr>
 						<th>
 							<select name="item_wrong">
-							<option value="已派工" selected >已派工</option>
+									<option value="已派工" selected >已派工</option>
 							</select>
 						</th>
 						
@@ -545,11 +568,11 @@ if( intval( $KEY ) )
 						<input id="start_date" type="text"  name="time" />
 
 							<script language="JavaScript">
-								/*							
-								$('#start_date').datepicker({
-								dateFormat: 'yy-mm-dd'
-								});
-								*/
+								//						
+								//$('#start_date').datepicker({
+								//dateFormat: 'yy-mm-dd'
+								//});
+								//
 								var opt={
 								//以下為日期選擇器部分
 								dayNames:["星期日","星期一","星期二","星期三","星期四","星期五","星期六"],
@@ -602,7 +625,7 @@ if( intval( $KEY ) )
 					</tr>
 					
 					<tr><td colspan="2">
-					<textarea style="width:98%;" rows="5" name="item_wrong_text" placeholder="處理內容"></textarea>
+					<textarea style="width:98%;" rows="5" name="item_wrong_text" placeholder="到場內容"></textarea>
 					</td></tr>
 
 					<tr>
@@ -618,8 +641,9 @@ if( intval( $KEY ) )
 					
 					<?php
 					break;
+			
 					case '已到達':
-					
+				//case '已派工':	
 					?>
 					
 					<div class="place_time"><?=$alert_ap_date_city .$alert_ap_date_township .$alert_ap_date_tribe .$alert_ap_date_ap_name .'服務中斷時間: ' .$alert_written_time  ;?></div>
@@ -631,7 +655,8 @@ if( intval( $KEY ) )
 					<tr>
 						<th colspan="2">
 							<select name="item_wrong">
-							<option value="處理中" selected >處理中</option>
+								<option value="已到達" selected >持續處理中</option>
+								<option value="處理中"  >結案流程</option>
 							</select>
 						</th>
 					</tr>
@@ -678,10 +703,20 @@ if( intval( $KEY ) )
 						</td>
 					</tr>
 
-					<tr><td colspan="2">
+					<tr>
+					<td colspan="2">
 					<textarea style="width:98%;" rows="5" name="item_wrong_text" placeholder="處理內容"></textarea>
-					</td></tr>
-
+					</td>
+					</tr>
+							<tr>
+							<td colspan="2">
+							<p>
+							<?=$note_D;?>
+							
+							<input type="hidden" name="note_D" value="<?=$note_D;?>">
+							</p>
+							</td>
+							</tr>
 					<tr>
 						<td colspan="2" align="center">
 						<input class="edit_btn" type="submit" value="送出">
@@ -689,6 +724,7 @@ if( intval( $KEY ) )
 						</td>
 					</tr>
 					</table>
+					<input type="hidden" name="Processing_time_D" value="<?=$Processing_time_D;?>">
 					<input type="hidden" name="key" value="<?=$alert_ap_date_filter_id ;?>">
 					<input type="hidden" name="Period_AP" value="<?=$Period_AP ;?>">						
 					</form>
@@ -780,7 +816,13 @@ if( intval( $KEY ) )
 					echo "已回覆";
 					break;
 					*/
-					
+					default; 
+						?>
+						<script type="text/javascript">
+						alert("參數錯誤");history.back();　 
+						</script>
+						<?php
+					break; 
 					} 
 	   
 	   

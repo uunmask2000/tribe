@@ -18,7 +18,7 @@ F/W
 		echo '<li>';
 	   echo  $row_F_W['ass_ip'];
 	   echo  $row_F_W['ass_name'];
-	  // echo '<iframe src="PING_fram.php?ip='.$row_F_W['ass_ip'].'"  ></iframe>';
+	  ////// echo '<iframe src="PING_fram.php?ip='.$row_F_W['ass_ip'].'"  ></iframe>';
 	   echo '</li>';
 	}
 	echo '</ol>';
