@@ -122,6 +122,8 @@ $mail->AddAddress('seanchen@tiis.com.tw','seanchen');
 $mail->AddAddress('frankchang@tiis.com.tw','Frank');
 $mail->AddAddress('danielwu@tiis.com.tw','Daniel');
 $mail->AddAddress('yashon@tecom.com.tw','Yashon');
+$mail->AddAddress('heaven@fareastone.com.tw','Heaven');
+$mail->AddAddress('chhsfang@fareastone.com.tw','Chhsfang');
 //$mail->AddAddress('service@zhan-yang.com.tw','uunmask2000');
 //$mail->AddAddress('uunmask2000@gmail.com','康康1');
 $mail->AddAttachment($attach, $attach_name); 

@@ -111,8 +111,8 @@
 			
 		}else{
 			
-			$sql_alert_ap_date_1  = "SELECT * FROM alert_ap_date_filter where  Period_AP =".$_GET['A']." and  alert_ap_date_time_ok='0000-00-00 00:00:00' ORDER BY `alert_ap_date_filter`.`alert_ap_date_filter_id` DESC";
-			//$sql_alert_ap_date_1  = "SELECT * FROM alert_ap_date_filter where  Period_AP =".$_GET['A']." and `Processing_status`<>'已結案' and  alert_ap_date_time_ok<>'0000-00-00 00:00:00'   ORDER BY alert_ap_date_filter_id desc ";
+			//$sql_alert_ap_date_1  = "SELECT * FROM alert_ap_date_filter where  Period_AP =".$_GET['A']." and  alert_ap_date_time_ok='0000-00-00 00:00:00' ORDER BY `alert_ap_date_filter`.`alert_ap_date_filter_id` DESC";
+			$sql_alert_ap_date_1  = "SELECT * FROM alert_ap_date_filter where  Period_AP =".$_GET['A']." and `Processing_status`<>'已結案' and  alert_ap_date_time_ok<>'0000-00-00 00:00:00'   ORDER BY alert_ap_date_filter_id desc ";
 			
 		}
 			

@@ -128,17 +128,17 @@
 			<table id="show_date" class="asset">
 			 <thead>
 				<tr>
-					<th>縣市</th>
-					<th>地區</th>
+					<th width="40">縣市</th>
+					<th width="60">地區</th>
 					<th>部落</th>
 					<th>控制箱</th>
                    	<th>東經</th>
 					<th>北緯</th>
-					<th>類型</th>
-					<th>編輯</th>
-					<th>編輯圖片2</th>
-					<th>編輯圖片3</th>
-					<th>刪除</th>
+					<th width="60">類型</th>
+					<th width="30">編輯</th>
+					<th width="30">圖2</th>
+					<th width="30">圖3</th>
+					<th width="30">刪除</th>
 				</tr>
 			 </thead>	
 

@@ -234,14 +234,14 @@ e
 				 <thead>
 				<tr>
 					<th width="40">縣市</th>
-					<th width="40">地區</th>
+					<th width="60">地區</th>
 					<th>部落</th>
 					<th>控制箱</th>
-					<th width="80">資產名稱</th>
+					<th width="40">資產<br>名稱</th>
 					<th width="40">編輯</th>
 					<th width="40">更換</th>
 					<th width="40">刪除</th>
-					<th>更新紀錄</th>
+					<th width="40">更新<br>紀錄</th>
 					<th  style="display: none;">S/N</th>
 					<th  style="display: none;">MAC</th>
 					<th  style="display: none;">P/N</th>

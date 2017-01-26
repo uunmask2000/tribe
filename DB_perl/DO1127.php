@@ -83,6 +83,8 @@ function create_ps_connection()
 					$mail->AddAddress('frankchang@tiis.com.tw','Frank');
 					$mail->AddAddress('danielwu@tiis.com.tw','Daniel');
 					$mail->AddAddress('yashon@tecom.com.tw','Yashon');
+					$mail->AddAddress('heaven@fareastone.com.tw','Heaven');
+					$mail->AddAddress('chhsfang@fareastone.com.tw','Chhsfang');
 					//$mail->AddAddress('danielwu@tiis.com.tw','danielwu');				//總PM收件者信箱
 					//danielwu@tiis.com.tw
 					$addressCC = "uunmask2000@gmail.com";

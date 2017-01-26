@@ -222,12 +222,12 @@
 			</form>
 
 			
-<?php         //  echo       $string =  $B.'-'.$B1.'-'.$B11.'-'.$B111.'-'.$_POST['view_num'];        ?>
+<?php//  echo $string =  $B.'-'.$B1.'-'.$B11.'-'.$B111.'-'.$_POST['view_num'];?>
 			<table id="show_date" class="asset">
 			      <thead>
 				<tr>
 					<th width="40">縣市</th>
-					<th width="40">地區</th>
+					<th width="60">地區</th>
 					<th>部落</th>
 					<th>控制箱</th>
 					<th width="40">資產名稱</th>

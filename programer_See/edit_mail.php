@@ -117,6 +117,8 @@ if($_GET['mode']=='sennd_mail_A' )
 					$mail->AddAddress('frankchang@tiis.com.tw','Frank');
 					$mail->AddAddress('danielwu@tiis.com.tw','Daniel');
 					$mail->AddAddress('yashon@tecom.com.tw','Yashon');
+					$mail->AddAddress('heaven@fareastone.com.tw','Heaven');
+					$mail->AddAddress('chhsfang@fareastone.com.tw','Chhsfang');
 				//$mail->AddAddress('uunmask2000@gmail.com','康康');				//收件者信箱
 				//$mail->AddAddress('danielwu@tiis.com.tw','danielwu');				//總PM收件者信箱
 				$addressCC = "uunmask2000@gmail.com";
