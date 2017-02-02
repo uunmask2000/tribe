@@ -198,9 +198,20 @@ if(preg_match("/login/i", $_SERVER['PHP_SELF']))
 				?>
 
 				<?php
-				if( ($_SESSION['user_lv'])==1 or ($_SESSION['user_lv'])==2  or  ($_SESSION['user_lv'])==3  or  ($_SESSION['user_lv'])==4  )
+				 if(($_SESSION['user_lv'])==3  or  ($_SESSION['user_lv'])==4  )
 				{	
 				?>
+
+				<li>
+				<a href="../report_bnf_new_2/report_web_month.php" 
+				<?php if (preg_match("/report_web/i", $_SERVER['PHP_SELF'])) {echo "class='linked'"; } 
+				?>>網路流量統計</a>
+				</li>
+				<?php
+
+				}else if( ($_SESSION['user_lv'])==1 or ($_SESSION['user_lv'])==2    )
+				{
+						?>
 
 				<li>
 				<a href="../report_bnf_new_2/report_web.php" 
@@ -208,7 +219,6 @@ if(preg_match("/login/i", $_SERVER['PHP_SELF']))
 				?>>網路流量統計</a>
 				</li>
 				<?php
-
 				}
 
 				?>	

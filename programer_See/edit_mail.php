@@ -184,12 +184,8 @@ if($_GET['mode']=='sennd_mail_A' )
 			}	
 			else if($item_wrong_text==NULL)
 			{
-			?>
-			<script type="text/javascript">
-			alert("未填寫處理方式");history.back();　 
-			</script>
-			<?php
-			exit();
+				$item_wrong_text ='無';
+			
 
 			}
 			
@@ -213,37 +209,73 @@ if($_GET['mode']=='sennd_mail_A' )
 			$item_wrong_text  = trim($_POST['item_wrong_text']);
 		    $time = trim($_POST['time']);
 			$processing_engineer = trim($_POST['processing_engineer']);
-			if(empty($time))
+			if($item_wrong =='線上處理')
 			{
-			?>
-			<script type="text/javascript">
-			alert("未填寫時間");history.back();　 
-			</script>
-			<?php
-			exit();
-
-			}else if($item_wrong_text==NULL)
+				//echo '線上處理';
+				if($item_wrong_text==NULL)
+				{
+					$item_wrong_text= '無';
+				}else{
+					$item_wrong_text = $item_wrong_text ;
+				}
+						if(empty($time))
+						{
+						?>
+						<script type="text/javascript">
+						alert("未填寫時間");history.back();　 
+						</script>
+						<?php
+						exit();
+						}
+						$sql = "UPDATE  alert_ap_date_filter SET Processing_status='已結案',Processing_time_C='$time',processing_engineer='$processing_engineer',note_C='$item_wrong_text',Processor_C='$processing_engineer',Processing_time_D='$time',note_D='$item_wrong_text',Processor_D='$processing_engineer',Processing_time_E='$time',note_E='$item_wrong_text',Processor_E='$processing_engineer' WHERE alert_ap_date_filter_id='$key' ";
+						execute_sql($database_name, $sql, $link);
+						//echo $sql ;
+						$Period_AP  =$_POST['Period_AP'];
+						//header('Location: show_AP_date_form.php?A='.$Period_AP);
+						?>
+						<script>
+						window.location = 'show_AP_date_form.php?A=<?=$Period_AP ;?>';
+						</script>
+						<?php	
+				//exit();
+			}else
 			{
-			?>
-			<script type="text/javascript">
-			alert("未填寫處理方式");history.back();　 
-			</script>
-			<?php
-			exit();
+					//echo 'NO';
+					if(empty($time))
+					{
+					?>
+					<script type="text/javascript">
+					alert("未填寫時間");history.back();　 
+					</script>
+					<?php
+					exit();
 
+					}else if($item_wrong_text==NULL)
+					{
+					?>
+					<script type="text/javascript">
+					alert("未填寫處理方式");history.back();　 
+					</script>
+					<?php
+					exit();
+
+					}
+
+					$sql = "UPDATE  alert_ap_date_filter SET Processing_status='$item_wrong' ,Processing_time_C='$time',processing_engineer='$processing_engineer',note_C='$item_wrong_text',Processor_C='$name' WHERE alert_ap_date_filter_id='$key' ";
+					execute_sql($database_name, $sql, $link);
+					//echo $sql ;
+					$Period_AP  =$_POST['Period_AP'];
+					//header('Location: show_AP_date_form.php?A='.$Period_AP);
+					?>
+					<script>
+					window.location = 'show_AP_date_form.php?A=<?=$Period_AP ;?>';
+					</script>
+					<?php
+					//exit;
 			}
+					///exit();
 			
-			$sql = "UPDATE  alert_ap_date_filter SET Processing_status='$item_wrong' ,Processing_time_C='$time',processing_engineer='$processing_engineer',note_C='$item_wrong_text',Processor_C='$name' WHERE alert_ap_date_filter_id='$key' ";
-			execute_sql($database_name, $sql, $link);
-			//echo $sql ;
-			$Period_AP  =$_POST['Period_AP'];
-				//header('Location: show_AP_date_form.php?A='.$Period_AP);
-				?>
-				<script>
-				window.location = 'show_AP_date_form.php?A=<?=$Period_AP ;?>';
-				</script>
-				<?php
-			//exit;
+			
 	
 	exit;
 }else if($_GET['mode']=='sennd_mail_D' )
@@ -469,7 +501,9 @@ if( intval( $KEY ) )
 						</th>
 						
 						<th>回覆時間 
-						<input id="start_date" type="text"  name="time" />
+						
+						<input  type="text"  name="time" />
+						<!---<input id="start_date" type="text"  name="time" />    2017-2-2--->
 
 							<script language="JavaScript">
 								/*							
@@ -560,6 +594,7 @@ if( intval( $KEY ) )
 						<th colspan="2">
 							<select name="item_wrong">
 							<option value="已到達" selected >已到達</option>
+							<option value="線上處理"  >線上處理</option>
 							</select>
 						</th>
 					</tr>
@@ -567,8 +602,8 @@ if( intval( $KEY ) )
 					<tr>
 						<td>到達時間</td>
 						<td>
-						<input id="start_date" type="text"  name="time" />
-
+						<input  type="text"  name="time" />
+						<!---<input id="start_date" type="text"  name="time" />    2017-2-2--->
 							<script language="JavaScript">
 								//						
 								//$('#start_date').datepicker({

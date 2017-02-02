@@ -49,6 +49,20 @@
 				require_once('../mail_fulsion/mail/PHPMailer/PHPMailerAutoload.php');
 				require_once('../mail_fulsion/mail/PHPMailer/mail_send.php');
 				//Mail
+				
+	 if($_GET['do']=='RE')
+	 {
+		 $key = $_GET['key'];
+		 $sql = "UPDATE  alert_ap_date_filter SET Processing_status='首回覆' WHERE alert_ap_date_filter_id='$key' ";
+		 execute_sql($database_name, $sql, $link);
+		 $Period_AP  =$_GET['A'];
+		//header('Location: show_AP_date_form.php?A='.$Period_AP);
+		?>
+		<script>
+		window.location = 'show_AP_date_form_2.php?A=<?=$Period_AP ;?>';
+		</script>
+		<?php
+	 }		 
 			
 	?>
 	<div class="report_bar">
@@ -96,6 +110,7 @@
 		<th>處置狀態</th>
 		<th>處理</th>
 		<th>處理流程</th>
+		<th>重置</th>
 		<!---
 		<th>服務中斷時間(AP)</th>
 		<th>服務回復時間</th>
@@ -230,6 +245,7 @@
 					<td><a href="view_AP_date_form.php?key=<?=$row_alert_ap_date['alert_ap_date_filter_id']; ?>">
 					<img src="../images/icon_magnifier.png" class="adm_icon" align="absmiddle">
 					</a></td> 
+					<td> 	<a href="?key=<?=$row_alert_ap_date['alert_ap_date_filter_id']; ?>&A=<?=$_GET['A'] ; ?>&do=RE">DO</a></td>
 					<!---
 					<td><?//=$row_alert_ap_date['alert_ap_date_time_dead']; ?></td>
 					<td><?//=$row_alert_ap_date['alert_ap_date_time_ok']; ?></td>
@@ -360,6 +376,7 @@
 					<td><?//=$row_alert_ap_date['alert_ap_date_time_dead']; ?></td>
 					<td><?//=$row_alert_ap_date['alert_ap_date_time_ok']; ?></td>
 					--->
+					<td> 	<a href="?key=<?=$row_alert_ap_date['alert_ap_date_filter_id']; ?>&A=<?=$_GET['A'] ; ?>&do=RE">DO</a></td>
 					</tr>
 					<?php
 
