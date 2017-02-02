@@ -1,7 +1,10 @@
-
+<?php
+require '/var/www/html/SQL/dbtools.inc.php';
+///2017-01-26 修正
+?>
 
 <?php
-
+/*
  function create_connection()
   {
    // $link = mysql_connect("localhost", "root", "")
@@ -23,7 +26,7 @@
     return $result;
   }
   $database_name = "AP_data";   /// 之後 SQL 語法帶入參數 
-
+*/
 
 
 
@@ -32,6 +35,11 @@
 ?>
 
 <?php
+//$sql = "DELETE FROM CPU_check  WHERE  條件 ";
+//execute_sql($database_name, $sql, $link);	
+
+
+
 /* Gets individual core information */
 function GetCoreInformation() {
 	$data = file('/proc/stat');
