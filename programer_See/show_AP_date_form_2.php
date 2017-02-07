@@ -53,7 +53,9 @@
 	 if($_GET['do']=='RE')
 	 {
 		 $key = $_GET['key'];
-		 $sql = "UPDATE  alert_ap_date_filter SET Processing_status='首回覆' WHERE alert_ap_date_filter_id='$key' ";
+		 $sql = "UPDATE  alert_ap_date_filter SET Processing_status='已發信',calling_bar_id='' ,calling_bar_id_check='' WHERE alert_ap_date_filter_id='$key' ";
+		 execute_sql($database_name, $sql, $link);
+		  $sql = "DELETE FROM `Equipment_Repair` WHERE `Equipment_Repair_number`='$key' ";
 		 execute_sql($database_name, $sql, $link);
 		 $Period_AP  =$_GET['A'];
 		//header('Location: show_AP_date_form.php?A='.$Period_AP);
@@ -91,30 +93,20 @@
 		<thead>
 		<tr>
 		<th>No.</th>
-		<th>叫修編號</th>
-		<!----
-		<th>中断代號</th>
-		<th>事件代號</th>
-		<th>縣市</th>
-		<th>地區</th>
-		--->
+		<th>叫修編號</th>	
 		<th>期別</th>
 		<th>部落</th>
 		<th>設備名稱</th>
 		<th>IP</th>
 		<th>服務中斷時間</th>
-		<th>處理編號</th>				
-		<!--
-		<th>寄信狀態</th>
-		-->
+		<th>處理編號</th>			
 		<th>處置狀態</th>
-		<th>處理</th>
-		<th>處理流程</th>
+	<!---
+	<th>處理</th>
+	<th>處理流程</th>
+	-->
+		<th>管理流程</th>
 		<th>重置</th>
-		<!---
-		<th>服務中斷時間(AP)</th>
-		<th>服務回復時間</th>
-		--->
 		</tr>
 		</thead>		
 		<tbody>	
@@ -130,27 +122,14 @@
 			$sql_alert_ap_date_1  = "SELECT * FROM alert_ap_date_filter where  Period_AP =".$_GET['A']." and `Processing_status`<>'已結案' and  alert_ap_date_time_ok<>'0000-00-00 00:00:00'   ORDER BY alert_ap_date_filter_id desc ";
 			
 		}
-			
-				//$sql_alert_ap_date  = "SELECT * FROM alert_ap_date_filter where  Period_AP =".$_GET['A']." ORDER BY alert_written_time desc,Processing_status desc ,alert_ap_date_time_ok asc ";
 			$result_alert_ap_date_1  = execute_sql($database_name, $sql_alert_ap_date_1, $link);
 			while ($row_alert_ap_date  = mysql_fetch_assoc($result_alert_ap_date_1))
 			{  
 			$alert_ap_date_tribe=$row_alert_ap_date['alert_ap_date_tribe'];
-			/*
-			$sql3="SELECT * FROM tribe WHERE tribe_name='$alert_ap_date_tribe'   ";
-			$result3 = execute_sql($database_name, $sql3, $link);
-			while ($row3 = mysql_fetch_assoc($result3) )
-			{
-			$tribe_label = $row3['tribe_label'];
-			}
-			*/
-			///view_tribe_msg.php?key=
-			//alert_ap_date_setting
+			
 			$alert_ap_date_setting=$row_alert_ap_date['alert_ap_date_setting'];
 			$str = $alert_ap_date_setting;
 			$str_sec = explode("-",$str);
-			//echo $str_sec[2];
-			///view_date/view_tribe_AP_date.php?ip=172.21.30.101
 			$zzz++;
 			
 			?>
@@ -181,18 +160,7 @@
 			   
 			?> 
 						</td> <!---叫修編號--->
-			<td><?php /*
-			$mail_type = $row_alert_ap_date['mail_type']; 
-			switch ($mail_type) 
-			{							
-			case 0:
-			echo "未寄信";
-			break;
-			case 1:
-			echo "已寄信";
-			break;
-			}
-			*/
+			<td><?php 
 			$Processing_status = $row_alert_ap_date['Processing_status']; 
 			if($mail_type =='0')
 			{
@@ -208,20 +176,6 @@
 			?></td> 
 
 			<?php 
-			/*
-			<td>
-			$mail_type = $row_alert_ap_date['mail_type_re']; 
-			switch ($mail_type) 
-			{							
-			case 0:
-			echo "未回覆";
-			break;
-			case 1:
-			echo "已回覆";
-			break;
-			}
-			</td> 
-			*/
 			if($mail_type =='0')
 			{
 			
@@ -230,26 +184,48 @@
 				
 					if($Processing_status =='已結案')
 					{
-					echo '<td></td>';
+							?>
+							<td>
+							<a href="edit_work.php?key=<?=$row_alert_ap_date['alert_ap_date_filter_id']; ?>">
+							<img src="../images/icon_edit.png" class="adm_icon" align="absmiddle">
+							</a>
+							</td> 
+							<?php
 					}else{
 					?>
-					<td>
-					<a href="edit_mail.php?key=<?=$row_alert_ap_date['alert_ap_date_filter_id']; ?>">
-					<img src="../images/icon_edit.png" class="adm_icon" align="absmiddle">
-					</a>
-					</td> 
+							<?php
+							if($Processing_status =='已發信')
+							{
+							?>
+							<td>
+							<!--<a href="edit_mail_2.php?key=<?//=$row_alert_ap_date['alert_ap_date_filter_id']; ?>"> -->
+							<a href="edit_work.php?key=<?=$row_alert_ap_date['alert_ap_date_filter_id']; ?>">
+							<img src="../images/icon_edit.png" class="adm_icon" align="absmiddle">
+							</a>
+							</td> 
+							<?php
+							}else
+							{
+							?>
+							<td>
+							<a href="edit_work.php?key=<?=$row_alert_ap_date['alert_ap_date_filter_id']; ?>">
+							<img src="../images/icon_edit.png" class="adm_icon" align="absmiddle">
+							</a>
+							</td> 
+							<?php
+							}
+
+							?>
+					
+				
+					
+					
 					<?php
 
 					}
 					?>
-					<td><a href="view_AP_date_form.php?key=<?=$row_alert_ap_date['alert_ap_date_filter_id']; ?>">
-					<img src="../images/icon_magnifier.png" class="adm_icon" align="absmiddle">
-					</a></td> 
-					<td> 	<a href="?key=<?=$row_alert_ap_date['alert_ap_date_filter_id']; ?>&A=<?=$_GET['A'] ; ?>&do=RE">DO</a></td>
-					<!---
-					<td><?//=$row_alert_ap_date['alert_ap_date_time_dead']; ?></td>
-					<td><?//=$row_alert_ap_date['alert_ap_date_time_ok']; ?></td>
-					--->
+					<td><a href="?key=<?=$row_alert_ap_date['alert_ap_date_filter_id']; ?>&A=<?=$_GET['A'] ; ?>&do=RE">DO</a></td>
+					
 					</tr>
 					<?php
 
@@ -262,21 +238,10 @@
 			while ($row_alert_ap_date  = mysql_fetch_assoc($result_alert_ap_date))
 			{  
 			$alert_ap_date_tribe=$row_alert_ap_date['alert_ap_date_tribe'];
-			/*
-			$sql3="SELECT * FROM tribe WHERE tribe_name='$alert_ap_date_tribe'   ";
-			$result3 = execute_sql($database_name, $sql3, $link);
-			while ($row3 = mysql_fetch_assoc($result3) )
-			{
-			$tribe_label = $row3['tribe_label'];
-			}
-			*/
-			///view_tribe_msg.php?key=
-			//alert_ap_date_setting
+			
 			$alert_ap_date_setting=$row_alert_ap_date['alert_ap_date_setting'];
 			$str = $alert_ap_date_setting;
 			$str_sec = explode("-",$str);
-			//echo $str_sec[2];
-			///view_date/view_tribe_AP_date.php?ip=172.21.30.101
 			$zzz++;
 			
 			?>
@@ -308,18 +273,7 @@
 			   
 			?> 
 						</td> <!---叫修編號--->
-			<td><?php /*
-			$mail_type = $row_alert_ap_date['mail_type']; 
-			switch ($mail_type) 
-			{							
-			case 0:
-			echo "未寄信";
-			break;
-			case 1:
-			echo "已寄信";
-			break;
-			}
-			*/
+			<td><?php
 			$Processing_status = $row_alert_ap_date['Processing_status']; 
 			if($mail_type =='0')
 			{
@@ -335,20 +289,7 @@
 			?></td> 
 
 			<?php 
-			/*
-			<td>
-			$mail_type = $row_alert_ap_date['mail_type_re']; 
-			switch ($mail_type) 
-			{							
-			case 0:
-			echo "未回覆";
-			break;
-			case 1:
-			echo "已回覆";
-			break;
-			}
-			</td> 
-			*/
+			
 			if($mail_type =='0')
 			{
 			
@@ -357,26 +298,41 @@
 				
 					if($Processing_status =='已結案')
 					{
-					echo '<td></td>';
+						?>
+						<td>
+						<a href="edit_work.php?key=<?=$row_alert_ap_date['alert_ap_date_filter_id']; ?>">
+						<img src="../images/icon_edit.png" class="adm_icon" align="absmiddle">
+						</a>
+						</td> 
+						<?php
 					}else{
-					?>
-					<td>
-					<a href="edit_mail.php?key=<?=$row_alert_ap_date['alert_ap_date_filter_id']; ?>">
-					<img src="../images/icon_edit.png" class="adm_icon" align="absmiddle">
-					</a>
-					</td> 
-					<?php
-
+					
+					
+							if($Processing_status =='已發信')
+							{
+							?>
+							<td>
+							<!--<a href="edit_mail_2.php?key=<?//=$row_alert_ap_date['alert_ap_date_filter_id']; ?>"> -->
+							<a href="edit_work.php?key=<?=$row_alert_ap_date['alert_ap_date_filter_id']; ?>">
+							<img src="../images/icon_edit.png" class="adm_icon" align="absmiddle">
+							</a>
+							</td> 
+							<?php
+							}else
+							{
+							?>
+							<td>
+							<a href="edit_work.php?key=<?=$row_alert_ap_date['alert_ap_date_filter_id']; ?>">
+							<img src="../images/icon_edit.png" class="adm_icon" align="absmiddle">
+							</a>
+							</td> 
+							<?php
+							}
 					}
+					
+					//view_proc_date.php = view_proc_date.php
 					?>
-					<td><a href="view_AP_date_form.php?key=<?=$row_alert_ap_date['alert_ap_date_filter_id']; ?>">
-					<img src="../images/icon_magnifier.png" class="adm_icon" align="absmiddle">
-					</a></td> 
-					<!---
-					<td><?//=$row_alert_ap_date['alert_ap_date_time_dead']; ?></td>
-					<td><?//=$row_alert_ap_date['alert_ap_date_time_ok']; ?></td>
-					--->
-					<td> 	<a href="?key=<?=$row_alert_ap_date['alert_ap_date_filter_id']; ?>&A=<?=$_GET['A'] ; ?>&do=RE">DO</a></td>
+					<td><a href="?key=<?=$row_alert_ap_date['alert_ap_date_filter_id']; ?>&A=<?=$_GET['A'] ; ?>&do=RE">DO</a></td>
 					</tr>
 					<?php
 
@@ -439,41 +395,4 @@ $(document).ready(function(){
   $("#show_date").dataTable(opt);
   });
 </script>
-
-	
-<!---	
-	
-<script language="JavaScript">
-$(document).ready(function(){ 
-  var opt={ "oLanguage":{"sProcessing":"處理中...",
-						"sLengthMenu":"顯示 _MENU_ 項結果",
-						"sZeroRecords":"沒有匹配結果",
-						"sInfo":"顯示第 _START_ 至 _END_ 項結果，共 _TOTAL_ 項",
-						"sInfoEmpty":"顯示第 0 至 0 項結果，共 0 項",
-						"sInfoFiltered":"(從 _MAX_ 項結果過濾)",
-						"sSearch":"搜索:",
-						"oPaginate":{"sFirst":"首頁",
-									 "sPrevious":"上頁",
-									 "sNext":"下頁",
-									 "sLast":"尾頁"},
-						 
-				},
-				//lengthMenu: [
-				//[ 10, 25, 50, -1 ],
-				//[ '10 筆', '25 筆', '50 筆', '全部' ]
-				//],
-					"pageLength":" 50",
-					"bFilter": false, //开关，是否启用客户端过滤器
-					"bPaginate": true, //开关，是否显示分页器
-					"bInfo": true, //开关，是否显示表格的一些信息，允许或者禁止表信息的显示，默认为 true，显示信息。
-			 dom: 'Bfrtip',	 buttons: 
-			 [
-					{ extend: 'excelHtml5', text: '匯出報表' ,title: '<?= date("Y-m-d");?>報表' },
-						
-			],
-	   };
-  $("#table2excel").dataTable(opt);
-  });
-</script>
---->
 </html>

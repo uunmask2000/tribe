@@ -213,18 +213,40 @@
 			
 			}else{
 				
-					if($Processing_status =='已結案')
+				if($Processing_status =='已結案')
 					{
-					echo '<td></td>';
+						?>
+						<td>
+						<a href="edit_work.php?key=<?=$row_alert_ap_date['alert_ap_date_filter_id']; ?>">
+						<img src="../images/icon_edit.png" class="adm_icon" align="absmiddle">
+						</a>
+						</td> 
+						<?php
 					}else{
-					?>
-					<td>
-					<a href="edit_mail.php?key=<?=$row_alert_ap_date['alert_ap_date_filter_id']; ?>">
-					<img src="../images/icon_edit.png" class="adm_icon" align="absmiddle">
-					</a>
-					</td> 
-					<?php
-
+					
+					
+							if($Processing_status =='已發信')
+							{
+							?>
+							<td>
+							<a href="edit_mail.php?key=<?=$row_alert_ap_date['alert_ap_date_filter_id']; ?>">
+							<img src="../images/icon_edit.png" class="adm_icon" align="absmiddle">
+							</a>
+							</td> 
+							<?php
+							}else
+							{
+								/*
+							?>
+							<td>
+							<a href="edit_work.php?key=<?=$row_alert_ap_date['alert_ap_date_filter_id']; ?>">
+							<img src="../images/icon_edit.png" class="adm_icon" align="absmiddle">
+							</a>
+							</td> 
+							<?php
+							*/
+							echo '<td>....</td>';
+							}
 					}
 					?>
 					<td><a href="view_AP_date_form.php?key=<?=$row_alert_ap_date['alert_ap_date_filter_id']; ?>">
@@ -341,18 +363,44 @@
 				
 					if($Processing_status =='已結案')
 					{
-					echo '<td></td>';
+						?>
+						<td>
+						<a href="edit_work.php?key=<?=$row_alert_ap_date['alert_ap_date_filter_id']; ?>">
+						<img src="../images/icon_edit.png" class="adm_icon" align="absmiddle">
+						</a>
+						</td> 
+						<?php
 					}else{
-					?>
-					<td>
-					<a href="edit_mail.php?key=<?=$row_alert_ap_date['alert_ap_date_filter_id']; ?>">
-					<img src="../images/icon_edit.png" class="adm_icon" align="absmiddle">
-					</a>
-					</td> 
-					<?php
-
+					
+					
+							if($Processing_status =='已發信')
+							{
+							?>
+							<td>
+							<a href="edit_mail.php?key=<?=$row_alert_ap_date['alert_ap_date_filter_id']; ?>">
+							<img src="../images/icon_edit.png" class="adm_icon" align="absmiddle">
+							</a>
+							</td> 
+							<?php
+							}else
+							{
+								/*
+							?>
+							<td>
+							<a href="edit_work.php?key=<?=$row_alert_ap_date['alert_ap_date_filter_id']; ?>">
+							<img src="../images/icon_edit.png" class="adm_icon" align="absmiddle">
+							</a>
+							</td> 
+							<?php
+							*/
+							echo '<td>....</td>';
+							}
 					}
+					
+					
 					?>
+					
+					
 					<td><a href="view_AP_date_form.php?key=<?=$row_alert_ap_date['alert_ap_date_filter_id']; ?>">
 					<img src="../images/icon_magnifier.png" class="adm_icon" align="absmiddle">
 					</a></td> 

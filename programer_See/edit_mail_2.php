@@ -113,12 +113,12 @@ if($_GET['mode']=='sennd_mail_A' )
 			$mail->Body = 	'處理編號 : '.$re_time.'<br>問題設備 : '.$title.'<br>選擇項目   :  '.$item_wrong.'<br>內容   :   '.$item_wrong_text;
 			$mail->IsHTML(true);
 			$mail->AddAttachment("", "");
-					$mail->AddAddress('seanchen@tiis.com.tw','seanchen');
-					$mail->AddAddress('frankchang@tiis.com.tw','Frank');
-					$mail->AddAddress('danielwu@tiis.com.tw','Daniel');
+					//$mail->AddAddress('seanchen@tiis.com.tw','seanchen');
+					//$mail->AddAddress('frankchang@tiis.com.tw','Frank');
+					//$mail->AddAddress('danielwu@tiis.com.tw','Daniel');
 					$mail->AddAddress('yashon@tecom.com.tw','Yashon');
-					$mail->AddAddress('heaven@fareastone.com.tw','Heaven');
-					$mail->AddAddress('chhsfang@fareastone.com.tw','Chhsfang');
+					//$mail->AddAddress('heaven@fareastone.com.tw','Heaven');
+					//$mail->AddAddress('chhsfang@fareastone.com.tw','Chhsfang');
 				//$mail->AddAddress('uunmask2000@gmail.com','康康');				//收件者信箱
 				//$mail->AddAddress('danielwu@tiis.com.tw','danielwu');				//總PM收件者信箱
 				$addressCC = "uunmask2000@gmail.com";
@@ -134,7 +134,7 @@ if($_GET['mode']=='sennd_mail_A' )
 		}else
 		{	
 
-		echo "<p align=center><b>傳送成功。</b></p>";
+		//echo "<p align=center><b>傳送成功。</b></p>";
 		}
 		
 		
@@ -149,10 +149,10 @@ if($_GET['mode']=='sennd_mail_A' )
 				execute_sql($database_name, $sql, $link);
 				//echo $sql ;
 				$Period_AP  =$_POST['Period_AP'];
-				//header('Location: show_AP_date_form.php?A='.$Period_AP);
+				////header('Location: show_AP_date_form.php?A='.$Period_AP);
 				?>
 				<script>
-				window.location = 'show_AP_date_form.php?A=<?=$Period_AP ;?>';
+				window.location = 'show_AP_date_form_2.php?A=<?=$Period_AP ;?>';
 				</script>
 				<?php
 				//exit;
@@ -425,7 +425,7 @@ if( intval( $KEY ) )
 							</select>
 						</th>
 						<th>回覆時間 
-						<input id="start_date" type="text"  name="re_time" value="<?php echo date("Y-m-d H:i:s ")?>" />
+						<input id="start_date" type="text"  name="re_time" value="<?php echo  $alert_written_time ;?>" />
 							<script language="JavaScript">
 								/*							
 								$('#start_date').datepicker({
