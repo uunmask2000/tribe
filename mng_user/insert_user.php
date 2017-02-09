@@ -64,6 +64,14 @@
 				</tr>
 				
 				<tr>
+						<td>
+						是否為工程師<br>
+						<input type="radio" name="user_engineer_radio" value="0" checked  > 否<br>
+						<input type="radio" name="user_engineer_radio" value="1"   > 是<br>
+						</td>
+				</tr>
+				
+				<tr>
 					<td colspan="2" align="center">
 		<input class="edit_btn" type="submit" value="儲存">
 

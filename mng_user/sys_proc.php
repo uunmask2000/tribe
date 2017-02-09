@@ -12,7 +12,9 @@ switch ($_GET['mode'])
 			$user_maill = $_POST['user_maill'];
 			$user_lv = $_POST['user_lv'];
 			$user_pwd = $_POST['user_pwd'];
-
+			
+			$user_engineer_radio = $_POST['user_engineer_radio'];
+			
 			$user_acc = trim($user_acc);
 			$user_acc = preg_replace('/\s(?=)/', '', $user_acc);
 			
@@ -64,7 +66,7 @@ switch ($_GET['mode'])
 			}
 		
 
-	$sql = "INSERT INTO web_user(user_name,user_acc,user_pwd,user_maill,user_lv) VALUES ('$user_name','$user_acc','$user_pwd','$user_maill','$user_lv')" ;
+	$sql = "INSERT INTO web_user(user_name,user_acc,user_pwd,user_maill,user_lv,user_engineer_radio) VALUES ('$user_name','$user_acc','$user_pwd','$user_maill','$user_lv','$user_engineer_radio')" ;
                   // echo $sql;	
 	$result = execute_sql($database_name, $sql, $link);
 			
@@ -83,6 +85,8 @@ echo"<script>alert('新增使用者成功');window.location.href = 'user.php';</
 			$user_acc = $_POST['user_acc'];
 			$user_mail = $_POST['user_mail'];
 			$user_lv = $_POST['user_lv'];
+			
+			$user_engineer_radio = $_POST['user_engineer_radio'];
 
 			$user_pwd = $_POST['user_pwd'];
 			$old_pwd = $_POST['old_pwd'];
@@ -172,7 +176,7 @@ echo"<script>alert('新增使用者成功');window.location.href = 'user.php';</
 			*/
 		
 			$sql = "UPDATE web_user SET
-user_name='$user_name', user_pwd='$user_pwd',user_maill='$user_mail',user_lv='$user_lv' ,user_photo='$photo_base' WHERE user_id ='$user_id' ";
+user_name='$user_name', user_pwd='$user_pwd',user_maill='$user_mail',user_lv='$user_lv' ,user_photo='$photo_base',user_engineer_radio='$user_engineer_radio' WHERE user_id ='$user_id' ";
 
 execute_sql($database_name, $sql, $link);
 //echo"<script>alert('修改使用者成功');window.location.href = 'user.php';</script>";

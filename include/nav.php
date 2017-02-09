@@ -13,10 +13,12 @@
 			<a href="../mng_ass_state/asset_state.php"
 			<?php if (preg_match("/state/i", $_SERVER['PHP_SELF'])) {echo "class='nav_linked'"; } 
 			?>>資產狀態</a>
-			
+			<!------
 			<a href="../Maintenance_Engineer_menu/veiw_Maintenance_Engineer_menu.php"
-			<?php if (preg_match("/Maintenance_Engineer_menu/i", $_SERVER['PHP_SELF'])) {echo "class='nav_linked'"; } 
-			?>>工程師管理</a>
+			<?php // if (preg_match("/Maintenance_Engineer_menu/i", $_SERVER['PHP_SELF'])) {echo "class='nav_linked'"; } 
+			?>>工程師管理
+			</a>
+			---->
 			<?php		
 			if( ($_SESSION['user_lv'])==1   )
 			{

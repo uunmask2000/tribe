@@ -41,7 +41,7 @@
 					$user_pwd = $row2['user_pwd'];
 					$user_lv = $row2['user_lv'];
 					$user_photo = $row2['user_photo'];
-
+					$user_engineer_radio = $row2['user_engineer_radio'];
 				}
 
 			?>
@@ -95,6 +95,13 @@
 						　<option value="4"  <?php if($user_lv==4){echo 'selected';} ?>     >原民會</option>
 						</select>
 					</td>
+				</tr>
+				<tr>
+						<td>
+						是否為工程師<br>
+						<input type="radio" name="user_engineer_radio" value="0" <?php if($user_engineer_radio==0){echo 'checked';} ?>  > 否<br>
+						<input type="radio" name="user_engineer_radio" value="1" <?php if($user_engineer_radio==1){echo 'checked';} ?>  > 是<br>
+						</td>
 				</tr>
 				
 				<tr>

@@ -72,6 +72,7 @@
 				<th>帳號</th>
 				<th>E-maill</th>
 				<th>使用層級</th>
+				<th>工程師</th>
 				<th>編輯</th>
 					<?php
 						if(($_SESSION['user_lv'])==1)
@@ -113,6 +114,21 @@
 										}
 										
 										?></td>
+					<td>
+					<?php					
+					$i = $row_user['user_engineer_radio'] ;					
+							switch ($i):
+							case 0:
+							echo "否";
+							break;
+							case 1:
+							echo "是";
+							break;							
+							default:
+							echo "";
+							endswitch;
+					?>	
+					</td>					
 						<?php
 					if($_SESSION['user_lv']==1)
 					{
@@ -134,6 +150,7 @@
 					}
 					
 					?>
+					
 					<?php
 					 if(($_SESSION['user_lv'])==1)
 					{
