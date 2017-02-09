@@ -33,10 +33,31 @@ switch ($mode):
 					$total_row = mysql_num_rows($result_query);  // 取得結果筆數 
 					$total_row = ( $total_row +1 ) ;
 					//echo $sql_query;
-
-
-
+					$re_time_1 = $re_time ;
 					$re_time  =   $re_time.str_pad($total_row,3,'0',STR_PAD_LEFT) ;
+					$calling_bar_id = $re_time;   // 手動填寫
+					
+					$sql_query  = "SELECT * FROM alert_ap_date_filter WHERE calling_bar_id='$calling_bar_id' ";
+					$result_query  = execute_sql($database_name, $sql_query, $link);
+					$total_row2 = mysql_num_rows($result_query);  // 取得結果筆數 
+					//echo $total_row2;
+							if($total_row2>0)
+							{
+							$sql_query  = "SELECT * FROM alert_ap_date_filter WHERE calling_bar_id LIKE '%$re_time_1%'  ORDER BY calling_bar_id desc LIMIT 1 ";
+							//echo  $sql_query ;
+							$result_query  = execute_sql($database_name, $sql_query, $link);
+									while ($row_KID   = mysql_fetch_assoc($result_query))
+									{
+										///echo   $row_KID['calling_bar_id'];
+										$calling_bar_id = $row_KID['calling_bar_id']+1 ;
+									}
+							}else{
+								$calling_bar_id = $calling_bar_id ;
+							}
+					
+					
+					//echo $calling_bar_id;
+					//exit(); 
 						if($item_wrong_text==NULL)
 						{
 						$item_wrong_text='無';
@@ -75,7 +96,7 @@ switch ($mode):
 					//$Processing_time_A = date("Y-m-d H:i:s"); 
 					$Processing_time_A = $_POST['time'];  // 手動填寫
 					//$calling_bar_id = date("YmdHis"); 
-					$calling_bar_id = $re_time;   // 手動填寫
+					//$calling_bar_id = $re_time;   // 手動填寫
 					$sql = "UPDATE  alert_ap_date_filter SET Processing_status='首回覆' ,Processing_time_A='$Processing_time_A',note_A='$item_wrong_text',calling_bar_id='$calling_bar_id',calling_bar_id_check='$calling_bar_id',Processor_A='$name' WHERE alert_ap_date_filter_id='$key' ";
 					execute_sql($database_name, $sql, $link);
 					//echo $sql ;
@@ -127,6 +148,7 @@ switch ($mode):
         break;
     case 1:
        // echo "i equals 1";
+	 
 	   $key   = trim($_POST['key']);
 				$item_wrong  = trim($_POST['item_wrong']);
 				$item_wrong_text  = trim($_POST['item_wrong_text']);
@@ -151,6 +173,9 @@ switch ($mode):
 				execute_sql($database_name, $sql, $link);
 				$sql = "INSERT INTO Equipment_Repair(Equipment_Repair_number, Equipment_Repair_time, Equipment_Repair_type, Equipment_Repair_engineer, Equipment_Repair_operator, Equipment_Repair_remark) VALUES ('$key','$time','01','$accendant','$name', '$item_wrong_text' )";
 				execute_sql($database_name, $sql, $link);	
+				//echo $sql;
+		//echo "處理";
+		//exit();		
 				?>
 				<script>
 				window.location = 'edit_work.php?key=<?=$key;?>';
@@ -193,6 +218,8 @@ switch ($mode):
        //echo "i equals 3";
 	  // exit();
 	    $key   = trim($_POST['key']);
+		
+		$Period_AP   = trim($_POST['Period_AP']);
 				$item_wrong  = trim($_POST['item_wrong']);
 				$item_wrong_text  = trim($_POST['item_wrong_text']);
 				$time = trim($_POST['time']);
@@ -219,11 +246,11 @@ switch ($mode):
 		
 				?>
 				<script>
-				window.location = 'edit_work.php?key=<?=$key;?>';
+				window.location = 'show_AP_date_form_2.php?A=<?=$Period_AP;?>';
 				</script>
 				<?php		
         break;
     default:
-        echo "i is not equal to 0, 1 or 2";
+       // echo "i is not equal to 0, 1 or 2";
 endswitch;
 ?>

@@ -49,7 +49,16 @@
 				require_once('../mail_fulsion/mail/PHPMailer/PHPMailerAutoload.php');
 				require_once('../mail_fulsion/mail/PHPMailer/mail_send.php');
 				//Mail
-				
+		$sql_KID  = "select * from alert_ap_date_filter where calling_bar_id in (select calling_bar_id from alert_ap_date_filter group by calling_bar_id having count(calling_bar_id) > 1) and  calling_bar_id <> 0  ";
+		$result_KID  = execute_sql($database_name, $sql_KID, $link);	
+		$A=0 ;
+		while ($row_KID   = mysql_fetch_assoc($result_KID))
+		{
+		$aaaa_array[$A] = $row_KID['calling_bar_id'];
+		$A++;
+		}	// 編號重複	
+
+		
 	 if($_GET['do']=='RE')
 	 {
 		 $key = $_GET['key'];
@@ -111,7 +120,9 @@
 		</thead>		
 		<tbody>	
 		
-		<?php		
+		<?php	
+		
+		//print_r($aaaa_array);
 		if($_GET['A']=='END')
 		{
 			$sql_alert_ap_date  = "SELECT * FROM alert_ap_date_filter where  `Processing_status`='已結案'    ORDER BY alert_ap_date_filter_id desc ";
@@ -141,10 +152,24 @@
 			<td><a class="tb_link" href="../view_date/view_tribe_AP_date.php?ip=<?=$row_alert_ap_date['alert_ap_date_ap_ip'];?>" target="_self" ><?=$row_alert_ap_date['alert_ap_date_ap_name']; ?></a></td>
 			<td><?=$row_alert_ap_date['alert_ap_date_ap_ip']; ?></td>
 			<td><?=$row_alert_ap_date['alert_written_time']; ?> </td> <!---信件送出時間--->
-			<td>
+			<td
+			<?php 
+			$calling_bar_id = $row_alert_ap_date['calling_bar_id'];
+						if (in_array($calling_bar_id, $aaaa_array))
+						{
+						//echo "A";
+						echo 'bgcolor="#FF0000"';
+						}
+						else
+						{
+						//echo "B";
+						//echo $calling_bar_id ;
+						}
+			?>
+			>
 			<?php
 			$mail_type =$row_alert_ap_date['mail_type'];
-			$calling_bar_id = $row_alert_ap_date['calling_bar_id'];
+			
 			if($mail_type =='0')
 			{
 				echo '尚未通知</td><td></td><td></td>';
@@ -253,10 +278,23 @@
 			<td><a class="tb_link" href="../view_date/view_tribe_AP_date.php?ip=<?=$row_alert_ap_date['alert_ap_date_ap_ip'];?>" target="_self" ><?=$row_alert_ap_date['alert_ap_date_ap_name']; ?></a></td>
 			<td><?=$row_alert_ap_date['alert_ap_date_ap_ip']; ?></td>
 			<td><?=$row_alert_ap_date['alert_written_time']; ?> </td> <!---信件送出時間--->
-			<td>
+			<td
+			<?php 
+			$calling_bar_id = $row_alert_ap_date['calling_bar_id'];
+						if (in_array($calling_bar_id, $aaaa_array))
+						{
+						//echo "A";
+						echo 'bgcolor="#FF0000"';
+						}
+						else
+						{
+						//echo "B";
+						//echo $calling_bar_id ;
+						}
+			?>
+			>
 			<?php
 			$mail_type =$row_alert_ap_date['mail_type'];
-			$calling_bar_id = $row_alert_ap_date['calling_bar_id'];
 			if($mail_type =='0')
 			{
 				echo '尚未通知</td><td></td><td></td>';
@@ -386,6 +424,7 @@ $(document).ready(function(){
 				[ 10, 25, 50, -1 ],
 				[ '10 筆', '25 筆', '50 筆', '全部' ]
 				],
+				"bProcessing":true,
 		dom: 'Bfrtip',	 buttons: [
 			    { extend: 'excelHtml5', text: '匯出服務中斷數量統計表' ,title: '<?= date("Y-m-d");?>服務中斷數量統計表' },
 				//{ extend: 'print', text: '列印',title: '<?= date("Y-m-d");?>斷線數量統計表' },	
