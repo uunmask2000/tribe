@@ -66,8 +66,8 @@ function create_ps_connection()
 					$B1  =$row_1['alert_ap_date_time_ok']; 			
 					$sql = "UPDATE  alert_ap_date_filter SET alert_ap_date_time_ok='$B1'    WHERE alert_ap_date_filter_id = '$c ' ";
 					execute_sql($database_name, $sql, $link);
-					echo  $sql;
-					echo '<br>';
+					//echo  $sql;
+					//echo '<br>';
 						
 				}		
 		}

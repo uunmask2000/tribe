@@ -37,22 +37,9 @@ require_once('../mail_fulsion/mail/PHPMailer/mail_send_gmail.php');
 
 </head>
 <body>
-<div id="wrap">
-<!-------------------------------------- TOP -->
-	<div id="header">
-	<?php
-	include("../include/top.php");
-	?>
-	</div>
-
-<!-------------------------------------- MAIN -->
-	<div id="main">
-
-	<?php include("../alert/alert2.php");?>
-
-	<div id="port_data">
 
 
+<div id="port_data">
 
 <?php
 date_default_timezone_set('Asia/Taipei');
@@ -412,18 +399,14 @@ if( intval( $KEY ) )
 					//echo "已發信";
 					?>
 					
-					<div class="place_time"><?=$alert_ap_date_city .$alert_ap_date_township .$alert_ap_date_tribe .$alert_ap_date_ap_name .'服務中斷時間: ' .$alert_written_time  ;?></div>
+					<div class="place_time">
+					<?=$alert_ap_date_city .$alert_ap_date_township .$alert_ap_date_tribe .$alert_ap_date_ap_name .'<br/>服務中斷時間: ' .$alert_written_time  ;?></div>
 					<div class="common_img"></div>
 					
 					<form action="?mode=sennd_mail_A" method="POST">
 					
 					<table cellpadding="5" cellspacing="0" class="edit" width="500">
 					<tr>
-						<th>
-							<select name="item_wrong">
-								<option value="首回覆" selected >首回覆</option>
-							</select>
-						</th>
 						<th>回覆時間 
 						<input id="start_date" type="text"  name="re_time" value="<?php echo date("Y-m-d H:i:s ")?>" />
 							<script language="JavaScript">
@@ -466,13 +449,13 @@ if( intval( $KEY ) )
 					</tr>
 					
 					<tr><td colspan="2">
-					<textarea style="width:98%;" rows="5" name="item_wrong_text" placeholder="備註">無</textarea>
+					<textarea style="width:98%;" rows="17" name="item_wrong_text" placeholder="備註">無</textarea>
 					</td></tr>
 					
 					<tr>
 						<td colspan="2" align="center">
 						<input class="edit_btn" type="submit" value="送出">
-						<input class="edit_btn" type="button" onclick="history.back()" value="回上頁">
+						<input class="edit_btn" type="button" onclick="window.close()" value="關閉">
 						</td>
 					</tr>
 					</table>
@@ -876,15 +859,8 @@ else
 }
 
 ?>
-	</div>
-	</div>
-
-<!-------------------------------------- FOOTER -->
-
-  	<div id="footer">
-	<?php include("../include/bottom.php"); ?>
-	</div>
 
 </div>
+
 </body>
 </html>

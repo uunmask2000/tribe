@@ -101,7 +101,7 @@ function create_ps_connection()
 					$sql = "UPDATE  alert_ap_date_filter SET mail_type='1' , alert_written_time='$alert_written_time'  WHERE alert_ap_date_filter_id='$alert_ap_date_filter_id' ";
 					execute_sql($database_name, $sql, $link);
 					sleep(1);
-						echo		 $sql  ;			
+					//	echo		 $sql  ;			
 
 					}
 

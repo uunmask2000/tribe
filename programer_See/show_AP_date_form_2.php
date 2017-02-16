@@ -35,7 +35,9 @@
 
 <!-------------------------------------- MAIN -->
 	<div id="main">
-	<?php include("../alert/alert2.php");?>
+	<?php 
+	include("../alert/alert2.php");
+	?>
 
 	
 	<?php
@@ -102,20 +104,28 @@
 		<thead>
 		<tr>
 		<th>No.</th>
-		<th>叫修編號</th>	
+		<th>叫修編號</th>
 		<th>期別</th>
 		<th>部落</th>
-		<th>設備名稱</th>
+		<th>設備</th>
 		<th>IP</th>
-		<th>服務中斷時間</th>
+		<th>中斷時間</th>
 		<th>處理編號</th>			
-		<th>處置狀態</th>
+		<th>狀態</th>
+	
 	<!---
 	<th>處理</th>
 	<th>處理流程</th>
 	-->
 		<th>管理流程</th>
 		<th>重置</th>
+			<th  style="display: none;">發信時間</th>
+			<th  style="display: none;">首回覆資訊</th>
+			<th  style="display: none;">派工資訊</th>
+			<th  style="display: none;">到場資訊</th>
+			<th  style="display: none;">處理資訊</th>
+			<th  style="display: none;">結案資訊</th>
+		
 		</tr>
 		</thead>		
 		<tbody>	
@@ -130,8 +140,8 @@
 		}else{
 			
 			//$sql_alert_ap_date_1  = "SELECT * FROM alert_ap_date_filter where  Period_AP =".$_GET['A']." and  alert_ap_date_time_ok='0000-00-00 00:00:00' ORDER BY `alert_ap_date_filter`.`alert_ap_date_filter_id` DESC";
-			$sql_alert_ap_date_1  = "SELECT * FROM alert_ap_date_filter where  Period_AP =".$_GET['A']." and `Processing_status`<>'已結案' and  alert_ap_date_time_ok<>'0000-00-00 00:00:00'   ORDER BY alert_ap_date_filter_id desc ";
-			
+			//$sql_alert_ap_date_1  = "SELECT * FROM alert_ap_date_filter where  Period_AP =".$_GET['A']." and `Processing_status`<>'已結案' and  alert_ap_date_time_ok<>'0000-00-00 00:00:00'   ORDER BY alert_ap_date_filter_id desc ";
+			$sql_alert_ap_date_1  = "SELECT * FROM alert_ap_date_filter where  Period_AP =".$_GET['A']." and `Processing_status`<>'已結案'   ORDER BY alert_ap_date_filter_id desc ";
 		}
 			$result_alert_ap_date_1  = execute_sql($database_name, $sql_alert_ap_date_1, $link);
 			while ($row_alert_ap_date  = mysql_fetch_assoc($result_alert_ap_date_1))
@@ -142,6 +152,8 @@
 			$str = $alert_ap_date_setting;
 			$str_sec = explode("-",$str);
 			$zzz++;
+			
+			
 			
 			?>
 			<tr>
@@ -223,7 +235,7 @@
 							{
 							?>
 							<td>
-							<!--<a href="edit_mail_2.php?key=<?//=$row_alert_ap_date['alert_ap_date_filter_id']; ?>"> -->
+							
 							<a href="edit_work.php?key=<?=$row_alert_ap_date['alert_ap_date_filter_id']; ?>">
 							<img src="../images/icon_edit.png" class="adm_icon" align="absmiddle">
 							</a>
@@ -250,7 +262,87 @@
 					}
 					?>
 					<td><a href="?key=<?=$row_alert_ap_date['alert_ap_date_filter_id']; ?>&A=<?=$_GET['A'] ; ?>&do=RE">DO</a></td>
-					
+<td  style="display: none;">
+<?=$row_alert_ap_date['alert_written_time']; ?>
+
+</td>
+<td  style="display: none;">
+  
+<?=$row_alert_ap_date['Processing_time_A']; ?>,
+<?=$row_alert_ap_date['note_A']; ?>,
+<?=$row_alert_ap_date['Processor_A']; ?>,
+
+</td>
+<td  style="display: none;">
+
+<?php
+$key_id = $row_alert_ap_date['alert_ap_date_filter_id'];
+$sql_date_A  = "SELECT Equipment_Repair_time ,Equipment_Repair_engineer ,Equipment_Repair_remark FROM Equipment_Repair where Equipment_Repair_type='00' and Equipment_Repair_number='$key_id' " ;	$result_date_A  = execute_sql($database_name, $sql_date_A, $link);
+while ($row_date_A  = mysql_fetch_assoc($result_date_A))
+{ 
+echo $row_date_A['Equipment_Repair_time'];
+echo ',';
+echo $row_date_A['Equipment_Repair_engineer'];
+echo ',';
+echo $row_date_A['Equipment_Repair_remark'];
+echo ',';
+
+}
+
+?>
+
+</td>
+<td  style="display: none;">
+
+<?php
+$sql_date_A  = "SELECT Equipment_Repair_time ,Equipment_Repair_engineer ,Equipment_Repair_remark FROM Equipment_Repair where Equipment_Repair_type='02' and Equipment_Repair_number='$key_id' " ;	$result_date_A  = execute_sql($database_name, $sql_date_A, $link);
+while ($row_date_A  = mysql_fetch_assoc($result_date_A))
+{ 
+echo $row_date_A['Equipment_Repair_time'];
+echo ',';
+echo $row_date_A['Equipment_Repair_engineer'];
+echo ',';
+echo $row_date_A['Equipment_Repair_remark'];
+echo ',';
+
+}
+?>
+
+</td>
+<td  style="display: none;">
+
+<?php
+$sql_date_A  = "SELECT Equipment_Repair_time ,Equipment_Repair_engineer ,Equipment_Repair_remark FROM Equipment_Repair where Equipment_Repair_type='01' and Equipment_Repair_number='$key_id' " ;	$result_date_A  = execute_sql($database_name, $sql_date_A, $link);
+while ($row_date_A  = mysql_fetch_assoc($result_date_A))
+{ 
+echo $row_date_A['Equipment_Repair_time'];
+echo ',';
+echo $row_date_A['Equipment_Repair_engineer'];
+echo ',';
+echo $row_date_A['Equipment_Repair_remark'];
+echo ',';
+
+}
+?>
+
+</td>
+<td  style="display: none;">
+
+<?php
+$sql_date_A  = "SELECT Equipment_Repair_time ,Equipment_Repair_engineer ,Equipment_Repair_remark FROM Equipment_Repair where Equipment_Repair_type='03' and Equipment_Repair_number='$key_id' " ;	$result_date_A  = execute_sql($database_name, $sql_date_A, $link);
+while ($row_date_A  = mysql_fetch_assoc($result_date_A))
+{ 
+echo $row_date_A['Equipment_Repair_time'];
+echo ',';
+echo $row_date_A['Equipment_Repair_engineer'];
+echo ',';
+echo $row_date_A['Equipment_Repair_remark'];
+echo ',';
+
+}
+?>
+
+</td>
 					</tr>
 					<?php
 
@@ -278,7 +370,7 @@
 			<td><a class="tb_link" href="../view_date/view_tribe_AP_date.php?ip=<?=$row_alert_ap_date['alert_ap_date_ap_ip'];?>" target="_self" ><?=$row_alert_ap_date['alert_ap_date_ap_name']; ?></a></td>
 			<td><?=$row_alert_ap_date['alert_ap_date_ap_ip']; ?></td>
 			<td><?=$row_alert_ap_date['alert_written_time']; ?> </td> <!---信件送出時間--->
-			<td
+			<td>
 			<?php 
 			$calling_bar_id = $row_alert_ap_date['calling_bar_id'];
 						if (in_array($calling_bar_id, $aaaa_array))
@@ -292,7 +384,7 @@
 						//echo $calling_bar_id ;
 						}
 			?>
-			>
+			
 			<?php
 			$mail_type =$row_alert_ap_date['mail_type'];
 			if($mail_type =='0')
@@ -350,7 +442,7 @@
 							{
 							?>
 							<td>
-							<!--<a href="edit_mail_2.php?key=<?//=$row_alert_ap_date['alert_ap_date_filter_id']; ?>"> -->
+							
 							<a href="edit_work.php?key=<?=$row_alert_ap_date['alert_ap_date_filter_id']; ?>">
 							<img src="../images/icon_edit.png" class="adm_icon" align="absmiddle">
 							</a>
@@ -371,6 +463,87 @@
 					//view_proc_date.php = view_proc_date.php
 					?>
 					<td><a href="?key=<?=$row_alert_ap_date['alert_ap_date_filter_id']; ?>&A=<?=$_GET['A'] ; ?>&do=RE">DO</a></td>
+<td  style="display: none;">
+ <?=$row_alert_ap_date['alert_written_time']; ?>
+
+</td>
+<td  style="display: none;">
+ 
+<?=$row_alert_ap_date['Processing_time_A']; ?>,
+<?=$row_alert_ap_date['note_A']; ?>,
+<?=$row_alert_ap_date['Processor_A']; ?>,
+
+</td>
+<td  style="display: none;">
+
+<?php
+$key_id = $row_alert_ap_date['alert_ap_date_filter_id'];
+$sql_date_A  = "SELECT Equipment_Repair_time ,Equipment_Repair_engineer ,Equipment_Repair_remark FROM Equipment_Repair where Equipment_Repair_type='00' and Equipment_Repair_number='$key_id' " ;	$result_date_A  = execute_sql($database_name, $sql_date_A, $link);
+while ($row_date_A  = mysql_fetch_assoc($result_date_A))
+{ 
+echo $row_date_A['Equipment_Repair_time'];
+echo ',';
+echo $row_date_A['Equipment_Repair_engineer'];
+echo ',';
+echo $row_date_A['Equipment_Repair_remark'];
+echo ',';
+
+}
+
+?>
+
+</td>
+<td  style="display: none;">
+
+<?php
+$sql_date_A  = "SELECT Equipment_Repair_time ,Equipment_Repair_engineer ,Equipment_Repair_remark FROM Equipment_Repair where Equipment_Repair_type='02' and Equipment_Repair_number='$key_id' " ;	$result_date_A  = execute_sql($database_name, $sql_date_A, $link);
+while ($row_date_A  = mysql_fetch_assoc($result_date_A))
+{ 
+echo $row_date_A['Equipment_Repair_time'];
+echo ',';
+echo $row_date_A['Equipment_Repair_engineer'];
+echo ',';
+echo $row_date_A['Equipment_Repair_remark'];
+echo ',';
+
+}
+?>
+
+</td>
+<td  style="display: none;">
+
+<?php
+$sql_date_A  = "SELECT Equipment_Repair_time ,Equipment_Repair_engineer ,Equipment_Repair_remark FROM Equipment_Repair where Equipment_Repair_type='01' and Equipment_Repair_number='$key_id' " ;	$result_date_A  = execute_sql($database_name, $sql_date_A, $link);
+while ($row_date_A  = mysql_fetch_assoc($result_date_A))
+{ 
+echo $row_date_A['Equipment_Repair_time'];
+echo ',';
+echo $row_date_A['Equipment_Repair_engineer'];
+echo ',';
+echo $row_date_A['Equipment_Repair_remark'];
+echo ',';
+
+}
+?>
+
+</td>
+<td  style="display: none;">
+
+<?php
+$sql_date_A  = "SELECT Equipment_Repair_time ,Equipment_Repair_engineer ,Equipment_Repair_remark FROM Equipment_Repair where Equipment_Repair_type='03' and Equipment_Repair_number='$key_id' " ;	$result_date_A  = execute_sql($database_name, $sql_date_A, $link);
+while ($row_date_A  = mysql_fetch_assoc($result_date_A))
+{ 
+echo $row_date_A['Equipment_Repair_time'];
+echo ',';
+echo $row_date_A['Equipment_Repair_engineer'];
+echo ',';
+echo $row_date_A['Equipment_Repair_remark'];
+echo ',';
+
+}
+?>
+
+</td>
 					</tr>
 					<?php
 

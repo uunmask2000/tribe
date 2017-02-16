@@ -83,8 +83,8 @@ function create_ps_connection()
 					}else{
 					$sql = "UPDATE  alert_ap_date_filter SET alert_ap_date_time_dead='$YMD_string',alert_ap_date_time_ok='$YMD_string_2' WHERE alert_ap_date_outageid='$outageid_pg' and alert_ap_date_svclosteventid ='$svclosteventid_pg'";
 					execute_sql($database_name, $sql, $link);
-					echo  $sql;
-					echo '<br>';
+					//echo  $sql;
+					//echo '<br>';
 					}	
 
 

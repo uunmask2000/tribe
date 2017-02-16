@@ -17,7 +17,7 @@ $link = create_connection();
 		$name = $_SESSION['user_name']   ;
 		?>
 		<?php
-		echo '目前登入者 : '.$name ;
+		//echo '目前登入者 : '.$name ;
 		?>
 		
 		<?php
