@@ -1,0 +1,69 @@
+@charset "utf-8";
+/* TAB CSS Document */
+ul, li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.works_tab {
+	margin: 10px auto;
+	padding: 0px;
+	clear: left;
+}
+ul.work_tabs {
+	position: relative; top: 2px;
+	width: 100%; height: 50px;
+	border-bottom: 1px solid #d9d9d9;
+	border-left: 1px solid #d9d9d9;
+}
+ul.work_tabs li {
+	float: left;
+	height: 50px; line-height: 50px;
+	position: relative; top: -1px;
+	border: 1px solid #d9d9d9;
+	border-left: none;
+	background: #f2f2f2;
+	text-align: center;
+}
+ul.work_tabs li a {
+	display: block;
+	padding: 0 20px;
+	color: #423e3d;
+	text-decoration: none;
+}
+ul.work_tabs li a:hover {
+	color: #423e3d;
+	background: #d5d5d5;
+}
+ul.work_tabs li.active  {
+	background: #fff;
+	border-bottom: 1px solid #fff;
+}
+ul.work_tabs li.active a:hover {
+	background: #fff;
+}
+div.tab_container {
+	margin:0px;
+	clear: left;
+	border: 1px solid #d9d9d9;
+	border-top: none;
+	background: #fff;
+}
+div.tab_container .tab_content {
+	padding: 20px;
+}
+div.tab_container .tab_content h2 {
+	margin: 0 0 20px;
+}
+
+#box {
+    margin: 10px 0;
+    padding: 10px;
+    border: #d9d9d9 1px solid;
+}
+table#status {
+    margin: 0 0 10px;
+}
+table#status td {
+	margin: 0 0 10px;
+}
