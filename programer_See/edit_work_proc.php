@@ -77,17 +77,21 @@ switch ($mode):
 					$mail->AddAttachment("", "");
 					if($_SESSION['user_id']!='13' or $_SESSION['user_id']!='15')
 					{
+							$mail->AddAddress('yashon@tecom.com.tw','Yashon');
+					}else{
 						$mail->AddAddress('seanchen@tiis.com.tw','seanchen');
 						$mail->AddAddress('frankchang@tiis.com.tw','Frank');
 						$mail->AddAddress('danielwu@tiis.com.tw','Daniel');					
 						$mail->AddAddress('heaven@fareastone.com.tw','Heaven');
 						$mail->AddAddress('chhsfang@fareastone.com.tw','Chhsfang');
 						$mail->AddAddress('danielwu@tiis.com.tw','danielwu');				//總PM收件者信箱
+						$mail->AddAddress('yashon@tecom.com.tw','Yashon');
+						//$mail->AddAddress('uunmask2000@gmail.com','康康');				//收件者信箱
+
+						
 					}
 					
 					
-					$mail->AddAddress('yashon@tecom.com.tw','Yashon');
-					//$mail->AddAddress('uunmask2000@gmail.com','康康');				//收件者信箱
 					
 					$addressCC = "uunmask2000@gmail.com";
 					$mail->AddBCC($addressCC, '康康');
@@ -110,19 +114,24 @@ switch ($mode):
 					//exit();
 					$Period_AP  =$_POST['Period_AP'];
 					
-					if($_SESSION['user_id']!='13' or $_SESSION['user_id']!='15')
+					if($_SESSION['user_id']=='13' or $_SESSION['user_id']=='15')
 					{
-						?>
-						<script>
-						window.location = 'show_AP_date_form.php?A=<?=$Period_AP ;?>';
-						</script>
-						<?php
-					}else{
+						
 						?>
 						<script>
 						window.location = 'show_AP_date_form_2.php?A=<?=$Period_AP ;?>';
 						</script>
 						<?php
+						
+					}else{
+						
+						?>
+						<script>
+						window.location = 'show_AP_date_form.php?A=<?=$Period_AP ;?>';
+						</script>
+						<?php
+										
+						
 					}
 		break;
     case 0:
@@ -189,7 +198,8 @@ switch ($mode):
 				$sql = "UPDATE  alert_ap_date_filter SET Processing_status='$item_wrong' WHERE alert_ap_date_filter_id='$key' ";
 				execute_sql($database_name, $sql, $link);
 				$sql = "INSERT INTO Equipment_Repair(Equipment_Repair_number, Equipment_Repair_time, Equipment_Repair_type, Equipment_Repair_engineer, Equipment_Repair_operator, Equipment_Repair_remark) VALUES ('$key','$time','01','$accendant','$name', '$item_wrong_text' )";
-				execute_sql($database_name, $sql, $link);	
+				execute_sql($database_name, $sql, $link);
+				
 				//echo $sql;
 		//echo "處理";
 		//exit();		
@@ -289,18 +299,19 @@ while ($row_KID   = mysql_fetch_assoc($result_query))
 					$mail->AddAttachment("", "");
 					if($_SESSION['user_id']!='13' or $_SESSION['user_id']!='15')
 					{
+							$mail->AddAddress('yashon@tecom.com.tw','Yashon');
+					}else{
 						$mail->AddAddress('seanchen@tiis.com.tw','seanchen');
 						$mail->AddAddress('frankchang@tiis.com.tw','Frank');
 						$mail->AddAddress('danielwu@tiis.com.tw','Daniel');					
 						$mail->AddAddress('heaven@fareastone.com.tw','Heaven');
 						$mail->AddAddress('chhsfang@fareastone.com.tw','Chhsfang');
 						$mail->AddAddress('danielwu@tiis.com.tw','danielwu');				//總PM收件者信箱
+						$mail->AddAddress('yashon@tecom.com.tw','Yashon');
+						//$mail->AddAddress('uunmask2000@gmail.com','康康');				//收件者信箱
+
+						
 					}
-					
-					
-					$mail->AddAddress('yashon@tecom.com.tw','Yashon');
-					//$mail->AddAddress('uunmask2000@gmail.com','康康');				//收件者信箱
-					
 					$addressCC = "uunmask2000@gmail.com";
 					$mail->AddBCC($addressCC, '康康');
 					//exit;
@@ -315,20 +326,25 @@ while ($row_KID   = mysql_fetch_assoc($result_query))
 		
 		
 		
-				if($_SESSION['user_id']!='13' or $_SESSION['user_id']!='15')
+				if($_SESSION['user_id']=='13' or $_SESSION['user_id']=='15')
 					{
-						?>
-						<script>
-						window.location = 'show_AP_date_form.php?A=<?=$Period_AP ;?>';
-						</script>
-						<?php
-					}else{
+						
 						?>
 						<script>
 						window.location = 'show_AP_date_form_2.php?A=<?=$Period_AP ;?>';
 						</script>
 						<?php
-					}	
+						
+					}else{
+						
+						?>
+						<script>
+						window.location = 'show_AP_date_form.php?A=<?=$Period_AP ;?>';
+						</script>
+						<?php
+										
+						
+					}
         break;
     default:
        // echo "i is not equal to 0, 1 or 2";

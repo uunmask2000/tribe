@@ -103,11 +103,11 @@
 	-->
 		<th>管理流程</th>
 					<th  style="display: none;">發信時間</th>
-					<th  style="display: none;">首回覆資訊</th>
-					<th  style="display: none;">派工資訊</th>
-					<th  style="display: none;">到場資訊</th>
-					<th  style="display: none;">處理資訊</th>
-					<th  style="display: none;">結案資訊</th>
+					<th  style="display: none;">首回覆資訊(時間,備註,處理人員)</th>
+					<th  style="display: none;">派工資訊(時間,工程師,備註)</th>
+					<th  style="display: none;">到場資訊(時間,工程師,備註)</th>
+					<th  style="display: none;">處理資訊(時間,工程師,處理內容)</th>
+					<th  style="display: none;">結案資訊(時間,工程師,備註)</th>
 
 		</tr>
 		</thead>		
@@ -247,11 +247,11 @@
 
 </td>
 <td  style="display: none;">
-  
+[
 <?=$row_alert_ap_date['Processing_time_A']; ?>,
 <?=$row_alert_ap_date['note_A']; ?>,
-<?=$row_alert_ap_date['Processor_A']; ?>,
-
+<?=$row_alert_ap_date['Processor_A']; ?>
+]
 </td>
 <td  style="display: none;">
 
@@ -260,12 +260,14 @@ $key_id = $row_alert_ap_date['alert_ap_date_filter_id'];
 $sql_date_A  = "SELECT Equipment_Repair_time ,Equipment_Repair_engineer ,Equipment_Repair_remark FROM Equipment_Repair where Equipment_Repair_type='00' and Equipment_Repair_number='$key_id' " ;	$result_date_A  = execute_sql($database_name, $sql_date_A, $link);
 while ($row_date_A  = mysql_fetch_assoc($result_date_A))
 { 
+echo '[';
 echo $row_date_A['Equipment_Repair_time'];
 echo ',';
 echo $row_date_A['Equipment_Repair_engineer'];
 echo ',';
 echo $row_date_A['Equipment_Repair_remark'];
-echo ',';
+//echo ',';
+echo ']';
 
 }
 
@@ -278,12 +280,14 @@ echo ',';
 $sql_date_A  = "SELECT Equipment_Repair_time ,Equipment_Repair_engineer ,Equipment_Repair_remark FROM Equipment_Repair where Equipment_Repair_type='02' and Equipment_Repair_number='$key_id' " ;	$result_date_A  = execute_sql($database_name, $sql_date_A, $link);
 while ($row_date_A  = mysql_fetch_assoc($result_date_A))
 { 
+echo '[';
 echo $row_date_A['Equipment_Repair_time'];
 echo ',';
 echo $row_date_A['Equipment_Repair_engineer'];
 echo ',';
 echo $row_date_A['Equipment_Repair_remark'];
-echo ',';
+//echo ',';
+echo ']';
 
 }
 ?>
@@ -295,13 +299,14 @@ echo ',';
 $sql_date_A  = "SELECT Equipment_Repair_time ,Equipment_Repair_engineer ,Equipment_Repair_remark FROM Equipment_Repair where Equipment_Repair_type='01' and Equipment_Repair_number='$key_id' " ;	$result_date_A  = execute_sql($database_name, $sql_date_A, $link);
 while ($row_date_A  = mysql_fetch_assoc($result_date_A))
 { 
+echo '[';
 echo $row_date_A['Equipment_Repair_time'];
 echo ',';
 echo $row_date_A['Equipment_Repair_engineer'];
 echo ',';
 echo $row_date_A['Equipment_Repair_remark'];
-echo ',';
-
+//echo ',';
+echo ']';
 }
 ?>
 
@@ -312,13 +317,14 @@ echo ',';
 $sql_date_A  = "SELECT Equipment_Repair_time ,Equipment_Repair_engineer ,Equipment_Repair_remark FROM Equipment_Repair where Equipment_Repair_type='03' and Equipment_Repair_number='$key_id' " ;	$result_date_A  = execute_sql($database_name, $sql_date_A, $link);
 while ($row_date_A  = mysql_fetch_assoc($result_date_A))
 { 
+echo '[';
 echo $row_date_A['Equipment_Repair_time'];
 echo ',';
 echo $row_date_A['Equipment_Repair_engineer'];
 echo ',';
 echo $row_date_A['Equipment_Repair_remark'];
-echo ',';
-
+//echo ',';
+echo ']';
 }
 ?>
 
@@ -447,10 +453,12 @@ echo ',';
 
 </td>
 <td  style="display: none;">
-  
+[
 <?=$row_alert_ap_date['Processing_time_A']; ?>,
 <?=$row_alert_ap_date['note_A']; ?>,
-<?=$row_alert_ap_date['Processor_A']; ?>,
+<?=$row_alert_ap_date['Processor_A']; ?>
+]
+
 
 </td>
 <td  style="display: none;">
@@ -460,12 +468,14 @@ $key_id = $row_alert_ap_date['alert_ap_date_filter_id'];
 $sql_date_A  = "SELECT Equipment_Repair_time ,Equipment_Repair_engineer ,Equipment_Repair_remark FROM Equipment_Repair where Equipment_Repair_type='00' and Equipment_Repair_number='$key_id' " ;	$result_date_A  = execute_sql($database_name, $sql_date_A, $link);
 while ($row_date_A  = mysql_fetch_assoc($result_date_A))
 { 
+echo '[';
 echo $row_date_A['Equipment_Repair_time'];
 echo ',';
 echo $row_date_A['Equipment_Repair_engineer'];
 echo ',';
 echo $row_date_A['Equipment_Repair_remark'];
-echo ',';
+//echo ',';
+echo ']';
 
 }
 
@@ -478,12 +488,14 @@ echo ',';
 $sql_date_A  = "SELECT Equipment_Repair_time ,Equipment_Repair_engineer ,Equipment_Repair_remark FROM Equipment_Repair where Equipment_Repair_type='02' and Equipment_Repair_number='$key_id' " ;	$result_date_A  = execute_sql($database_name, $sql_date_A, $link);
 while ($row_date_A  = mysql_fetch_assoc($result_date_A))
 { 
+echo '[';
 echo $row_date_A['Equipment_Repair_time'];
 echo ',';
 echo $row_date_A['Equipment_Repair_engineer'];
 echo ',';
 echo $row_date_A['Equipment_Repair_remark'];
-echo ',';
+//echo ',';
+echo ']';
 
 }
 ?>
@@ -495,12 +507,14 @@ echo ',';
 $sql_date_A  = "SELECT Equipment_Repair_time ,Equipment_Repair_engineer ,Equipment_Repair_remark FROM Equipment_Repair where Equipment_Repair_type='01' and Equipment_Repair_number='$key_id' " ;	$result_date_A  = execute_sql($database_name, $sql_date_A, $link);
 while ($row_date_A  = mysql_fetch_assoc($result_date_A))
 { 
+echo '[';
 echo $row_date_A['Equipment_Repair_time'];
 echo ',';
 echo $row_date_A['Equipment_Repair_engineer'];
 echo ',';
 echo $row_date_A['Equipment_Repair_remark'];
-echo ',';
+//echo ',';
+echo ']';
 
 }
 ?>
@@ -512,13 +526,14 @@ echo ',';
 $sql_date_A  = "SELECT Equipment_Repair_time ,Equipment_Repair_engineer ,Equipment_Repair_remark FROM Equipment_Repair where Equipment_Repair_type='03' and Equipment_Repair_number='$key_id' " ;	$result_date_A  = execute_sql($database_name, $sql_date_A, $link);
 while ($row_date_A  = mysql_fetch_assoc($result_date_A))
 { 
+echo '[';
 echo $row_date_A['Equipment_Repair_time'];
 echo ',';
 echo $row_date_A['Equipment_Repair_engineer'];
 echo ',';
 echo $row_date_A['Equipment_Repair_remark'];
-echo ',';
-
+//echo ',';
+echo ']';
 }
 ?>
 
