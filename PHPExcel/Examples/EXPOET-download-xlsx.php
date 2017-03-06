@@ -47,12 +47,7 @@ $objPHPExcel->setActiveSheetIndex(0)
 				->setCellValue('R1', '反應問題')
 				->setCellValue('S1', '維修人員')
 				->setCellValue('T1', '附註')
-				->setCellValue('U1', '發信資訊(時間,處理人員,備註)')
-				->setCellValue('V1', '首回覆資訊(時間,處理人員,備註)')
-				->setCellValue('W1', '派工資訊(時間,工程師,備註)')
-				->setCellValue('X1', '到場資訊(時間,工程師,備註)')
-				->setCellValue('Y1', '處理資訊(時間,工程師,處理內容)')
-				->setCellValue('Z1', '結案資訊(時間,工程師,備註)');
+				->setCellValue('U1', '處置人員');
 		
 // Miscellaneous glyphs, UTF-8
 
@@ -87,25 +82,9 @@ for($rowCount=2 ; $rowCount <= $count_row  ; $rowCount++)
 	$dt18 = $_SESSION["Array_total"][$rowCount][18];
 	$dt19 = $_SESSION["Array_total"][$rowCount][19];	
 	$dt20 = $_SESSION["Array_total"][$rowCount][20];
-	//
-	
-	
+	//	
 	$dt21 = $_SESSION["Array_total"][$rowCount][21];
-	$dt22 = $_SESSION["Array_total"][$rowCount][22];
-	$dt23 = $_SESSION["Array_total"][$rowCount][23];
-	$dt24 = $_SESSION["Array_total"][$rowCount][24];
-	$dt25 = $_SESSION["Array_total"][$rowCount][25];
-	$dt26 = $_SESSION["Array_total"][$rowCount][26];
-	/*
-	$dt21 = $_SESSION["Array_total"][$rowCount][21];
-	$dt22 = $_SESSION["Array_total"][$rowCount][22];
-	$dt23 = $_SESSION["Array_total"][$rowCount][23];
-	$dt24 = $_SESSION["Array_total"][$rowCount][24];
-	$dt25 = $_SESSION["Array_total"][$rowCount][25];
-	$dt26 = $_SESSION["Array_total"][$rowCount][26];
-	*/
 	
-	//
 	$objPHPExcel->getActiveSheet()->SetCellValue('A'.$rowCount,$dt1);
 	$objPHPExcel->getActiveSheet()->SetCellValue('B'.$rowCount,$dt2);
 	$objPHPExcel->getActiveSheet()->SetCellValue('C'.$rowCount,$dt3);
@@ -125,15 +104,8 @@ for($rowCount=2 ; $rowCount <= $count_row  ; $rowCount++)
 	$objPHPExcel->getActiveSheet()->SetCellValue('Q'.$rowCount,$dt17);
 	$objPHPExcel->getActiveSheet()->SetCellValue('R'.$rowCount,$dt18);
 	$objPHPExcel->getActiveSheet()->SetCellValue('S'.$rowCount,$dt19);
-	$objPHPExcel->getActiveSheet()->SetCellValue('T'.$rowCount,$dt20);
-	
-	
+	$objPHPExcel->getActiveSheet()->SetCellValue('T'.$rowCount,$dt20);	
 	$objPHPExcel->getActiveSheet()->SetCellValue('U'.$rowCount,$dt21);
-	$objPHPExcel->getActiveSheet()->SetCellValue('V'.$rowCount,$dt22);
-	$objPHPExcel->getActiveSheet()->SetCellValue('W'.$rowCount,$dt23);
-	$objPHPExcel->getActiveSheet()->SetCellValue('X'.$rowCount,$dt24);
-	$objPHPExcel->getActiveSheet()->SetCellValue('Y'.$rowCount,$dt25);
-	$objPHPExcel->getActiveSheet()->SetCellValue('Z'.$rowCount,$dt26);
 }
 
 

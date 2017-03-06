@@ -1,0 +1,81 @@
+elements: 
+	{
+      //selectable: false, 
+      grabbable: false,
+      nodes: [
+			  {
+				data: {
+				  id: 'FW',
+				  text: 'FW'
+				}
+			  }, {
+				data: {
+				  id: '4GR',
+				  text: '4GR'
+				}
+			  }, {
+				data: {
+				  id: 'PDU',
+				  text: 'PDU'
+				}
+			  }, 
+			  {
+				data: {
+				  id: 'POE',
+				  text: 'POE'
+				}
+			  }, 
+			  {
+				data: {
+				  id: 'POE1',
+				  text: 'POE1'
+				}
+			  }, 
+			  {
+				data: {
+				  id: 'AP1',
+				  text: 'AP1'
+				}
+			  }
+	  ], // nodes
+      edges: [
+				{
+				data: 
+				{
+				color: '#f00',
+				source: 'FW',
+				target: '4GR'
+				}
+				},{
+				data: {
+				color: '#f00',
+				source: 'FW',
+				target: 'PDU'
+				}
+				}, 
+				{
+					data: 
+					{
+					color: '#f00',
+					source: 'FW',
+					target: 'POE'
+					}
+				}, 
+				{
+					data: 
+					{
+					color: '#f00',
+					source: 'FW',
+					target: 'POE1'
+					}
+				}, 
+				{
+					data: 
+					{
+					color: '#f00',
+					source: 'POE1',
+					target: 'AP1'
+					}
+				}
+		] // edges
+    } // elements

@@ -37,6 +37,11 @@
 	<div id="main">
 	<?php include("../alert/alert2.php");?>
 
+	<div class="tabs">
+		<a href="show_AP_date_form.php" class="nav_linked">AP中斷維修紀錄表</a>
+		<a href="../PHPExcel/Examples/Execl_update.php">匯入</a>
+		<a href="../PHPExcel/Examples/Veiw_end_date_2.php">匯出</a>
+	</div>
 	
 	<?php
 
@@ -118,7 +123,7 @@
 		//print_r($aaaa_array);
 		if($_GET['A']=='END')
 		{
-			$sql_alert_ap_date  = "SELECT * FROM alert_ap_date_filter where  `Processing_status`='已結案'    ORDER BY alert_ap_date_filter_id desc ";
+			$sql_alert_ap_date  = "SELECT * FROM alert_ap_date_filter where  `Processing_status`='已結案'   and TIIS_date=0     ORDER BY alert_ap_date_filter_id desc ";
 			
 		}else{
 			
@@ -256,6 +261,7 @@
 <td  style="display: none;">
 
 <?php
+/*
 $key_id = $row_alert_ap_date['alert_ap_date_filter_id'];
 $sql_date_A  = "SELECT Equipment_Repair_time ,Equipment_Repair_engineer ,Equipment_Repair_remark FROM Equipment_Repair where Equipment_Repair_type='00' and Equipment_Repair_number='$key_id' " ;	$result_date_A  = execute_sql($database_name, $sql_date_A, $link);
 while ($row_date_A  = mysql_fetch_assoc($result_date_A))
@@ -270,13 +276,14 @@ echo $row_date_A['Equipment_Repair_remark'];
 echo ']';
 
 }
-
+*/
 ?>
 
 </td>
 <td  style="display: none;">
 
 <?php
+/*
 $sql_date_A  = "SELECT Equipment_Repair_time ,Equipment_Repair_engineer ,Equipment_Repair_remark FROM Equipment_Repair where Equipment_Repair_type='02' and Equipment_Repair_number='$key_id' " ;	$result_date_A  = execute_sql($database_name, $sql_date_A, $link);
 while ($row_date_A  = mysql_fetch_assoc($result_date_A))
 { 
@@ -290,12 +297,14 @@ echo $row_date_A['Equipment_Repair_remark'];
 echo ']';
 
 }
+*/
 ?>
 
 </td>
 <td  style="display: none;">
 
 <?php
+/*
 $sql_date_A  = "SELECT Equipment_Repair_time ,Equipment_Repair_engineer ,Equipment_Repair_remark FROM Equipment_Repair where Equipment_Repair_type='01' and Equipment_Repair_number='$key_id' " ;	$result_date_A  = execute_sql($database_name, $sql_date_A, $link);
 while ($row_date_A  = mysql_fetch_assoc($result_date_A))
 { 
@@ -308,12 +317,14 @@ echo $row_date_A['Equipment_Repair_remark'];
 //echo ',';
 echo ']';
 }
+*/
 ?>
 
 </td>
 <td  style="display: none;">
 
 <?php
+/*
 $sql_date_A  = "SELECT Equipment_Repair_time ,Equipment_Repair_engineer ,Equipment_Repair_remark FROM Equipment_Repair where Equipment_Repair_type='03' and Equipment_Repair_number='$key_id' " ;	$result_date_A  = execute_sql($database_name, $sql_date_A, $link);
 while ($row_date_A  = mysql_fetch_assoc($result_date_A))
 { 
@@ -326,6 +337,7 @@ echo $row_date_A['Equipment_Repair_remark'];
 //echo ',';
 echo ']';
 }
+*/
 ?>
 
 </td>	
@@ -464,6 +476,7 @@ echo ']';
 <td  style="display: none;">
 
 <?php
+/*
 $key_id = $row_alert_ap_date['alert_ap_date_filter_id'];
 $sql_date_A  = "SELECT Equipment_Repair_time ,Equipment_Repair_engineer ,Equipment_Repair_remark FROM Equipment_Repair where Equipment_Repair_type='00' and Equipment_Repair_number='$key_id' " ;	$result_date_A  = execute_sql($database_name, $sql_date_A, $link);
 while ($row_date_A  = mysql_fetch_assoc($result_date_A))
@@ -478,13 +491,14 @@ echo $row_date_A['Equipment_Repair_remark'];
 echo ']';
 
 }
-
+*/
 ?>
 
 </td>
 <td  style="display: none;">
 
 <?php
+/*
 $sql_date_A  = "SELECT Equipment_Repair_time ,Equipment_Repair_engineer ,Equipment_Repair_remark FROM Equipment_Repair where Equipment_Repair_type='02' and Equipment_Repair_number='$key_id' " ;	$result_date_A  = execute_sql($database_name, $sql_date_A, $link);
 while ($row_date_A  = mysql_fetch_assoc($result_date_A))
 { 
@@ -498,12 +512,14 @@ echo $row_date_A['Equipment_Repair_remark'];
 echo ']';
 
 }
+*/
 ?>
 
 </td>
 <td  style="display: none;">
 
 <?php
+/*
 $sql_date_A  = "SELECT Equipment_Repair_time ,Equipment_Repair_engineer ,Equipment_Repair_remark FROM Equipment_Repair where Equipment_Repair_type='01' and Equipment_Repair_number='$key_id' " ;	$result_date_A  = execute_sql($database_name, $sql_date_A, $link);
 while ($row_date_A  = mysql_fetch_assoc($result_date_A))
 { 
@@ -517,12 +533,14 @@ echo $row_date_A['Equipment_Repair_remark'];
 echo ']';
 
 }
+*/
 ?>
 
 </td>
 <td  style="display: none;">
 
 <?php
+/*
 $sql_date_A  = "SELECT Equipment_Repair_time ,Equipment_Repair_engineer ,Equipment_Repair_remark FROM Equipment_Repair where Equipment_Repair_type='03' and Equipment_Repair_number='$key_id' " ;	$result_date_A  = execute_sql($database_name, $sql_date_A, $link);
 while ($row_date_A  = mysql_fetch_assoc($result_date_A))
 { 
@@ -535,6 +553,7 @@ echo $row_date_A['Equipment_Repair_remark'];
 //echo ',';
 echo ']';
 }
+*/
 ?>
 
 </td>

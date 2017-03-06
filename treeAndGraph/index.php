@@ -1,212 +1,309 @@
+<title>cytoscape-dagre.js demo</title>
 
-<link rel="stylesheet" type="text/css" href="treeAndGraph.css">
-<?php
-include("../SQL/dbtools_ps.php"); 
-include_once("../SQL/dbtools.inc.php");
-$link = create_connection();
-//session_start();
-$sql_text ="SELECT  iflostservice,ifserviceid,ifregainedservice,outageid,serviceid,svclosteventid  FROM (SELECT * FROM outages ) AS  outages 
-INNER JOIN (SELECT * FROM ifservices) AS ifservices ON   outages.ifserviceid=ifservices.id
-where serviceid=2 and  ifregainedservice is NULL ";
-$result_outages = pg_query($conn,$sql_text );
-$total_records2 = pg_num_rows($result_outages);
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
 
-$j = 0;
-while ($row_outages = pg_fetch_row($result_outages) )
-{
-$events_id=$row_outages[5];
-//eventid	
-$sql_events =" SELECT nodeid	FROM events where eventid='$events_id'   ";
-$result_events = pg_query($conn,$sql_events );
-//echo  $sql_events ;
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/2.5.4/cytoscape.min.js"></script>
 
-while ($row_events = pg_fetch_row($result_events) )
-{
-	$node_id = $row_events[0];
-	$sql_ipinterface =" SELECT ipaddr	FROM ipinterface where 	nodeid='$node_id'";
-	$result_ipinterface = pg_query($conn,$sql_ipinterface );
-	
-	while ($row_ipinterface = pg_fetch_row($result_ipinterface)  )
-	{
-	$query_ip = $row_ipinterface[0];	
-	$array[$j] = $query_ip;
-	$j++;
-	
-	
-	}
+<!-- <script src="http://cytoscape.github.io/cytoscape.js/api/cytoscape.js-latest/cytoscape.min.js"></script> -->
+<!-- for testing with local version of cytoscape.js -->
+<!--<script src="../cytoscape.js/build/cytoscape.js"></script>-->
+
+<script src="https://cdn.rawgit.com/cpettitt/dagre/v0.7.4/dist/dagre.min.js"></script>
+<script src="https://cdn.rawgit.com/cytoscape/cytoscape.js-dagre/1.1.2/cytoscape-dagre.js"></script>
+<style>
+body {
+  font-family: helvetica;
+  font-size: 14px;
 }
 
-}
-$check_ip_death = implode(",",$array);
-
-//$check_ip_death =  array('172.21.19.100','172.21.19.101','172.21.19.102');
-///print_r($check_ip_death);
-//ok_class  class ="ok_class"
-function recursion($IP, $check_ip_death)
-{
-	if (in_array($IP, $check_ip_death))
-		{
-		   echo 'class ="alert_class"';
-		}else{
-			echo 'class ="ok_class"';
-		}
-	
-}
-$_GET['key'] = '9';
-$key =   $_GET['key'];
-
-if(is_numeric($key))
-{
-	//echo 'YES';
-	?>
-	
-<div class="tree">
-
-			<ul>		
-<?php
-//echo  $database_name ;
-$sql_FW = "SELECT * FROM ass_grouter WHERE ass_grouter_tribe ='$key'  ";
-$result_FW = execute_sql($database_name, $sql_FW, $link);
-while ($row_FW = mysql_fetch_assoc($result_FW))
-{
-   // echo $row_FW['ass_ip'];
-   ?>
-   <li>			
-			<a href="#"  <?php recursion($row_FW['ass_ip'], $check_ip_death );?> >FW <?=$row_FW['ass_ip'];?></a>
-				<ul>
-			<?php
-$sql_poe = "SELECT * FROM ass_poesw WHERE ass_poesw_tribe ='$key'  ";
-$result_poe = execute_sql($database_name, $sql_poe, $link);
-while ($row_poe = mysql_fetch_assoc($result_poe))
-{
-		//echo $row_poe['ass_poesw_ip'];	
-		$ass_poesw_ip = $row_poe['ass_poesw_ip'];
-		$IP_ket = explode(".",$ass_poesw_ip)
-		?>
-		<li>
-		<a href="#" <?php recursion($row_poe['ass_poesw_ip'], $check_ip_death );?> >POE <?=$row_poe['ass_poesw_ip'] ;?></a>
-		<ul>
-		<?php
-		$ip_Group = substr($IP_ket[3],0,2);
-		$sql_AP = "SELECT * FROM ass_ap WHERE ass_ap_tribe ='$key'  and ass_ap_ip like '%$ip_Group%' ";
-$result_AP = execute_sql($database_name, $sql_AP, $link);
-while ($row_AP = mysql_fetch_assoc($result_AP))
-{
-	?>
-	<li>
-		<a href="#" <?php recursion($row_AP['ass_ap_ip'], $check_ip_death );?> >AP <?=$row_AP['ass_ap_ip'] ;?> </a>
-	</li>
-					
-	<?php
-	
-}	
-		
-		?>
-		
-					
-					
-			</ul>
-		</li>
-		<?php
-	
-}
-	?>
-			
-				
-							
-					</ul>
-			</li>
-   
-   
-   <?php
-   
+#cy {
+  border: solid;
+  border-width: 1;
+  height: 100%;
 }
 
-?>		
-			
-			
-			
-			<li>
-			<?php
-$sql_PDU = "SELECT * FROM ass_pdu WHERE ass_pdu_tribe ='$key'  ";
-$result_PDU = execute_sql($database_name, $sql_PDU, $link);
-while ($row_PDU = mysql_fetch_assoc($result_PDU))
-{
-	?>
-	<a href="#" <?php recursion($row_PDU['ass_pdu_ip'], $check_ip_death );?> >PDU<?=$row_PDU['ass_pdu_ip']; ?></a>
-	<?php
+h1 {
+  opacity: 0.5;
+  font-size: 1em;
 }
-			
-			?>
-			
-			</li>
-			<li>
-			<?php
-$sql_4G = "SELECT * FROM ass_4Ggrouter WHERE ass_4Ggrouter_tribe ='$key'  ";
-$result_4G = execute_sql($database_name, $sql_4G, $link);
-while ($row_4G = mysql_fetch_assoc($result_4G))
-{
-	
-	?>
-	<a href="#" <?php recursion($row_4G['ass_4Gip'], $check_ip_death );?> >4G<?=$row_4G['ass_4Gip']; ?></a>
-	<?php
-}
-			
-			
-			?>
-			
-			
-			</li>
-			
-			
-			</ul>
-</div>
+</style>
+<script>
+/* cytoscape js selector demo
+moved to http://codepen.io/yeoupooh/pen/BjWvRa
+ */
+$(function() {
 
-	
-	<?php
-	
-}else{
-	echo 'MO';
-}
+  var win = $(window);
 
-?>
-<!-------------------
-<div class="tree">
-	<ul>
-		<li>
-			<a href="#">Parent</a>
-			<ul>
-				<li>
-					<a href="#">Child</a>
-					<ul>
-						<li>
-							<a href="#">Grand Child</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="#">Child</a>
-					<ul>
-						<li><a href="#">Grand Child</a></li>
-						<li>
-							<a href="#">Grand Child</a>
-							<ul>
-								<li>
-									<a href="#">Great Grand Child</a>
-								</li>
-								<li>
-									<a href="#">Great Grand Child</a>
-								</li>
-								<li>
-									<a href="#">Great Grand Child</a>
-								</li>
-							</ul>
-						</li>
-						<li><a href="#"   class="alert_class" >Grand Child</a></li>
-					</ul>
-				</li>
-			</ul>
-		</li>
-	</ul>
-</div>
---->
+  win.resize(function() {
+    resize();
+  });
+
+  function resize() {
+    console.log(win.height(), win.innerHeight());
+    $("#cy-container").height(win.innerHeight() - 130);
+    cy.resize();
+  }
+
+  setTimeout(resize, 0);
+
+  var nodeOptions = {
+    normal: {
+      bgColor: 'grey'
+    },
+    selected: {
+      bgColor: 'yellow'
+    }
+  };
+
+  var edgeOptions = {
+    selected: {
+      lineColor: 'yellow'
+    }
+  };
+
+  var cy = window.cy = cytoscape({
+    container: document.getElementById('cy'),
+
+    minZoom: 0.1,
+    maxZoom: 100,
+    wheelSensitivity: 0.1,
+
+    // panningEnabled: false,
+    //boxSelectionEnabled: true,
+    //autounselectify: false,
+    //selectionType: 'additive',
+    //autoungrabify: true,
+
+    layout: {
+      name: 'dagre'
+    },
+
+    style: [{
+        selector: 'node',
+        style: {
+          'width': 200,
+          'height': 200,
+          'content': 'data(text)',
+          //          'text-opacity': 0.5,
+          'text-valign': 'center',
+          'color': 'white',
+          'background-color': nodeOptions.normal.bgColor,
+          'text-outline-width': 2,
+          'text-outline-color': '#222'
+        }
+      },
+
+      {
+        selector: 'edge',
+        style: {
+          'width': 10,
+          'target-arrow-shape': 'triangle',
+          'line-color': 'data(color)',
+          'target-arrow-color': '#9dbaea'
+        }
+      },
+
+      {
+        selector: ':selected',
+        style: {
+          'background-color': 'yellow',
+          'line-color': 'yellow',
+          'target-arrow-color': 'black',
+          'source-arrow-color': 'black',
+        }
+      },
+
+      {
+        selector: 'edge:selected',
+        style: {
+          'width': 20
+        }
+      }
+    ],
+
+    elements: {
+      //selectable: false, 
+      grabbable: false,
+      nodes: [
+			  {
+				data: {
+				  id: 'FW',
+				  text: 'FW'
+				}
+			  }, {
+				data: {
+				  id: '4GR',
+				  text: '4GR'
+				}
+			  }, {
+				data: {
+				  id: 'PDU',
+				  text: 'PDU'
+				}
+			  }, {
+				data: {
+				  id: 'POE',
+				  text: 'POE'
+				}
+			  }
+	  ], // nodes
+      edges: [
+				{
+				data: {
+				color: '#f00',
+				source: 'FW',
+				target: '4GR'
+				}
+				},{
+				data: {
+				color: '#f00',
+				source: 'FW',
+				target: 'PDU'
+				}
+				}, 
+				{
+					data: 
+					{
+					color: '#f00',
+					source: 'FW',
+					target: 'POE'
+					}
+				}
+		] // edges
+    } // elements
+  }); // cytoscape
+
+  var selectedNodeHandler = function(evt) {
+    //console.log(evt.data); // 'bar'
+
+    $("#edge-operation").hide();
+    $("#node-operation").show();
+
+    var target = evt.cyTarget;
+    console.log('select ' + target.id(), target);
+    $("#selected").text("Selected:" + target.id());
+  }
+
+  var unselectedHandler = function(evt) {
+    $("#edge-operation").hide();
+    $("#node-operation").hide();
+  }
+
+  var selectedEdgeHandler = function(evt) {
+    $("#edge-operation").show();
+    $("#node-operation").hide();
+
+    var target = evt.cyTarget;
+    console.log('tapped ' + target.id(), target);
+    $("#selected").text("Selected:" + target.id());
+  }
+
+  cy.on('select', 'node', selectedNodeHandler);
+  cy.on('unselect', 'node', unselectedHandler);
+  cy.on('select', 'edge', selectedEdgeHandler);
+  cy.on('unselect', 'edge', unselectedHandler);
+
+  // NOTE: Use selector(':selected') instead of event handler
+  function addSelectHandler() {
+    cy.on('select', 'node', function(evt) {
+      console.log('select node:', evt.cyTarget);
+      evt.cyTarget.animate({
+        style: {
+          'background-color': nodeOptions.selected.bgColor
+        }
+      }, {
+        duration: 100
+      });
+    });
+    cy.on('unselect', 'node', function(evt) {
+      console.log('unselect node:', evt.cyTarget);
+      evt.cyTarget.stop();
+      evt.cyTarget.style({
+        'background-color': nodeOptions.normal.bgColor
+      });
+    });
+    cy.on('select', 'edge', function(evt) {
+      console.log('select edge:', evt.cyTarget);
+      evt.cyTarget.animate({
+        style: {
+          'line-color': edgeOptions.selected.lineColor
+        }
+      }, {
+        duration: 100
+      });
+    });
+    cy.on('unselect', 'edge', function(evt) {
+      console.log('unselect edge:', evt.cyTarget);
+      evt.cyTarget.stop();
+      evt.cyTarget.style({
+        'line-color': evt.cyTarget.data('color')
+      });
+    });
+  }
+
+  $("#fit").click(function() {
+    console.log('cy=', cy);
+    cy.fit();
+  });
+
+  $("#layout").click(function() {
+    console.log('cy=', cy);
+    cy.layout({
+      name: 'dagre'
+    });
+  });
+
+}); // ready
+</script>
+<body>
+
+
+  <h1>cytoscape-dagre demo</h1>
+
+  <!-- container-fluid : start -->
+  <div class="container-fluid">
+    <row>
+
+      <div class="col-md-8 col-sm-8 col-lg-8">
+
+        <!-- graph : start -->
+        <div class="panel panel-primary">
+          <div class="panel-heading">Graph</div>
+          <div class="panel-body">
+            <div id="cy-container">
+              <div id="cy"></div>
+            </div>
+
+          </div>
+        </div>
+        <!-- graph : end -->
+
+      </div>
+
+      <div class="col-md-4 col-sm-4 col-lg-8">
+        <!-- editr : start -->
+        <div class="editor">
+
+          <div id="tools" class="panel panel-primary">
+            <div class="panel-heading">Tools</div>
+            <div class="panel-body">
+              <button id="fit" class="btn btn-success">Fit</button>
+              <button id="layout" class="btn btn-success">Layout</button>
+            </div>
+          </div>
+
+     
+
+        </div>
+        <!-- editor : end -->
+
+      </div>
+
+    </row>
+  </div>
+  <!-- container-fluid : end -->
+
+</body>

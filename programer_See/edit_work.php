@@ -30,6 +30,22 @@ return false;
 });
 </script>
 
+	<!---------------------->
+	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/themes/hot-sneaks/jquery-ui.css" rel="stylesheet">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="../report_bnf_new_2/jquery/jquery.ui.datepicker-zh-TW.js"></script>
+	<!--datepicker 小工具, 再加上時間選擇器--->
+	<link href="timepicker_include/jquery-ui-timepicker-addon.css" rel="stylesheet"></link>
+	<script src="timepicker_include/jquery-ui-timepicker-addon.js" type="text/javascript"></script>
+	<script src="timepicker_include/jquery-ui-sliderAccess.js" type="text/javascript"></script>
+	<script>
+	$(function() 
+	{
+	//Draggable + JQ  : 時間選器拖曳
+	$( "#ui-datepicker-div" ).draggable();
+	});
+	</script>
+
 <?php
 include("../SQL/dbtools.inc.php");
 include("../function_php/function_class.php");
@@ -209,7 +225,7 @@ $num_rows_check = mysql_num_rows($result_check);
 //echo '目前登入者 : '.$name ;
 
 
-
+// 11= 已發信 , 12= 首回覆
 //00 = 派工 01=處理中 02==到達 03=已結案
 	$sql_1 =  "SELECT * FROM Equipment_Repair WHERE Equipment_Repair_number='$key'  order by Equipment_Repair_id desc limit 1  ";
 	$result_1  = execute_sql($database_name, $sql_1, $link);
@@ -265,7 +281,7 @@ if($Processing_status=='首回覆'){
 					<a class="inline_C button" href="#inline_content_C"  title="處理">處理</a>
 					<?php
 					//echo $num_rows_check ;
-					if($num_rows_check > 1)
+					if($num_rows_check > 3)
 					{
 					?>
 					<a class="inline_D button" href="#inline_content_D"  title="結案">結案</a>
@@ -282,7 +298,7 @@ if($Processing_status=='首回覆'){
 					<a class="button_off" >到達</a>
 					<a class="button_off" >處理</a>
 					<?php
-					if($num_rows_check > 1)
+					if($num_rows_check > 3)
 					{
 					?>
 					<a class="button_off" >結案</a>
@@ -311,12 +327,13 @@ if($Processing_status=='首回覆'){
 	<form action="edit_work_proc.php?mode=mail" method="post">
 	信件發送時間：<?=$alert_written_time;?>
 	<br>
-	回覆時間：  <input  type="text"  name="time"  value="<?=$alert_written_time  ;?>"/> PS 格式為 0000-00-00 00:00:00  <br>					  
+	回覆時間：  <input  type="text"  name="time" id="start_date1" value="<?=$alert_written_time  ;?>"/> PS 格式為 0000-00-00 00:00:00  <br>					  
 	備註 :<textarea style="width:98%;" rows="5" name="item_wrong_text" placeholder="備註"><?=$note_A ;?></textarea>
 	<input type="hidden" name="key" value="<?=$alert_ap_date_filter_id ;?>">
 	<input type="hidden" name="item_wrong" value="首回覆">
 	<input type="hidden" name="title" value="<?=$alert_ap_date_city .$alert_ap_date_township .$alert_ap_date_tribe .$alert_ap_date_ap_name .'服務中斷時間: ' .$alert_written_time  ;?>">
 	<input type="hidden" name="Period_AP" value="<?=$Period_AP ;?>">
+	<input type="hidden" name="alert_written_time" value="<?=$alert_written_time ;?>">
 	<input type="submit" value="確定">
 	</form>		
 	</div>	
@@ -328,7 +345,7 @@ if($Processing_status=='首回覆'){
 	<form action="edit_work_proc.php?mode=0" method="post">
 	回覆時間：<?=$Processing_time_A ;?>
 	<br>
-	派工時間：<input  type="text"  name="time"  value="<?=$Processing_time_A ;?>"/> PS 格式為 0000-00-00 00:00:00  <br>
+	派工時間：<input  type="text"  name="time"  id="start_date2" value="<?=$Processing_time_A ;?>"/> PS 格式為 0000-00-00 00:00:00  <br>
 	指派工程師：
 		<select name="accendant">
 		<?php
@@ -346,6 +363,17 @@ if($Processing_status=='首回覆'){
 	備註：<textarea style="width:98%;" rows="5" name="item_wrong_text" placeholder="備註"></textarea>
 	<input type="hidden" name="key" value="<?=$alert_ap_date_filter_id ;?>">
 	<input type="hidden" name="item_wrong" value="已派工">
+	<input type="hidden" name="alert_written_time" value="<?=$alert_written_time ;?>">
+	<?php 
+	/// 發信時間
+	?>
+	<input type="hidden" name="Processing_time_A" value="<?=$Processing_time_A ;?>">
+	<input type="hidden" name="note_A" value="<?=$note_A ;?>">
+	<input type="hidden" name="Processor_A" value="<?=$Processor_A ;?>">
+	<?php 
+	/// 首回復資訊
+	?>
+	
 	<input type="submit" value="確定">
 	</form>		
 	</div>	
@@ -356,7 +384,7 @@ if($Processing_status=='首回覆'){
 	<div id='inline_content_B' style='padding:10px; background:#fff;'>
 	已到達
 	<form action="edit_work_proc.php?mode=2" method="post">
-	處理時間<input  type="text"  name="time" value="<?=$Closing_time_reference;?>" /> PS 格式為 0000-00-00 00:00:00  <br>
+	處理時間<input  type="text"  name="time"  id="start_date3" value="<?=$Closing_time_reference;?>" /> PS 格式為 0000-00-00 00:00:00  <br>
 	處理工程師
 		<select name="accendant">
 		<?php
@@ -381,7 +409,7 @@ if($Processing_status=='首回覆'){
 	<div id='inline_content_C' style='padding:10px; background:#fff;'>
 	處理
 	<form action="edit_work_proc.php?mode=1" method="post">
-	處理時間<input  type="text"  name="time" value="<?=$Closing_time_reference ;?>" /> PS 格式為 0000-00-00 00:00:00  <br>
+	處理時間<input  type="text"  name="time"  id="start_date4" value="<?=$Closing_time_reference ;?>" /> PS 格式為 0000-00-00 00:00:00  <br>
 	處理工程師
 		<select name="accendant">
 		<?php
@@ -406,7 +434,7 @@ if($Processing_status=='首回覆'){
 	<div id='inline_content_D' style='padding:10px; background:#fff;'>
 	結案
 	<form action="edit_work_proc.php?mode=3" method="post">
-	結案時間  <input  type="text"  name="time" value="<?=$Closing_time_reference ;?>" /> PS 格式為 0000-00-00 00:00:00<br>												
+	結案時間  <input  type="text"  name="time"  id="start_date5" value="<?=$Closing_time_reference ;?>" /> PS 格式為 0000-00-00 00:00:00<br>												
 	<br>
 	結案工程師
 		<select name="accendant">
@@ -434,7 +462,8 @@ if($Processing_status=='首回覆'){
 
 
 <!--------------------------------------------------------->
-
+<?php
+/*
 <div>
 
 <div class="sendmail_time">發信時間：<?=$alert_written_time ;?></div>
@@ -466,8 +495,14 @@ function edit_maill() {
 </script>
 </div>
 
+*/
+?>
+
+
 <div class="works_tab">
 	<ul class="work_tabs">
+		<li class="active"><a href="#tabA">發信資訊</a></li>
+		<li><a href="#tabB">首回覆資訊</a></li>
 		<li><a href="#tab1">派工資訊</a></li>
 		<li><a href="#tab2">到場資訊</a></li>
 		<li><a href="#tab3">處理資訊</a></li>
@@ -476,12 +511,91 @@ function edit_maill() {
 
 	<div class="tab_container">
 
-		<div id="tab1" class="tab_content" style="display: block;">
+		<!-----------發信資訊----------------->
+		<div id="tabA" class="tab_content" style="display: block;">
+		<table id="show_date" width="100%">
+			<tr>
+				
+				<th width="200">時間</th>
+				<th width="120">資訊來源</th>
+			</tr>
+			<?php
+				$sql_0  =  "SELECT * FROM Equipment_Repair WHERE Equipment_Repair_number='$key' AND Equipment_Repair_type='11' ";
+				$result_0  = execute_sql($database_name, $sql_0, $link);
+				$num_rows = mysql_num_rows($result_0);
+				if($num_rows > 0)
+				{
+				while ($row_0  = mysql_fetch_assoc($result_0))
+				{
+					?>
+					<tr>
+					
+					<td><?=$row_0['Equipment_Repair_time'];?></td>
+					<td><?=$row_0['Equipment_Repair_remark'];?></td>
+					</tr>
+					<?php
+				}
+				}else{
+					?>
+					<tr>
+					<td><?=$alert_written_time ;?></td>
+					<td>網管偵測</td>
+					</tr>
+					<?php
+				}
+
+			?>
+		</table>
+		</div>
+		
+		<!-----------首回覆資訊---------------->
+		<div id="tabB" class="tab_content" style="display: none;">
+		<table id="show_date" width="100%">
+			<tr>
+				<th width="120">首回覆人員</th>
+				<th width="200">時間</th>
+				<th>備註</th>
+			    <th>處置人員</th>
+			</tr>
+			<?php
+					$sql_0  =  "SELECT * FROM Equipment_Repair WHERE Equipment_Repair_number='$key' AND Equipment_Repair_type='12' ";
+					$result_0  = execute_sql($database_name, $sql_0, $link);
+$num_rows = mysql_num_rows($result_0);
+				if($num_rows > 0)
+				{					
+					while ($row_0  = mysql_fetch_array($result_0))
+					{
+echo '<tr>';
+				echo '<td>'.$row_0['Equipment_Repair_engineer'].'</td>';
+				echo '<td>'.$row_0['Equipment_Repair_time'].'</td>';
+				echo '<td>'.$row_0['Equipment_Repair_remark'].'</td>';
+				echo '<td>'.$row_0['Equipment_Repair_operator'].'</td>';
+echo '</tr>';				
+					}
+					
+				}else{
+echo '<tr>';
+				echo '<td>'.$Processor_A.'</td>';
+				echo '<td>'.$Processing_time_A.'</td>';
+				echo '<td>'.$note_A .'</td>';
+				echo '<td>'.$Processor_A.'</td>';
+echo '</tr>';
+				}
+			?>
+			
+			
+	
+		</table>
+		</div>
+
+		<!-----------派工資訊---------------->
+		<div id="tab1" class="tab_content" style="display: none;">
 		<table id="show_date" width="100%">
 			<tr>
 				<th width="120">指派工程師</th>
 				<th width="200">時間</th>
 				<th>備註</th>
+				<th>處置人員</th>
 				<th width="120">編輯</th>
 			</tr>
 				<?php
@@ -496,6 +610,7 @@ function edit_maill() {
 				echo '<td>'.$row_0['Equipment_Repair_engineer'].'</td>';
 				echo '<td>'.$row_0['Equipment_Repair_time'].'</td>';
 				echo '<td>'.$row_0['Equipment_Repair_remark'].'</td>';
+				echo '<td>'.$row_0['Equipment_Repair_operator'].'</td>';
 				?>
 				<td>
 				<?php
@@ -521,20 +636,22 @@ function edit_maill() {
 				}	
 				}else{
 					echo '<tr>';
-					echo '<td colspan="4">目前沒有資料</td>';
+					echo '<td colspan="5">目前沒有資料</td>';
 						echo '</tr>';
 				}
 				
 				?>
 		</table>
 		</div>
-		
+
+		<!-----------到場資訊---------------->
 		<div id="tab2" class="tab_content" style="display: none;">
 		<table id="show_date" width="100%">
 			<tr>
 				<th width="120">到場工程師</th>
 				<th width="200">時間</th>
 				<th>備註</th>
+				<th>處置人員</th>
 				<th width="120">編輯</th>
 			</tr>
 				<?php
@@ -549,6 +666,7 @@ function edit_maill() {
 				echo '<td>'.$row_0['Equipment_Repair_engineer'].'</td>';
 				echo '<td>'.$row_0['Equipment_Repair_time'].'</td>';
 				echo '<td>'.$row_0['Equipment_Repair_remark'].'</td>';
+				echo '<td>'.$row_0['Equipment_Repair_operator'].'</td>';
 				?>
 				<td>
 				<?php
@@ -573,20 +691,21 @@ function edit_maill() {
 				}	
 				}else{
 					echo '<tr>';
-					echo '<td colspan="4">目前沒有資料</td>';
+					echo '<td colspan="5">目前沒有資料</td>';
 						echo '</tr>';
 				}
 				?>
 		</table>
 		</div>
 		
-		
+		<!-----------處理資訊---------------->
 		<div id="tab3" class="tab_content" style="display: none;">
 		<table id="show_date" width="100%">
 		<tr>
 			<th width="120">處理工程師</th>
 			<th width="200">時間</th>
 			<th>處理內容</th>
+			<th>處置人員</th>
 			<th width="120">編輯</th>
 		</tr>
 
@@ -602,6 +721,7 @@ function edit_maill() {
 			echo '<td>'.$row_0['Equipment_Repair_engineer'].'</td>';
 			echo '<td>'.$row_0['Equipment_Repair_time'].'</td>';
 			echo '<td>'.$row_0['Equipment_Repair_remark'].'</td>';
+			echo '<td>'.$row_0['Equipment_Repair_operator'].'</td>';
 			?>
 			<td>
 			<?php
@@ -629,19 +749,21 @@ function edit_maill() {
 			}	
 			}else{
 				echo '<tr>';
-				echo '<td colspan="4">目前沒有資料</td>';
+				echo '<td colspan="5">目前沒有資料</td>';
 					echo '</tr>';
 			}
 				?>
 		</table>
 		</div>
-		
+
+		<!-----------結案資訊---------------->
 		<div id="tab4" class="tab_content" style="display: none;">
 		<table id="show_date" width="100%">
 		<tr>
 			<th width="120">結案工程師</th>
 			<th width="200">時間</th>
 			<th>備註</th>
+			<th>處置人員</th>
 			<th width="120">編輯</th>
 		</tr>
 			<?php
@@ -656,6 +778,7 @@ function edit_maill() {
 						echo '<td>'.$row_0['Equipment_Repair_engineer'].'</td>';
 						echo '<td>'.$row_0['Equipment_Repair_time'].'</td>';
 						echo '<td>'.$row_0['Equipment_Repair_remark'].'</td>';
+						echo '<td>'.$row_0['Equipment_Repair_operator'].'</td>';
 						?>				
 						<td>
 							<?php
@@ -681,7 +804,7 @@ function edit_maill() {
 		}	
 		}else{
 		echo '<tr>';
-		echo '<td colspan="4">目前沒有資料</td>';
+		echo '<td colspan="5">目前沒有資料</td>';
 		echo '</tr>';
 		}
 		?>
@@ -731,4 +854,43 @@ function myFunction() {
 		});
 	});
 </script>
+
+							<script language="JavaScript">
+								/*							
+								$('#start_date').datepicker({
+								dateFormat: 'yy-mm-dd'
+								});
+								*/
+								var opt={
+								//以下為日期選擇器部分
+								dayNames:["星期日","星期一","星期二","星期三","星期四","星期五","星期六"],
+								dayNamesMin:["日","一","二","三","四","五","六"],
+								monthNames:["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"],
+								monthNamesShort:["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"],
+								prevText:"上月",
+								nextText:"次月",
+								weekHeader:"週",
+								showMonthAfterYear:true,
+								dateFormat:"yy-mm-dd",
+								//以下為時間選擇器部分
+								timeOnlyTitle:"選擇時分秒",
+								timeText:"時間",
+								hourText:"時",
+								minuteText:"分",
+								secondText:"秒",
+								millisecText:"毫秒",
+								timezoneText:"時區",
+								currentText:"現在時間",
+								closeText:"確定",
+								amNames:["上午","AM","A"],
+								pmNames:["下午","PM","P"],
+								timeFormat:"HH:mm:ss"
+								//timeFormat:"HH:mm"
+								};
+								$("#start_date1").datetimepicker(opt);
+								$("#start_date2").datetimepicker(opt);
+								$("#start_date3").datetimepicker(opt);
+								$("#start_date4").datetimepicker(opt);
+								$("#start_date5").datetimepicker(opt);
+							</script>
 </html>

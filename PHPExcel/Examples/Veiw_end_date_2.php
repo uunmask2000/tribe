@@ -59,127 +59,161 @@ $link = create_connection();
 // 11= 已發信 , 12= 首回覆
 //00 = 派工 01=處理中 02==到達 03=已結案
 $i=2;
-//$sql  =  "SELECT * FROM alert_ap_date_filter where Processing_status='已結案'  ";
-//$sql  =  "SELECT * FROM alert_ap_date_filter   ";
-$sql  =  "SELECT * FROM alert_ap_date_filter where Processing_status='已結案' and alert_written_time like '%$bdaymonth%' ";
+
+//$sql  =  "SELECT * FROM alert_ap_date_filter where Processing_status='已結案' and alert_written_time like '%$bdaymonth%' ";
+$sql  =  "SELECT alert_ap_date_filter_id	,
+				Period_AP	,
+				alert_ap_date_tribe	,
+				alert_ap_date_ap_name,
+				alert_ap_date_ap_ip	,
+				alert_written_time,
+				alert_ap_date_time_ok,
+				calling_bar_id ,
+				Equipment_Repair_type  ,
+				Equipment_Repair_time ,
+				Equipment_Repair_engineer ,
+				Equipment_Repair_operator ,
+				Equipment_Repair_remark,
+				TIIS_Called_repair_category,
+				TIIS_Maintenance_arrival_time,
+				TIIS_Processing_end_time,
+				TIIS_CAG_recommendations,
+				TIIS_process_result,
+				TIIS_current_state,
+				TIIS_Contact_person,
+				TIIS_Day_call,
+				TIIS_Reaction_problem,
+				TIIS_Maintenance_staff,
+				TIIS_Notes
+			FROM alert_ap_date_filter AS A
+			INNER JOIN Equipment_Repair AS B
+			ON A.alert_ap_date_filter_id=B.Equipment_Repair_number
+			where  A.Processing_status ='已結案' and A.alert_written_time like '%$bdaymonth%' 
+			ORDER BY  B.Equipment_Repair_number asc
+			";
+
+
 $result  = execute_sql($database_name, $sql, $link);
 while ($row  = mysql_fetch_assoc($result))
 {
-   $pk_key =  $row['alert_ap_date_filter_id']; 
-   
-$Arrray[$i][1]=$row['alert_ap_date_filter_id'];
-$Arrray[$i][2]=$row['Period_AP'];
-$Arrray[$i][3]=$row['alert_ap_date_tribe'];
-$Arrray[$i][4]=$row['alert_ap_date_ap_name'];
-$Arrray[$i][5]=$row['alert_ap_date_ap_ip'];
-$Arrray[$i][6]=$row['alert_written_time'];
-$Arrray[$i][7]=$row['alert_ap_date_time_ok'];
-$Arrray[$i][8]=$row['calling_bar_id'];
-$Arrray[$i][9]=$row['Processing_status'];
-///東宜
-$Arrray[$i][10]=$row['TIIS_Called_repair_category'];
-$Arrray[$i][11]=$row['TIIS_Maintenance_arrival_time'];
-$Arrray[$i][12]=$row['TIIS_Processing_end_time'];
-$Arrray[$i][13]=$row['TIIS_CAG_recommendations'];
-$Arrray[$i][14]=$row['TIIS_process_result'];
-$Arrray[$i][15]=$row['TIIS_current_state'];
-$Arrray[$i][16]=$row['TIIS_Contact_person'];
-$Arrray[$i][17]=$row['TIIS_Day_call'];
-$Arrray[$i][18]=$row['TIIS_Reaction_problem'];
-$Arrray[$i][19]=$row['TIIS_Maintenance_staff'];
-$Arrray[$i][20]=$row['TIIS_Notes'];
-
-/*
-$Arrray[$i][21]=$row['alert_ap_date_filter_id'];
-$Arrray[$i][22]=$row['alert_ap_date_filter_id'];
-$Arrray[$i][23]=$row['alert_ap_date_filter_id'];
-$Arrray[$i][24]=$row['alert_ap_date_filter_id'];
-$Arrray[$i][25]=$row['alert_ap_date_filter_id'];
-$Arrray[$i][26]=$row['alert_ap_date_filter_id'];
-*/
-		$sql_0  =  "SELECT * FROM Equipment_Repair where Equipment_Repair_number='$pk_key' and Equipment_Repair_type='11' ";
-		$result_0  = execute_sql($database_name, $sql_0, $link);
-		$types = array();
-		while(($row_0 =  mysql_fetch_assoc($result_0))) {
-		$Equipment_Repair_time = $row_0['Equipment_Repair_time']; 
-		$Equipment_Repair_engineer = $row_0['Equipment_Repair_engineer']; 
-		$Equipment_Repair_operator = $row_0['Equipment_Repair_operator']; 
-		$Equipment_Repair_remark = $row_0['Equipment_Repair_remark']; 
-		$types[] = '['.$Equipment_Repair_time.','.$Equipment_Repair_engineer.','.$Equipment_Repair_remark.']';
+		$Arrray[$i][1]=$row['alert_ap_date_filter_id'];
+		$Arrray[$i][2]=$row['Period_AP'];
+		$Arrray[$i][3]=$row['alert_ap_date_tribe'];
+		$Arrray[$i][4]=$row['alert_ap_date_ap_name'];
+		$Arrray[$i][5]=$row['alert_ap_date_ap_ip'];
+		$Arrray[$i][6]=$row['alert_written_time'];
+		$Arrray[$i][7]=$row['alert_ap_date_time_ok'];
+		$Arrray[$i][8]=$row['calling_bar_id'];
+		//$Arrray[$i][9]=$row['Processing_status'];
+		//處理結果
+		$x = $row['Equipment_Repair_type'];
+		switch ($x)
+		{
+		case '11':
+		$Arrray[$i][9]='已發信';
+		 // echo "Number 1";
+		  break;
+		case '12':
+		 // echo "Number 2";
+		$Arrray[$i][9]='首回覆';
+		  break;
+			case '00':
+			// echo "Number 3";
+			$Arrray[$i][9]='已派工';
+			break;
+			case '01':
+			// echo "Number 3";
+			$Arrray[$i][9]='已到達';
+			break;
+			case '02':
+			// echo "Number 3";
+			$Arrray[$i][9]='處理中';
+			break;
+			case '03':
+			// echo "Number 3";
+			$Arrray[$i][9]='已結案';
+			break;
+		default:
+			$Arrray[$i][9]='沒有資料';
+		 // echo "沒有資料";
 		}
-		$Array_text = implode(",", $types);
-		$Arrray[$i][21]=  $Array_text ;
-		//
-		$sql_0  =  "SELECT * FROM Equipment_Repair where Equipment_Repair_number='$pk_key' and Equipment_Repair_type='12' ";
-		$result_0  = execute_sql($database_name, $sql_0, $link);
-		$types = array();
-		while(($row_0 =  mysql_fetch_assoc($result_0))) {
-		$Equipment_Repair_time = $row_0['Equipment_Repair_time']; 
-		$Equipment_Repair_engineer = $row_0['Equipment_Repair_engineer']; 
-		$Equipment_Repair_operator = $row_0['Equipment_Repair_operator']; 
-		$Equipment_Repair_remark = $row_0['Equipment_Repair_remark']; 
-		$types[] = '['.$Equipment_Repair_time.','.$Equipment_Repair_engineer.','.$Equipment_Repair_remark.']';
+		
+		
+		
+		///東宜
+		$Arrray[$i][10]=$row['TIIS_Called_repair_category'];
+		if(empty($row['TIIS_Processing_end_time']))
+		{
+			$Arrray[$i][11]=$row['Equipment_Repair_time'];
+		}else{
+			$Arrray[$i][11]=$row['TIIS_Maintenance_arrival_time'];
 		}
-		$Array_text = implode(",", $types);
-		$Arrray[$i][22]=  $Array_text ;
-		//
-		$sql_0  =  "SELECT * FROM Equipment_Repair where Equipment_Repair_number='$pk_key' and Equipment_Repair_type='00' ";
-		$result_0  = execute_sql($database_name, $sql_0, $link);
-		$types = array();
-		while(($row_0 =  mysql_fetch_assoc($result_0))) {
-		$Equipment_Repair_time = $row_0['Equipment_Repair_time']; 
-		$Equipment_Repair_engineer = $row_0['Equipment_Repair_engineer']; 
-		$Equipment_Repair_operator = $row_0['Equipment_Repair_operator']; 
-		$Equipment_Repair_remark = $row_0['Equipment_Repair_remark']; 
-		$types[] = '['.$Equipment_Repair_time.','.$Equipment_Repair_engineer.','.$Equipment_Repair_remark.']';
+		
+		$Arrray[$i][12]=$row['TIIS_Processing_end_time'];
+		$Arrray[$i][13]=$row['TIIS_CAG_recommendations'];
+		
+		if(empty($row['TIIS_process_result']))
+		{
+			$Arrray[$i][14]=$row['Equipment_Repair_remark'];
+		}else{
+			$Arrray[$i][14]=$row['TIIS_process_result'];
 		}
-		$Array_text = implode(",", $types);
-		$Arrray[$i][23]=  $Array_text ;
-		//
-		$sql_0  =  "SELECT * FROM Equipment_Repair where Equipment_Repair_number='$pk_key' and Equipment_Repair_type='01' ";
-		$result_0  = execute_sql($database_name, $sql_0, $link);
-		$types = array();
-		while(($row_0 =  mysql_fetch_assoc($result_0))) {
-		$Equipment_Repair_time = $row_0['Equipment_Repair_time']; 
-		$Equipment_Repair_engineer = $row_0['Equipment_Repair_engineer']; 
-		$Equipment_Repair_operator = $row_0['Equipment_Repair_operator']; 
-		$Equipment_Repair_remark = $row_0['Equipment_Repair_remark']; 
-		$types[] = '['.$Equipment_Repair_time.','.$Equipment_Repair_engineer.','.$Equipment_Repair_remark.']';
+		
+		$Arrray[$i][15]=$row['TIIS_current_state'];
+		$Arrray[$i][16]=$row['TIIS_Contact_person'];
+		$Arrray[$i][17]=$row['TIIS_Day_call'];
+		$Arrray[$i][18]=$row['TIIS_Reaction_problem'];
+		
+		if(empty($row['TIIS_Maintenance_staff']))
+		{
+			$Arrray[$i][19]=$row['Equipment_Repair_engineer'];
+		}else{
+			$Arrray[$i][19]=$row['TIIS_Maintenance_staff'];
 		}
-		$Array_text = implode(",", $types);
-		$Arrray[$i][24]=  $Array_text ;
-		//
-		$sql_0  =  "SELECT * FROM Equipment_Repair where Equipment_Repair_number='$pk_key' and Equipment_Repair_type='02' ";
-		$result_0  = execute_sql($database_name, $sql_0, $link);
-		$types = array();
-		while(($row_0 =  mysql_fetch_assoc($result_0))) {
-		$Equipment_Repair_time = $row_0['Equipment_Repair_time']; 
-		$Equipment_Repair_engineer = $row_0['Equipment_Repair_engineer']; 
-		$Equipment_Repair_operator = $row_0['Equipment_Repair_operator']; 
-		$Equipment_Repair_remark = $row_0['Equipment_Repair_remark']; 
-		$types[] = '['.$Equipment_Repair_time.','.$Equipment_Repair_engineer.','.$Equipment_Repair_remark.']';
-		}
-		$Array_text = implode(",", $types);
-		$Arrray[$i][25]=  $Array_text ;
-		//
-		$sql_0  =  "SELECT * FROM Equipment_Repair where Equipment_Repair_number='$pk_key' and Equipment_Repair_type='03' ";
-		$result_0  = execute_sql($database_name, $sql_0, $link);
-		$types = array();
-		while(($row_0 =  mysql_fetch_assoc($result_0))) {
-		$Equipment_Repair_time = $row_0['Equipment_Repair_time']; 
-		$Equipment_Repair_engineer = $row_0['Equipment_Repair_engineer']; 
-		$Equipment_Repair_operator = $row_0['Equipment_Repair_operator']; 
-		$Equipment_Repair_remark = $row_0['Equipment_Repair_remark']; 
-		$types[] = '['.$Equipment_Repair_time.','.$Equipment_Repair_engineer.','.$Equipment_Repair_remark.']';
-		}
-		$Array_text = implode(",", $types);
-		$Arrray[$i][26]=  $Array_text ;
-
+		
+		
+		
+		$Arrray[$i][20]=$row['TIIS_Notes'];
+		$Arrray[$i][21]=$row['Equipment_Repair_operator'];
 	
 	$i++;
-
-	
 }
+///
+$sql1  =  "SELECT *
+			FROM alert_ap_date_filter AS A
+			where  A.Processing_status ='已結案' and A.alert_written_time like '%$bdaymonth%' and TIIS_date=1 
+			";
+
+
+$result1  = execute_sql($database_name, $sql1, $link);
+while ($row1  = mysql_fetch_assoc($result1))
+{
+		$Arrray[$i][1]=$row1['alert_ap_date_filter_id'];
+		$Arrray[$i][2]=$row1['Period_AP'];
+		$Arrray[$i][3]=$row1['alert_ap_date_tribe'];
+		$Arrray[$i][4]=$row1['alert_ap_date_ap_name'];
+		$Arrray[$i][5]=$row1['alert_ap_date_ap_ip'];
+		$Arrray[$i][6]=$row1['alert_written_time'];
+		$Arrray[$i][7]=$row1['alert_ap_date_time_ok'];
+		$Arrray[$i][8]=$row1['calling_bar_id'];
+		$Arrray[$i][9]=$row1['Processing_status'];
+		///東宜
+		$Arrray[$i][10]=$row1['TIIS_Called_repair_category'];
+		$Arrray[$i][11]=$row1['TIIS_Maintenance_arrival_time'];
+		$Arrray[$i][12]=$row1['TIIS_Processing_end_time'];
+		$Arrray[$i][13]=$row1['TIIS_CAG_recommendations'];
+		$Arrray[$i][14]=$row1['TIIS_process_result'];
+		$Arrray[$i][15]=$row1['TIIS_current_state'];
+		$Arrray[$i][16]=$row1['TIIS_Contact_person'];
+		$Arrray[$i][17]=$row1['TIIS_Day_call'];
+		$Arrray[$i][18]=$row1['TIIS_Reaction_problem'];
+		$Arrray[$i][19]=$row1['TIIS_Maintenance_staff'];
+		$Arrray[$i][20]=$row1['TIIS_Notes'];
+		$Arrray[$i][21]='空白';
+	$i++;	
+}
+
+//echo $sql1  ;
 //print_r($Arrray);
 
 //exit();
