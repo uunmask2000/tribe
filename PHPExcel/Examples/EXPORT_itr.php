@@ -124,6 +124,20 @@ $mail->AddAddress('danielwu@tiis.com.tw','Daniel');
 $mail->AddAddress('yashon@tecom.com.tw','Yashon');
 $mail->AddAddress('heaven@fareastone.com.tw','Heaven');
 $mail->AddAddress('chhsfang@fareastone.com.tw','Chhsfang');
+//fareastone
+					$mail->AddAddress('bryanlin@fareastone.com.tw','bryanlin');
+					$mail->AddAddress('ccchiang@fareastone.com.tw','ccchiang');
+					$mail->AddAddress('chitalee@fareastone.com.tw','chitalee');
+					$mail->AddAddress('shichichen@fareastone.com.tw','shichichen');
+					/////org.tw
+					$mail->AddAddress('wiselyli@iii.org.tw','wiselyli');
+					$mail->AddAddress('daffany@iii.org.tw','daffany');
+					$mail->AddAddress('jerryccchen@iii.org.tw','jerryccchen');
+					$mail->AddAddress('mayjen@iii.org.tw','mayjen');
+					$mail->AddAddress('humanchen@iii.org.tw','humanchen');
+					$mail->AddAddress('iseehappy@iii.org.tw','iseehappy');
+					$mail->AddAddress('satinechiang@iii.org.tw','satinechiang');
+					$mail->AddAddress('p129894881@gmail.com','p129894881');
 //$mail->AddAddress('service@zhan-yang.com.tw','uunmask2000');
 //$mail->AddAddress('uunmask2000@gmail.com','康康1');
 $mail->AddAttachment($attach, $attach_name); 
