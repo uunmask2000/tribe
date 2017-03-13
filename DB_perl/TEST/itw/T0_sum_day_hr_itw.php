@@ -77,7 +77,7 @@ $time_zonw_ymd = date("Y-m-d");
 		
 		$sql_Mm="SELECT MAX(radacctid),MIN(radacctid) FROM radacct  where  realm<>'itw'  and acctstarttime like '%$time_zonw_ymd%' ";
 		//echo $sql_Mm;
-		$result_Mm = execute_sql($database_name, $sql_Mm, $link);					
+		$result_Mm = execute_sql($database_name2, $sql_Mm, $link);					
 		while ($row_Mm= mysql_fetch_assoc($result_Mm) )
 		{
 		//$MAX_ID = $row_Mm['MAX(radacctid)'];
@@ -199,7 +199,8 @@ while ($row_t = mysql_fetch_array($result_t))
 				{
 				$sum_day_hr_itw_id = $row_1['sum_day_hr_itw_id'];
 				}
-			$sql3 = " UPDATE sum_day_hr_itw SET Upload_traffic='$acctinputoctets' , Download_traffic='$acctoutputoctets' WHERE setting_id='$setting_id' and time_zone_h='$time_string' and sum_day_hr_itw_id='$sum_day_hr_itw_id'";
+			//$sql3 = " UPDATE sum_day_hr_itw SET Upload_traffic='$acctinputoctets' , Download_traffic='$acctoutputoctets' WHERE setting_id='$setting_id' and time_zone_h='$time_string' and sum_day_hr_itw_id='$sum_day_hr_itw_id'";
+			$sql3 = " UPDATE sum_day_hr_itw SET Upload_traffic='$acctinputoctets' , Download_traffic='$acctoutputoctets' WHERE time_zone_h='$time_string' and sum_day_hr_itw_id='$sum_day_hr_itw_id'";
 			execute_sql($database_name2, $sql3, $link2);
 			//echo $sql3 ;
 			//echo '<br>';	

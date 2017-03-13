@@ -44,8 +44,6 @@ if(preg_match("/login/i", $_SERVER['PHP_SELF']))
 		}
 }
 
-
-
 ?>
 
 	<div id="logo">
@@ -109,14 +107,15 @@ if(preg_match("/login/i", $_SERVER['PHP_SELF']))
 ?>
 		<div id="menu">
 		
-			<a href="../index.php" 	<?php if (preg_match("/index.php/i", $_SERVER['PHP_SELF'])) {echo "class='linked'"; } ?>   >
+			<a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/index.php" 	<?php if (preg_match("/index.php/i", $_SERVER['PHP_SELF'])) {echo "class='linked'"; } ?>   >
 			AP狀態</a> | 
 			
 		<?php
 			if( ($_SESSION['user_lv'])==1 or ($_SESSION['user_lv'])==2  or  ($_SESSION['user_lv'])==3   )
 			{
 				?>		
-				<a href="../programer_See/See_programer.php">
+				<a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/programer_See/See_programer.php"
+				<?php if (preg_match("/See_programer/i", $_SERVER['PHP_SELF'])) {echo "class='linked'"; } ?>>
 				目前斷線AP清單
 				</a> | 
 				<?php
@@ -126,7 +125,11 @@ if(preg_match("/login/i", $_SERVER['PHP_SELF']))
 			if( ($_SESSION['user_lv'])==1 or ($_SESSION['user_lv'])==2   )
 			{
 				?>		
-				<a href="../programer_See/show_AP_date_form.php">
+				<a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/programer_See/show_AP_date_form.php"
+				<?php if (preg_match("/show_AP_date_form/i", $_SERVER['PHP_SELF'])) {echo "class='linked'"; } 
+				else if (preg_match("/Execl_update/i", $_SERVER['PHP_SELF'])) {echo "class='linked'"; } 
+				else if (preg_match("/Veiw_end_date_2/i", $_SERVER['PHP_SELF'])) {echo "class='linked'"; } 
+				?>>
 				AP中斷維修紀錄表
 				</a> | 
 				<?php
@@ -137,12 +140,12 @@ if(preg_match("/login/i", $_SERVER['PHP_SELF']))
 		if( ($_SESSION['user_lv'])==1 or ($_SESSION['user_lv'])==2  )
 		{
 		?>	
-			<a href="../alert/show_down_month.php" 
+			<a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/alert/show_down_month.php" 
 			<?php if (preg_match("/alert/i", $_SERVER['PHP_SELF'])) {
 			echo "class='linked'"; } ?>>
 			訊息通報</a> |
 			
-			<a href="../device_defend/view_all_device.php" 
+			<a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/device_defend/view_all_device.php" 
 			<?php if (preg_match("/device_defend/i", $_SERVER['PHP_SELF'])) {
 			echo "class='linked'"; } ?>>
 			設備維護</a> | 
@@ -168,7 +171,7 @@ if(preg_match("/login/i", $_SERVER['PHP_SELF']))
 					?>
 
 					<li>
-					<a href="../report_bnf_new_2/show_report_all.php" 
+					<a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/report_bnf_new_2/show_report_all.php" 
 					<?php if (preg_match("/show_report_all/i", $_SERVER['PHP_SELF'])) {echo "class='linked'"; } 
 					else if (preg_match("/show_report_tribe.php/i", $_SERVER['PHP_SELF'])) {echo "class='linked'"; } 
 					?>>服務效益分析總表</a>
@@ -187,7 +190,7 @@ if(preg_match("/login/i", $_SERVER['PHP_SELF']))
 				?>
 
 				<li>
-				<a href="../report_bnf_new_2/show_report_tribe_city.php" 
+				<a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/report_bnf_new_2/show_report_tribe_city.php" 
 				<?php if (preg_match("/show_report_tribe_city/i", $_SERVER['PHP_SELF'])) {echo "class='linked'"; } 
 				?>>熱點服務效益分析明細表</a>
 				</li>
@@ -203,7 +206,7 @@ if(preg_match("/login/i", $_SERVER['PHP_SELF']))
 				?>
 
 				<li>
-				<a href="../report_bnf_new_2/report_web_month.php" 
+				<a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/report_bnf_new_2/report_web_month.php" 
 				<?php if (preg_match("/report_web/i", $_SERVER['PHP_SELF'])) {echo "class='linked'"; } 
 				?>>網路流量統計</a>
 				</li>
@@ -214,7 +217,7 @@ if(preg_match("/login/i", $_SERVER['PHP_SELF']))
 						?>
 
 				<li>
-				<a href="../report_bnf_new_2/report_web.php" 
+				<a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/report_bnf_new_2/report_web.php" 
 				<?php if (preg_match("/report_web/i", $_SERVER['PHP_SELF'])) {echo "class='linked'"; } 
 				?>>網路流量統計</a>
 				</li>
@@ -228,7 +231,7 @@ if(preg_match("/login/i", $_SERVER['PHP_SELF']))
 					{	
 					?>				
 					<li>
-					<a href="../report_bnf_new_2/show_report_people.php" 
+					<a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/report_bnf_new_2/show_report_people.php" 
 					<?php if (preg_match("/show_report_people/i", $_SERVER['PHP_SELF'])) {echo "class='linked'"; } 
 					?>>使用人次統計分析明細表</a>
 					</li>
@@ -236,7 +239,7 @@ if(preg_match("/login/i", $_SERVER['PHP_SELF']))
 
 
 					<li>
-					<a href="../report_bnf_new_2/report_user.php" 
+					<a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/report_bnf_new_2/report_user.php" 
 					<?php if (preg_match("/report_user/i", $_SERVER['PHP_SELF'])) {echo "class='linked'"; } 
 					?>>使用者資訊查詢報表</a>
 					</li>
@@ -261,26 +264,33 @@ if(preg_match("/login/i", $_SERVER['PHP_SELF']))
 	<ul id="down">
 		<li><a href="#" 
 		<?php 
-		if (preg_match("/show_monthly_report/i", $_SERVER['PHP_SELF'])) {	echo "class='linked'"; } 
+		if (preg_match("/show_monthly_report/i", $_SERVER['PHP_SELF'])) { echo "class='linked'"; }
+		else if (preg_match("/Export_day_all/i", $_SERVER['PHP_SELF'])) { echo "class='linked'"; } 		
 		?>
 		>匯出報表</a> |
 			<ul>
 			
 				<li>
-				<a href="../report_bnf_new_2/show_monthly_report_all_total.php" 
-				<?php if (preg_match("/show_monthly_report_all_total/i", $_SERVER['PHP_SELF'])) {	echo "class='linked'"; } ?>
+				<a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/report_bnf_new_2/Export_day_all.php"
+				<?php if (preg_match("/Export_day_all/i", $_SERVER['PHP_SELF'])) { echo "class='linked'"; } ?>
+				>服務效益日總表</a>
+				</li>
+				
+				<li>
+				<a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/report_bnf_new_2/show_monthly_report_all_total.php" 
+				<?php if (preg_match("/show_monthly_report_all_total/i", $_SERVER['PHP_SELF'])) { echo "class='linked'"; } ?>
 				>服務效益月總報表</a>
 				</li>
 
 				<li>
-				<a href="../report_bnf_new_2/show_monthly_report_itr_total.php" 
-				<?php if (preg_match("/show_monthly_report_itr_total/i", $_SERVER['PHP_SELF'])) {	echo "class='linked'"; } ?>
+				<a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/report_bnf_new_2/show_monthly_report_itr_total.php" 
+				<?php if (preg_match("/show_monthly_report_itr_total/i", $_SERVER['PHP_SELF'])) { echo "class='linked'"; } ?>
 				>愛部落服務效益月報表</a>
 				</li>
 			
 				<li>
-				<a href="../report_bnf_new_2/show_monthly_report_itw_total.php" 
-				<?php if (preg_match("/show_monthly_report_itw_total/i", $_SERVER['PHP_SELF'])) {	echo "class='linked'"; } ?>
+				<a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/report_bnf_new_2/show_monthly_report_itw_total.php" 
+				<?php if (preg_match("/show_monthly_report_itw_total/i", $_SERVER['PHP_SELF'])) { echo "class='linked'"; } ?>
 				>愛台灣服務效益月報表</a>
 				</li>
                 
@@ -319,19 +329,20 @@ if(preg_match("/login/i", $_SERVER['PHP_SELF']))
 	?>
 		
 
-			<a href="../asset_mng/view_fw.php" 
+			<a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/asset_mng/view_fw.php" 
 			<?php if (preg_match("/asset_mng/i", $_SERVER['PHP_SELF'])) {echo "class='linked'"; } 
 			else if (preg_match("/mng_anchor/i", $_SERVER['PHP_SELF'])) {echo "class='linked'"; } 
+			else if (preg_match("/Export_Assets/i", $_SERVER['PHP_SELF'])) {echo "class='linked'"; } 
 			?>>
 			資產管理</a> | 
 
-			<a href="../tribe_mng/view_tribe.php" 
+			<a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/tribe_mng/view_tribe.php" 
 			<?php if (preg_match("/tribe_mng/i", $_SERVER['PHP_SELF'])) {
 			echo "class='linked'"; } 
 			?>>
 			部落管理</a> | 
 			
-			<a href="../mng_user/user.php"
+			<a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/mng_user/user.php"
 			<?php if (preg_match("/mng_user/i", $_SERVER['PHP_SELF'])) {echo "class='linked'"; }
 			else if (preg_match("/mng_city/i", $_SERVER['PHP_SELF'])) {echo "class='linked'"; } 
 			else if (preg_match("/mng_town/i", $_SERVER['PHP_SELF'])) {echo "class='linked'"; } 
@@ -345,9 +356,9 @@ if(preg_match("/login/i", $_SERVER['PHP_SELF']))
 			if( ($_SESSION['user_id'])==1 or ($_SESSION['user_id'])==11 )
 			{
 			?>
-			<a href="../PDU_check/pdu_date.php">PDU PING 檢查</a> | 
-			<a href="../Topology/veiw_Topology.php" target='_blank'>網站拓譜圖</a> | 
-			
+			<a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/PDU_check/pdu_date.php">PDU PING 檢查</a> | 
+			<a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/Topology/veiw_Topology.php" target='_blank'>網站拓譜圖</a> | 
+			<a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/pdu_control/pdu_control.php" target='_blank'>PDU-更換紀錄(2017-03-08)</a> | 
 			<?php
 			}
 	?>
@@ -356,7 +367,7 @@ if(preg_match("/login/i", $_SERVER['PHP_SELF']))
 			if( ($_SESSION['user_id'])==11   )
 			{
 			?>
-			<a href="../programer_See/show_AP_date_form_2.php">
+			<a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/programer_See/show_AP_date_form_2.php">
 				AP中斷維修紀錄表<過去紀錄>
 				</a> |
 			<?php
@@ -375,7 +386,7 @@ if(preg_match("/login/i", $_SERVER['PHP_SELF']))
 			else
 			{
 ?>
-			<div id="login"><a href="../login/login.php">登入</a></div>
+			<div id="login"><a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/login/login.php">登入</a></div>
 
 			<div class="clr"></div>
 		</div>

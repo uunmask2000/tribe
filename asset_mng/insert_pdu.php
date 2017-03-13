@@ -296,11 +296,12 @@
 					<td colspan="4">
 					<input type="text" name="data7"  value="" >	
 					</td>
+					
 					</tr>
- 
-						
+					
+					<tr>
 						<th colspan="6" align="center">
-								PDU 8 port
+								PDU 8 port <font color="#dd0000">(以下內容請勿使用 "-" 分隔符號)</font>
 						</th>
 					</tr>
 					
@@ -341,7 +342,7 @@
 						</td>
 				<td>port3_name</td>
 						<td>
-							<input type="text" name="portname[]"  value="未使用" >
+							<input type="text" name="portname[]"  value="SMR" >
 						</td>
 				<td>port3_ip</td>
 						<td>
@@ -355,7 +356,7 @@
 						</td>
 				<td>port4_name</td>
 						<td>
-							<input type="text" name="portname[]"  value="未使用" >
+							<input type="text" name="portname[]"  value="5_port排插" >
 						</td>
 			<td>port4_ip</td>
 						<td>
@@ -411,7 +412,7 @@
 						</td>
 				<td>port8_name</td>
 						<td>
-							<input type="text" name="portname[]"  value="5_port排插" >
+							<input type="text" name="portname[]"  value="PDV(DC)" >
 						</td>
 	<td>port8_ip</td>
 						<td>

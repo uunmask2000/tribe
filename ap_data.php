@@ -306,12 +306,12 @@ setTimeout('myrefresh()',1000); //指定1秒刷新一次
 							if($Arr2[3]==0)
 							{
 								?>
-								<img src="images/active.png" alt="on" height="100%" >
+								<img src="images/active.png" alt="on" height="100%" > 重要
 								<?php
 							}else
 							{
 								?>
-								<img src="images/inactive.png" alt="off" height="100%" >
+								<img src="images/inactive.png" alt="off" height="100%" > 重要
 								<?php
 							}
 
@@ -394,10 +394,12 @@ setTimeout('myrefresh()',1000); //指定1秒刷新一次
 								//echo  $Arr2[0];
 							if($Arr2[3]==0)
 							{
+								/*
 								?>
 								<input class="on" type="button" value="" onclick="location.href='ap_data.php?do=on&id=14&ip=<?php echo $_GET['ip']; ?>'">
 
 								<?php
+								*/
 							}else
 							{
 								?>
@@ -407,9 +409,8 @@ setTimeout('myrefresh()',1000); //指定1秒刷新一次
 							}
 
 							?>
-							<!--
-						  <input class="reset" type="button" value="斷電10秒開機" onclick="location.href='ap_data.php?do=re&id=14&time=10&ip=<?php echo $_GET['ip']; ?>'">
-							 <input class="reset" type="button" value="重置" onclick="location.href='ap_data.php?do=re&id=4'"> -->
+			<input class="reset" type="button" value="斷電10秒開機" onclick="location.href='ap_data.php?do=re&id=14&time=10&ip=<?php echo $_GET['ip']; ?>'">
+
 						</div>
 					</td>
 				</tr>
@@ -490,6 +491,8 @@ setTimeout('myrefresh()',1000); //指定1秒刷新一次
 					<td>控制</td>
 					<td>
 						<div class="switch">
+						自動關機時間：每日23:59<br>
+						自動開機時間：每日06:30<br>
 						<?php
 								//echo  $Arr2[0];
 							if($Arr2[4]==0)
@@ -560,6 +563,7 @@ setTimeout('myrefresh()',1000); //指定1秒刷新一次
 					</td>
 					<td>
 						<div class="switch">
+							自動重開機時間：每6小時<br>
 						<?php
 								//echo  $Arr2[0];
 							if($Arr2[7]==0)
@@ -579,8 +583,13 @@ setTimeout('myrefresh()',1000); //指定1秒刷新一次
 							}
 
 							?>
-						<input class="reset" type="button" value="斷電10秒開機" onclick="location.href='ap_data.php?do=re&id=18&time=10&ip=<?php echo $_GET['ip']; ?>'">
-							</div>
+		<?php
+		/*
+		<input class="reset" type="button" value="斷電10秒開機" onclick="location.href='ap_data.php?do=re&id=18&time=10&ip=<?php echo $_GET['ip']; ?>'">
+		*/							
+		?>
+							
+						</div>
 					</td>
 				</tr>
 			</table>

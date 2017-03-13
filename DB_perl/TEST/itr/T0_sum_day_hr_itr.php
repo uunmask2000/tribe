@@ -76,7 +76,7 @@ $time_zonw_ymd = date("Y-m-d");
 				
 						$sql_Mm="SELECT MAX(radacctid),MIN(radacctid) FROM radacct  where  realm<>'itw'  and acctstarttime like '%$time_zonw_ymd%' ";
 						//echo $sql_Mm;
-						$result_Mm = execute_sql($database_name, $sql_Mm, $link);					
+						$result_Mm = execute_sql($database_name2, $sql_Mm, $link);					
 						while ($row_Mm= mysql_fetch_assoc($result_Mm) )
 						{
 						//$MAX_ID = $row_Mm['MAX(radacctid)'];
@@ -161,8 +161,8 @@ while ($row_t = mysql_fetch_array($result_t))
 				}	
 				$sql_sum = "SELECT SUM(acctinputoctets),SUM(acctoutputoctets) FROM radacct  where nasipaddress IN ('$ass_ap_ip') and  realm<>'itw'  and acctstarttime like '%$time_string%' and radacctid >='$MIX_ID'  ";
 				$result_sum = execute_sql2($database_name2, $sql_sum, $link2);
-				//echo  $sql_sum;
-				//echo '<br>';
+				echo  $sql_sum;
+				echo '<br>';
 				while ($row_sum = mysql_fetch_array($result_sum))
 				{
 				$acctinputoctets=$row_sum['SUM(acctinputoctets)'];   //紀錄上行
@@ -198,10 +198,10 @@ while ($row_t = mysql_fetch_array($result_t))
 				{
 				$sum_day_hr_itr_id = $row_1['sum_day_hr_itr_id'];
 				}
-				$sql3 = " UPDATE sum_day_hr_itr SET Upload_traffic='$acctinputoctets' , Download_traffic='$acctoutputoctets' WHERE setting_id='$setting_id' and time_zone_h='$time_string' and sum_day_hr_itr_id='$sum_day_hr_itr_id'";
+				$sql3 = " UPDATE sum_day_hr_itr SET Upload_traffic='$acctinputoctets' , Download_traffic='$acctoutputoctets' WHERE time_zone_h='$time_string' and sum_day_hr_itr_id='$sum_day_hr_itr_id'";
 				execute_sql($database_name2, $sql3, $link2);
-				//echo $sql3 ;
-				//echo '<br>';		
+				echo $sql3 ;
+				echo '<br>';		
 				}
 				
 	/*

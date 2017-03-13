@@ -91,12 +91,12 @@ $link = create_connection();
 	結案工程師
 	<select name="accendant">
 	<?php
-	$sql_Engineer  = "SELECT * FROM Maintenance_Engineer_menu ";
+	$sql_Engineer  = "SELECT * FROM `web_user` WHERE `user_engineer_radio` =1 ";
 	$result_Engineer  = execute_sql($database_name, $sql_Engineer, $link);
 	while ($row_Engineer  = mysql_fetch_assoc($result_Engineer))
 	{
 	?>
-	<option value="<?=$row_Engineer['Maintenance_Engineer_menu_name'];?>"  <?php if($row_Engineer['Maintenance_Engineer_menu_name']==$Equipment_Repair_engineer  ){echo 'selected';} ?>><?=$row_Engineer['Maintenance_Engineer_menu_name'];?></option>
+	<option value="<?=$row_Engineer['user_name'];?>"  <?php if($row_Engineer['user_name']==$Equipment_Repair_engineer  ){echo 'selected';} ?>><?=$row_Engineer['user_name'];?></option>
 	<?php
 	}
 	?>

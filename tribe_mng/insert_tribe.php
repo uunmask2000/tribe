@@ -84,7 +84,7 @@
 					</form>
 				<form action="mng_tribe_proc.php?mode=insert_tribe" method="POST">	
 					<tr>
-						<td>選擇期標</td>
+						<td>選擇期別</td>
 						<td>
 						<select id="tribe_label" name="tribe_label">
 						 <option value="2" selected >二期</option>

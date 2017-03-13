@@ -5,6 +5,8 @@
 <title>無線AP網管系統</title>
 <link href="../../include/reset.css" rel="stylesheet" type="text/css" />
 <link href="../../include/style.css" rel="stylesheet" type="text/css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
 </head>
 <body>
 <div id="wrap">

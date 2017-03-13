@@ -6,6 +6,8 @@
 <script type="text/javascript" src="../js/jquery-latest.js"></script>
 <link href="../include/style.css" rel="stylesheet" type="text/css" />
 <link href="../include/reset.css" rel="stylesheet" type="text/css" />
+<style>
+</style>
 </head>
 
 <body>
@@ -173,135 +175,119 @@ $ass_pdu_label   = $_POST['ass_pdu_label'];
 					</tr>
 
 
-
-	<tr>
+					<tr>
+						<th colspan="6" align="center">
+								PDU 8 port <font color="#dd0000">(以下內容請勿使用 "-" 分隔符號)</font>
+						</th>
+					</tr>
 		
-					<!-------------------------------->
-			<td>port1</td>
-						<td>
-								<input type="hidden" name="port[]"  value="<?= $port[0];?>" >	
-						</td>
-				<td>port1_name</td>
-						<td>
-							<input type="text" name="portname[]"  value="<?= $portname[0];?>" >
-						</td>
-					
-						<td>port1_ip</td>
-						<td>
-							<input type="text" name="portip[]"  value="<?=  $portip[0];?>" >
-						</td>
-					</tr>
-					<!-------------------------------->
-					<td>port2</td>
-						<td>
-								<input type="hidden" name="port[]"  value="<?= $port[1];?>" >	
-						</td>
-				<td>port2_name</td>
-						<td>
-							<input type="text" name="portname[]"  value="<?= $portname[1];?>" >
-						</td>
-					
-						<td>port2_ip</td>
-						<td>
-							<input type="text" name="portip[]"  value="<?=  $portip[1];?>" >
-						</td>
-					</tr>
-					<!-------------------------------->
-				<td>port3</td>
-						<td>
-								<input type="hidden" name="port[]"  value="<?= $port[2];?>" >	
-						</td>
-				<td>port3_name</td>
-						<td>
-							<input type="text" name="portname[]"  value="<?= $portname[2];?>" >
-						</td>
-					
-						<td>port3_ip</td>
-						<td>
-							<input type="text" name="portip[]"  value="<?=  $portip[2];?>" >
-						</td>
-					</tr>
-					<!-------------------------------->
-			<td>port4</td>
-						<td>
-								<input type="hidden" name="port[]"  value="<?= $port[3];?>" >	
-						</td>
-				<td>port4_name</td>
-						<td>
-							<input type="text" name="portname[]"  value="<?= $portname[3];?>" >
-						</td>
-					
-						<td>port4_ip</td>
-						<td>
-							<input type="text" name="portip[]"  value="<?=  $portip[3];?>" >
-						</td>
-					</tr>
-					<!-------------------------------->
-		<td>port5</td>
-						<td>
-								<input type="hidden" name="port[]"  value="<?= $port[4];?>" >	
-						</td>
-				<td>port5_name</td>
-						<td>
-							<input type="text" name="portname[]"  value="<?= $portname[4];?>" >
-						</td>
-					
-						<td>port5_ip</td>
-						<td>
-							<input type="text" name="portip[]"  value="<?=  $portip[4];?>" >
-						</td>
-					</tr>
-					<!-------------------------------->
-<td>port6</td>
-						<td>
-								<input type="hidden" name="port[]"  value="<?= $port[5];?>" >	
-						</td>
-				<td>port6_name</td>
-						<td>
-							<input type="text" name="portname[]"  value="<?= $portname[5];?>" >
-						</td>
-					
-						<td>port6_ip</td>
-						<td>
-							<input type="text" name="portip[]"  value="<?=  $portip[5];?>" >
-						</td>
-					</tr>
-					<!-------------------------------->
-<td>port7</td>
-						<td>
-								<input type="hidden" name="port[]"  value="<?= $port[6];?>" >	
-						</td>
-				<td>port7_name</td>
-						<td>
-							<input type="text" name="portname[]"  value="<?= $portname[6];?>" >
-						</td>
-					
-						<td>port7_ip</td>
-						<td>
-							<input type="text" name="portip[]"  value="<?=  $portip[6];?>" >
-						</td>
-					</tr>
-					<!-------------------------------->
-<td>port8</td>
-						<td>
-								<input type="hidden" name="port[]"  value="<?= $port[7];?>" >	
-						</td>
-				<td>port8_name</td>
-						<td>
-							<input type="text" name="portname[]"  value="<?= $portname[7];?>" >
-						</td>
-					
-						<td>port8_ip</td>
-						<td>
-							<input type="text" name="portip[]"  value="<?=  $portip[7];?>" >
-						</td>
-					</tr>
-					<!-------------------------------->
-				
+				<!-------------------------------->
+				<tr>
+					<td>port1<input type="hidden" name="port[]" style="width:0px;"  value="<?= $port[0];?>" ></td>
 
+					<td>port1_name</td>
+					<td>
+					<input type="text" name="portname[]"  value="<?= $portname[0];?>" >
+					</td>
 
+					<td>port1_ip</td>
+					<td>
+					<input type="text" name="portip[]"  value="<?=  $portip[0];?>" >
+					</td>
+				</tr>
+				<!-------------------------------->
+				<tr>
+					<td>port2<input type="hidden" name="port[]" style="width:0px;"  value="<?= $port[1];?>" ></td>
 
-				
+					<td>port2_name</td>
+					<td>
+					<input type="text" name="portname[]"  value="<?= $portname[1];?>" >
+					</td>
+
+					<td>port2_ip</td>
+					<td>
+					<input type="text" name="portip[]"  value="<?=  $portip[1];?>" >
+					</td>
+				</tr>
+				<!-------------------------------->
+				<tr>
+					<td>port3<input type="hidden" name="port[]" style="width:0px;"  value="<?= $port[2];?>" ></td>
+					<td>port3_name</td>
+					<td>
+					<input type="text" name="portname[]"  value="<?= $portname[2];?>" >
+					</td>
+
+					<td>port3_ip</td>
+					<td>
+					<input type="text" name="portip[]"  value="<?=  $portip[2];?>" >
+					</td>
+				</tr>
+				<!-------------------------------->
+				<tr>
+					<td>port4<input type="hidden" name="port[]" style="width:0px;"  value="<?= $port[3];?>" ></td>
+					<td>port4_name</td>
+					<td>
+					<input type="text" name="portname[]"  value="<?= $portname[3];?>" >
+					</td>
+
+					<td>port4_ip</td>
+					<td>
+					<input type="text" name="portip[]"  value="<?=  $portip[3];?>" >
+					</td>
+				</tr>
+				<!-------------------------------->
+				<tr>
+					<td>port5<input type="hidden" name="port[]" style="width:0px;"  value="<?= $port[4];?>" ></td>
+					<td>port5_name</td>
+					<td>
+					<input type="text" name="portname[]"  value="<?= $portname[4];?>" >
+					</td>
+
+					<td>port5_ip</td>
+					<td>
+					<input type="text" name="portip[]"  value="<?=  $portip[4];?>" >
+					</td>
+				</tr>
+				<!-------------------------------->
+				<tr>
+					<td>port6<input type="hidden" name="port[]" style="width:0px;"  value="<?= $port[5];?>" ></td>
+					<td>port6_name</td>
+					<td>
+					<input type="text" name="portname[]"  value="<?= $portname[5];?>" >
+					</td>
+
+					<td>port6_ip</td>
+					<td>
+					<input type="text" name="portip[]"  value="<?=  $portip[5];?>" >
+					</td>
+				</tr>
+				<!-------------------------------->
+				<tr>
+					<td>port7<input type="hidden" name="port[]" style="width:0px;"  value="<?= $port[6];?>" ></td>
+					<td>port7_name</td>
+					<td>
+					<input type="text" name="portname[]"  value="<?= $portname[6];?>" >
+					</td>
+
+					<td>port7_ip</td>
+					<td>
+					<input type="text" name="portip[]"  value="<?=  $portip[6];?>" >
+					</td>
+				</tr>
+				<!-------------------------------->
+				<tr>	
+					<td>port8<input type="hidden" name="port[]" style="width:0px;"  value="<?= $port[7];?>" ></td>
+					<td>port8_name</td>
+					<td>
+						<input type="text" name="portname[]"  value="<?= $portname[7];?>" >
+					</td>
+
+					<td>port8_ip</td>
+					<td>
+						<input type="text" name="portip[]"  value="<?=  $portip[7];?>" >
+					</td>
+				</tr>
+				<!-------------------------------->
 				<tr>
 					<td colspan="6" align="center">
 						<input class="edit_btn" type="submit" value="儲存">

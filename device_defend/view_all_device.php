@@ -62,8 +62,8 @@ else
 		
 		<select id="list" name="A" onchange="this.form.submit();">
 		<option value="NO" selected disabled="disabled">請選擇期別</option>							
-		<option value="2" <?php if($_POST['A']==2){echo 'selected'; }?>>2期</option>
-		<option value="3" <?php if($_POST['A']==3){echo 'selected'; }?>>3期</option>							
+		<option value="2" <?php if($_POST['A']==2){echo 'selected'; }?>>第二期</option>
+		<option value="3" <?php if($_POST['A']==3){echo 'selected'; }?>>第三期</option>							
 		</select>
 		
 		<select id="list" name="tribe" onchange="">

@@ -1,309 +1,233 @@
-<title>cytoscape-dagre.js demo</title>
+<html>
+    <head>
+        <title>Use jsTree</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+        
+    </head>
+    <body>
+<?php
 
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/2.5.4/cytoscape.min.js"></script>
-
-<!-- <script src="http://cytoscape.github.io/cytoscape.js/api/cytoscape.js-latest/cytoscape.min.js"></script> -->
-<!-- for testing with local version of cytoscape.js -->
-<!--<script src="../cytoscape.js/build/cytoscape.js"></script>-->
-
-<script src="https://cdn.rawgit.com/cpettitt/dagre/v0.7.4/dist/dagre.min.js"></script>
-<script src="https://cdn.rawgit.com/cytoscape/cytoscape.js-dagre/1.1.2/cytoscape-dagre.js"></script>
-<style>
-body {
-  font-family: helvetica;
-  font-size: 14px;
-}
-
-#cy {
-  border: solid;
-  border-width: 1;
-  height: 100%;
-}
-
-h1 {
-  opacity: 0.5;
-  font-size: 1em;
-}
-</style>
-<script>
-/* cytoscape js selector demo
-moved to http://codepen.io/yeoupooh/pen/BjWvRa
- */
-$(function() {
-
-  var win = $(window);
-
-  win.resize(function() {
-    resize();
-  });
-
-  function resize() {
-    console.log(win.height(), win.innerHeight());
-    $("#cy-container").height(win.innerHeight() - 130);
-    cy.resize();
-  }
-
-  setTimeout(resize, 0);
-
-  var nodeOptions = {
-    normal: {
-      bgColor: 'grey'
-    },
-    selected: {
-      bgColor: 'yellow'
-    }
-  };
-
-  var edgeOptions = {
-    selected: {
-      lineColor: 'yellow'
-    }
-  };
-
-  var cy = window.cy = cytoscape({
-    container: document.getElementById('cy'),
-
-    minZoom: 0.1,
-    maxZoom: 100,
-    wheelSensitivity: 0.1,
-
-    // panningEnabled: false,
-    //boxSelectionEnabled: true,
-    //autounselectify: false,
-    //selectionType: 'additive',
-    //autoungrabify: true,
-
-    layout: {
-      name: 'dagre'
-    },
-
-    style: [{
-        selector: 'node',
-        style: {
-          'width': 200,
-          'height': 200,
-          'content': 'data(text)',
-          //          'text-opacity': 0.5,
-          'text-valign': 'center',
-          'color': 'white',
-          'background-color': nodeOptions.normal.bgColor,
-          'text-outline-width': 2,
-          'text-outline-color': '#222'
-        }
-      },
-
-      {
-        selector: 'edge',
-        style: {
-          'width': 10,
-          'target-arrow-shape': 'triangle',
-          'line-color': 'data(color)',
-          'target-arrow-color': '#9dbaea'
-        }
-      },
-
-      {
-        selector: ':selected',
-        style: {
-          'background-color': 'yellow',
-          'line-color': 'yellow',
-          'target-arrow-color': 'black',
-          'source-arrow-color': 'black',
-        }
-      },
-
-      {
-        selector: 'edge:selected',
-        style: {
-          'width': 20
-        }
-      }
-    ],
-
-    elements: {
-      //selectable: false, 
-      grabbable: false,
-      nodes: [
-			  {
-				data: {
-				  id: 'FW',
-				  text: 'FW'
-				}
-			  }, {
-				data: {
-				  id: '4GR',
-				  text: '4GR'
-				}
-			  }, {
-				data: {
-				  id: 'PDU',
-				  text: 'PDU'
-				}
-			  }, {
-				data: {
-				  id: 'POE',
-				  text: 'POE'
-				}
-			  }
-	  ], // nodes
-      edges: [
-				{
-				data: {
-				color: '#f00',
-				source: 'FW',
-				target: '4GR'
-				}
-				},{
-				data: {
-				color: '#f00',
-				source: 'FW',
-				target: 'PDU'
-				}
-				}, 
-				{
-					data: 
+include("../SQL/dbtools_ps.php"); 
+include_once("../SQL/dbtools.inc.php");
+$link = create_connection();
+?>
+	<script>
+	$(
+		function () 
+			{
+			var data = 
+						[
+						{
+						"id": "原民會",
+						"parent": "#",
+					    //"icon": "https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png",
+						"text": "原民會"
+						},
+<?php
+		 /// 縣市
+		$sql_city = "SELECT city_name,id FROM city_array";
+		$result_city = execute_sql($database_name, $sql_city, $link);
+		while ($row_city = mysql_fetch_assoc($result_city))
+		{
+			echo '
 					{
-					color: '#f00',
-					source: 'FW',
-					target: 'POE'
-					}
+					"id": "'.$row_city['city_name'].'",
+					"parent": "原民會",
+					"text": "'.$row_city['city_name'].'"
+					}, 			
+			    ';
+			 /// 地區
+			 $ID = $row_city['id'];
+				$sql_township = "SELECT * FROM city_township where township_city='$ID' ";
+				$result_township = execute_sql($database_name, $sql_township, $link);
+				while ($row_township = mysql_fetch_assoc($result_township))
+				{ 
+			
+			
+						echo '
+						{
+						"id": "'.$row_township['township_name'].'",
+						"parent": "'.$row_city['city_name'].'",
+						"text": "'.$row_township['township_name'].'"
+						}, 			
+						';
+						/// 縣市
+						$ID2 = $row_township['township_id'];
+						$sql_tr = "SELECT * FROM tribe where township_id='$ID2' ";
+						$result_tr = execute_sql($database_name, $sql_tr, $link);
+						while ($row_tr = mysql_fetch_assoc($result_tr))
+						{
+								echo '
+								{
+								"id": "'.$row_tr['tribe_name'].'",
+								"parent": "'.$row_township['township_name'].'",
+								"text": "'.$row_tr['tribe_name'].'"
+								}, 			
+								';
+$ID3 = $row_tr['tribe_id'];
+//FW
+$sql_FW = "SELECT * FROM ass_grouter as A
+LEFT JOIN city_array as B ON  (A.ass_grouter_city = B.id )
+LEFT JOIN city_township as C ON (A.ass_grouter_twon = C.township_id )
+LEFT JOIN tribe as D ON (A.ass_grouter_tribe = D.tribe_id )
+WHERE D.tribe_id = '$ID3'
+";
+$result_FW = execute_sql($database_name, $sql_FW, $link);
+while ($row_FW = mysql_fetch_assoc($result_FW))
+{
+		echo '
+		{
+		"id": "'.$row_FW['tribe_name'].$row_FW['ass_name'].'",
+		"parent": "'.$row_tr['tribe_name'].'",
+		"text": "'.$row_FW['tribe_name'].$row_FW['ass_name'].'"
+		}, 			
+		';
+
+}
+//pdu
+$sql_pdu = "SELECT * FROM ass_pdu as A
+LEFT JOIN city_array as B ON  (A.ass_pdu_city = B.id )
+LEFT JOIN city_township as C ON (A.ass_pdu_twon = C.township_id )
+LEFT JOIN tribe as D ON (A.ass_pdu_tribe = D.tribe_id )
+WHERE D.tribe_id = '$ID3'
+";
+$result_pdu = execute_sql($database_name, $sql_pdu, $link);
+while ($row_pdu = mysql_fetch_assoc($result_pdu))
+{
+		echo '
+		{
+		"id": "'.$row_pdu['tribe_name'].$row_pdu['ass_pdu_name'].'",
+		"parent": "'.$row_tr['tribe_name'].'",
+		"text": "'.$row_pdu['tribe_name'].$row_pdu['ass_pdu_name'].'"
+		}, 			
+		';
+
+}
+//ass_poesw
+$sql_ass_poesw = "SELECT * FROM ass_poesw as A
+LEFT JOIN city_array as B ON  (A.ass_poesw_city = B.id )
+LEFT JOIN city_township as C ON (A.ass_poesw_twon = C.township_id )
+LEFT JOIN tribe as D ON (A.ass_poesw_tribe = D.tribe_id )
+WHERE D.tribe_id = '$ID3'
+";
+$result_ass_poesw = execute_sql($database_name, $sql_ass_poesw, $link);
+while ($row_ass_poesw = mysql_fetch_assoc($result_ass_poesw))
+{
+		echo '
+		{
+		"id": "'.$row_ass_poesw['tribe_name'].$row_ass_poesw['ass_poesw_name'].'",
+		"parent": "'.$row_tr['tribe_name'].'",
+		"text": "'.$row_ass_poesw['tribe_name'].$row_ass_poesw['ass_poesw_name'].'"
+		}, 			
+		';
+
+}
+//AP
+$sql_ass_AP = "SELECT * FROM ass_ap as A
+LEFT JOIN city_array as B ON  (A.ass_ap_city = B.id )
+LEFT JOIN city_township as C ON (A.ass_ap_twon = C.township_id )
+LEFT JOIN tribe as D ON (A.ass_ap_tribe = D.tribe_id )
+WHERE D.tribe_id = '$ID3'
+";
+$result_ass_AP = execute_sql($database_name, $sql_ass_AP, $link);
+while ($row_ass_AP = mysql_fetch_assoc($result_ass_AP))
+{
+		echo '
+		{
+		"id": "'.$row_ass_AP['tribe_name'].$row_ass_AP['ass_ap_name'].'",
+		"parent": "'.$row_tr['tribe_name'].'",
+		"text": "'.$row_ass_AP['tribe_name'].$row_ass_AP['ass_ap_name'].'"
+		}, 			
+		';
+
+}
+//ass_4Ggrouter
+$sql_ass_ass_4Ggrouter = "SELECT * FROM ass_4Ggrouter as A
+LEFT JOIN city_array as B ON  (A.ass_4Ggrouter_city = B.id )
+LEFT JOIN city_township as C ON (A.ass_4Ggrouter_twon = C.township_id )
+LEFT JOIN tribe as D ON (A.ass_4Ggrouter_tribe = D.tribe_id )
+WHERE D.tribe_id = '$ID3'
+";
+$result_ass_ass_4Ggrouter = execute_sql($database_name, $sql_ass_ass_4Ggrouter, $link);
+while ($row_ass_ass_4Ggrouter = mysql_fetch_assoc($result_ass_ass_4Ggrouter))
+{
+		echo '
+		{
+		"id": "'.$row_ass_ass_4Ggrouter['tribe_name'].$row_ass_ass_4Ggrouter['ass_4Gname'].'",
+		"parent": "'.$row_tr['tribe_name'].'",
+		"text": "'.$row_ass_ass_4Ggrouter['tribe_name'].$row_ass_ass_4Ggrouter['ass_4Gname'].'"
+		}, 			
+		';
+
+}
+
+//
+						}
+			
 				}
-		] // edges
-    } // elements
-  }); // cytoscape
+		}
+?>
+/*						
+						{
+						"id": "新北",
+						"parent": "原名會",
+						"text": "新北"
+						}, {
+						"id": "烏來",
+						"parent": "新北",
+						"text": "烏來"
+						}, {
+						"id": "烏來部落",
+						"parent": "烏來",
+						"text": "烏來部落"
+						}, {
+						"id": "設備",
+						"parent": "烏來部落",
+						"text": "設備"
+						}
+*/						
+						
+						];
+			$("#jstree").jstree({
+			"core" : {
+			// so that create works
+			//"check_callback" : false,
 
-  var selectedNodeHandler = function(evt) {
-    //console.log(evt.data); // 'bar'
+			"data": data
+			},
+			//"plugins" : [ "contextmenu",  "dnd"],
 
-    $("#edge-operation").hide();
-    $("#node-operation").show();
+			"contextmenu":{         
+			"items": {
+			"create": {
+			"label": "Add",
+			"action": function (obj) {
+				$('#jstree').jstree().create_node('#' ,  { "id" : "ajson5", "text" : "newly added" }, "last", function(){
+			alert("done");
+			}); 
+			},
+			}
+			}
+			}
 
-    var target = evt.cyTarget;
-    console.log('select ' + target.id(), target);
-    $("#selected").text("Selected:" + target.id());
-  }
-
-  var unselectedHandler = function(evt) {
-    $("#edge-operation").hide();
-    $("#node-operation").hide();
-  }
-
-  var selectedEdgeHandler = function(evt) {
-    $("#edge-operation").show();
-    $("#node-operation").hide();
-
-    var target = evt.cyTarget;
-    console.log('tapped ' + target.id(), target);
-    $("#selected").text("Selected:" + target.id());
-  }
-
-  cy.on('select', 'node', selectedNodeHandler);
-  cy.on('unselect', 'node', unselectedHandler);
-  cy.on('select', 'edge', selectedEdgeHandler);
-  cy.on('unselect', 'edge', unselectedHandler);
-
-  // NOTE: Use selector(':selected') instead of event handler
-  function addSelectHandler() {
-    cy.on('select', 'node', function(evt) {
-      console.log('select node:', evt.cyTarget);
-      evt.cyTarget.animate({
-        style: {
-          'background-color': nodeOptions.selected.bgColor
-        }
-      }, {
-        duration: 100
-      });
-    });
-    cy.on('unselect', 'node', function(evt) {
-      console.log('unselect node:', evt.cyTarget);
-      evt.cyTarget.stop();
-      evt.cyTarget.style({
-        'background-color': nodeOptions.normal.bgColor
-      });
-    });
-    cy.on('select', 'edge', function(evt) {
-      console.log('select edge:', evt.cyTarget);
-      evt.cyTarget.animate({
-        style: {
-          'line-color': edgeOptions.selected.lineColor
-        }
-      }, {
-        duration: 100
-      });
-    });
-    cy.on('unselect', 'edge', function(evt) {
-      console.log('unselect edge:', evt.cyTarget);
-      evt.cyTarget.stop();
-      evt.cyTarget.style({
-        'line-color': evt.cyTarget.data('color')
-      });
-    });
-  }
-
-  $("#fit").click(function() {
-    console.log('cy=', cy);
-    cy.fit();
-  });
-
-  $("#layout").click(function() {
-    console.log('cy=', cy);
-    cy.layout({
-      name: 'dagre'
-    });
-  });
-
-}); // ready
-</script>
-<body>
-
-
-  <h1>cytoscape-dagre demo</h1>
-
-  <!-- container-fluid : start -->
-  <div class="container-fluid">
-    <row>
-
-      <div class="col-md-8 col-sm-8 col-lg-8">
-
-        <!-- graph : start -->
-        <div class="panel panel-primary">
-          <div class="panel-heading">Graph</div>
-          <div class="panel-body">
-            <div id="cy-container">
-              <div id="cy"></div>
-            </div>
-
-          </div>
-        </div>
-        <!-- graph : end -->
-
-      </div>
-
-      <div class="col-md-4 col-sm-4 col-lg-8">
-        <!-- editr : start -->
-        <div class="editor">
-
-          <div id="tools" class="panel panel-primary">
-            <div class="panel-heading">Tools</div>
-            <div class="panel-body">
-              <button id="fit" class="btn btn-success">Fit</button>
-              <button id="layout" class="btn btn-success">Layout</button>
-            </div>
-          </div>
-
-     
-
-        </div>
-        <!-- editor : end -->
-
-      </div>
-
-    </row>
-  </div>
-  <!-- container-fluid : end -->
-
-</body>
+			}).on('create_node.jstree', function(e, data) {
+			console.log('saved');
+			});
+			/*新增node
+			$("#sam").on("click",function() {
+			$('#jstree').jstree().create_node('#' ,  { "id" : "ajson5", "text" : "newly added" }, "last", function(){
+			alert("done");
+			});
+			});
+			*/
+			}
+	);
+	</script>
+<div id="jstree">  </div>
+     <!--- 新增node
+	 <button id="sam">create node</button>
+	 ---->
+	</body>
+</html>

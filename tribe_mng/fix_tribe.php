@@ -59,7 +59,7 @@
 				
 				
 					<tr>
-						<td>選擇期標</td>
+						<td>選擇期別</td>
 						<td>
 						<select id="tribe_label" name="tribe_label" onchange="this.form.submit();">
 						  <?php

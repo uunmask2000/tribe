@@ -67,7 +67,7 @@
      
 
 //$sql = "SELECT * FROM `radacct` WHERE acctstoptime  <>'0000-00-00 00:00:00' and acctstoptime < date_sub(curdate(),interval 1 day) and acctstoptime > date_sub(curdate(),interval 2 day)  ";
-	$sql="SELECT * FROM radacct WHERE nasipaddress IN('172.21.15.101','172.21.15.102','172.21.15.111') AND acctstarttime like '%2016-10%' "; 
+	$sql="SELECT * FROM radacct WHERE nasipaddress IN('172.21.55.101') AND acctstarttime like '%2017-03%' "; 
 	 
 	 $result = execute_sql($database_name, $sql, $link);
 			
