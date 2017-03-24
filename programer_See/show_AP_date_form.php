@@ -102,11 +102,21 @@
 		<th>恢復時間</th>
 		<th>處理編號</th>			
 		<th>狀態</th>
+		
 	<!---
 	<th>處理</th>
 	<th>處理流程</th>
 	-->
 		<th>管理流程</th>
+		<?php
+		if( $_SESSION['user_lv']=='1')
+		{
+			?>
+				<th>刪除</th>
+			<?php
+		}
+		
+		?>
 					<th  style="display: none;">發信時間</th>
 					<th  style="display: none;">首回覆資訊(時間,備註,處理人員)</th>
 					<th  style="display: none;">派工資訊(時間,工程師,備註)</th>
@@ -123,7 +133,7 @@
 		//print_r($aaaa_array);
 		if($_GET['A']=='END')
 		{
-			$sql_alert_ap_date  = "SELECT * FROM alert_ap_date_filter where  `Processing_status`='已結案'   and TIIS_date=0     ORDER BY alert_ap_date_filter_id desc ";
+			$sql_alert_ap_date  = "SELECT * FROM alert_ap_date_filter where  `Processing_status`='已結案'   and TIIS_date=0  and display<>0   ORDER BY alert_ap_date_filter_id desc ";
 			
 		}else{
 			
@@ -150,7 +160,30 @@
 			<td><a class="tb_link" href="../view_date/view_tribe_AP_date.php?ip=<?=$row_alert_ap_date['alert_ap_date_ap_ip'];?>" target="_self" ><?=$row_alert_ap_date['alert_ap_date_ap_name']; ?></a></td>
 			<td><?=$row_alert_ap_date['alert_ap_date_ap_ip']; ?></td>
 			<td><?=$row_alert_ap_date['alert_written_time']; ?> </td> <!---信件送出時間--->
-			<td><?=$row_alert_ap_date['alert_ap_date_time_ok']; ?> </td>
+			<td><?php
+			//echo $row_alert_ap_date['alert_ap_date_time_ok']; 
+			
+			$time1 = $row_alert_ap_date['alert_written_time'];
+			$time2 = $row_alert_ap_date['alert_ap_date_time_ok'];
+			
+			if($time2=='0000-00-00 00:00:00')
+			{
+				echo $row_alert_ap_date['alert_ap_date_time_ok']; 
+			}else{
+					if($time1 > $time2)
+					{
+					$muin = ceil(abs((strtotime($time1) - strtotime($time2))/ (60)));
+					$a_time_1= $row_alert_ap_date['alert_ap_date_time_ok']; 			
+					$a_time = strtotime($a_time_1);
+					$b_time = strtotime('+'.$muin.' minute',$a_time);
+					echo $b = date('Y-m-d H:i:s',$b_time);
+					}else{
+					echo $row_alert_ap_date['alert_ap_date_time_ok']; 
+					}
+			}
+			
+			
+			?> </td>
 			<td
 			<?php 
 			$calling_bar_id = $row_alert_ap_date['calling_bar_id'];
@@ -251,6 +284,15 @@
 <?=$row_alert_ap_date['alert_written_time']; ?>
 
 </td>
+<?php
+	if( $_SESSION['user_lv']=='1')
+	{
+	?>
+	<td><input type="button" name="delete" value=" 刪 除 " onclick="delForm(<?=$row_alert_ap_date['alert_ap_date_filter_id']; ?>)"></td>
+	<?php
+	}
+
+	?>
 <td  style="display: none;">
 [
 <?=$row_alert_ap_date['Processing_time_A']; ?>,
@@ -368,8 +410,28 @@ echo ']';
 			<td><a class="tb_link" href="../view_date/view_tribe_AP_date.php?ip=<?=$row_alert_ap_date['alert_ap_date_ap_ip'];?>" target="_self" ><?=$row_alert_ap_date['alert_ap_date_ap_name']; ?></a></td>
 			<td><?=$row_alert_ap_date['alert_ap_date_ap_ip']; ?></td>
 			<td><?=$row_alert_ap_date['alert_written_time']; ?> </td> <!---信件送出時間--->
-			<td><?=$row_alert_ap_date['alert_ap_date_time_ok']; ?> </td>
-			<td
+			<td><?php
+			//echo $row_alert_ap_date['alert_ap_date_time_ok']; 
+			
+			$time1 = $row_alert_ap_date['alert_written_time'];
+			$time2 = $row_alert_ap_date['alert_ap_date_time_ok'];
+			if($time2=='0000-00-00 00:00:00')
+			{
+				echo $row_alert_ap_date['alert_ap_date_time_ok']; 
+			}else{
+			if($time1 > $time2)
+			{
+				$muin = ceil(abs((strtotime($time1) - strtotime($time2))/ (60)));
+				$a_time_1= $row_alert_ap_date['alert_ap_date_time_ok']; 			
+				$a_time = strtotime($a_time_1);
+				$b_time = strtotime('+'.$muin.' minute',$a_time);
+				echo $b = date('Y-m-d H:i:s',$b_time);
+			}else{
+				echo $row_alert_ap_date['alert_ap_date_time_ok']; 
+			}
+			}
+			?> </td>
+			<td>
 			<?php 
 			$calling_bar_id = $row_alert_ap_date['calling_bar_id'];
 						if (in_array($calling_bar_id, $aaaa_array))
@@ -383,7 +445,7 @@ echo ']';
 						//echo $calling_bar_id ;
 						}
 			?>
-			>
+			
 			<?php
 			$mail_type =$row_alert_ap_date['mail_type'];
 			if($mail_type =='0')
@@ -464,6 +526,16 @@ echo ']';
 <?=$row_alert_ap_date['alert_written_time']; ?>
 
 </td>
+	<?php
+	if( $_SESSION['user_lv']=='1')
+	{
+	?>
+	<td><input type="button" name="delete" value=" 刪 除 " onclick="delForm(<?=$row_alert_ap_date['alert_ap_date_filter_id']; ?>)"></td>
+	<?php
+	}
+
+	?>
+
 <td  style="display: none;">
 [
 <?=$row_alert_ap_date['Processing_time_A']; ?>,
@@ -635,7 +707,25 @@ $(document).ready(function(){
 				"bProcessing":true,
 		dom: 'Bfrtip',	
 		buttons: [
-			    { extend: 'excelHtml5', text: '匯出服務中斷數量統計表' ,title: '<?= date("Y-m-d");?>服務中斷數量統計表' },
+			    {   extend: 'excelHtml5',
+					exportOptions: 
+					{
+					 columns: [
+								':contains("No.")',
+								':contains("叫修編號")',
+								':contains("期別")',
+								':contains("部落")',
+								':contains("設備")',
+								':contains("IP")',
+								':contains("中斷時間")',
+								':contains("恢復時間")',
+								':contains("處理編號")',
+								':contains("狀態")'
+								 ]
+					},
+					text: '匯出服務中斷數量統計表' ,
+					title: '<?= date("Y-m-d");?>服務中斷數量統計表' 
+				},
 				//{ extend: 'print', text: '列印',title: '<?= date("Y-m-d");?>斷線數量統計表' },	
 				'pageLength',				
 			],
@@ -643,4 +733,14 @@ $(document).ready(function(){
   $("#show_date").dataTable(opt);
   });
 </script>
+<script language="javascript">
+function delForm(id)
+{
+	if( confirm("確定要刪除嗎??") )
+	{
+	location.href="P_proc.php?mode=Del&id="+id
+	}
+}
+</script>
+
 </html>

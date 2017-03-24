@@ -70,17 +70,40 @@
 <!-------------------------------------- MAIN -->
 	<div id="main">
 
-		<?php include("../alert/alert2.php");?>
+		<?php 
+		include("../alert/alert2.php");
+		require_once("dbtools.inc.php");
+		include_once("../SQL/dbtools_ps.php");
+		$link = create_connection();
+		$link2 = create_connection2();
+		?>
 
 		<h1 class="report">部落資產總表</h1>
 		
 		<div class="report_bar">
 			<form action="<?php echo $_SERVER['PHP_SELF'];?>?mode=query" method="post">
-			<select name="A" >
-			<option value=" " selected  >請選擇期別</option> 
-			<option value="2" <?php if($_POST['A']=='2'){echo 'selected';}else{};	?> >第二期</option>
-			<option value="3" <?php if($_POST['A']=='3'){echo 'selected';}else{};	?> >第三期</option>
-			</select>
+		<select id="list" name="A" onchange="this.form.submit();">
+<option value="NO" selected disabled="disabled">請選擇期別</option>	
+<?php
+///echo '1231465';
+$sql_prj = "SELECT Project_name,Project_number FROM Project ";
+$result_prj = execute_sql($database_name2, $sql_prj, $link2);
+while ($row_prj = mysql_fetch_assoc($result_prj))
+{
+echo $row_prj['Project_name'] ;
+?>
+<option value="<?=$row_prj['Project_number'] ;?>" <?php if($_POST['A']==$row_prj['Project_number']){echo 'selected'; }?>><?=$row_prj['Project_name'] ;?></option>
+<?php
+}
+/*
+<option value="2" <?php if($_POST['A']==2){echo 'selected'; }?>>2期</option>
+<option value="3" <?php if($_POST['A']==3){echo 'selected'; }?>>3期</option>	
+*/
+
+?>
+
+					
+</select>
 			<input type="submit" value="查詢">
 			</form>
 		</div>
@@ -98,10 +121,7 @@
 			 exit();
 		 }else{
 		   $A = $label_tribe ;
-		require_once("dbtools.inc.php");
-		include_once("../SQL/dbtools_ps.php");
-		$link = create_connection();
-		$link2 = create_connection2();
+		
 		?>
 		<table class="table2excel"  id="table2excel">
 		 <thead style="display:none">
@@ -462,7 +482,7 @@ $(document).ready(function(){
 					"bInfo": false, //开关，是否显示表格的一些信息，允许或者禁止表信息的显示，默认为 true，显示信息。
 			 dom: 'Bfrtip',	 buttons: 
 			 [
-				{ extend: 'excelHtml5', text: '匯出第<?=$A ;?>期部落資產總表' ,title: '<?= date("Y-m-d");?>第<?=$A ;?> 期部落資產總表' },
+				{ extend: 'excelHtml5', text: '匯出部落資產總表' ,title: '<?= date("Y-m-d");?>第<?=$A ;?> 期部落資產總表' },
 				//{ extend: 'print', text: '列印',title: '<?= date("Y-m-d");?>服務效益分析年報表' },	
 				//'pageLength',				
 			],

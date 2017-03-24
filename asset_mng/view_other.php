@@ -73,9 +73,20 @@
 		<div class="tab_container">
 			<form action="<?=$_SERVER['PHP_SELF'];?>" method="post" class="period">
 				<select name="A" onchange="this.form.submit();">
-					<option value=" " <?php if($_POST['A']==' '){echo 'selected';}else{};	?>  >請選擇期別</option> 
-					<option value="2" <?php if($_POST['A']=='2'){echo 'selected';}else{};	?> >第二期</option>
-					<option value="3" <?php if($_POST['A']=='3'){echo 'selected';}else{};	?> >第三期</option>
+								<option value=" "disabled  selected  >請選擇期別</option> 
+<?php
+
+$sql_A = "SELECT Project_name,Project_number FROM Project ";
+$result_A = execute_sql($database_name, $sql_A, $link);
+while ($row_prj = mysql_fetch_assoc($result_A))
+{
+//echo $row_prj['Project_number'] ;
+?>
+<option value="<?=$row_prj['Project_number'] ;?>" <?php if($_POST['A']==$row_prj['Project_number']){echo 'selected'; }?>><?=$row_prj['Project_name'] ;?></option>
+<?php
+}
+
+?>	
 				</select>
 				<select id="list" name="Doube_label_tribe" onchange="this.form.submit();">
 					<option value="" selected disabled="disabled">請選擇部落</option>

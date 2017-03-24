@@ -183,7 +183,8 @@
 
 						join outages as C on B.id = C.ifserviceid
 
-						where A.ipaddr ='$ass_ap_ip'  and B.serviceid = 2";
+						where A.ipaddr ='$ass_ap_ip'  and B.serviceid = 2
+						order by c.outageid desc";
 						$result_ipinterface = pg_query($conn,$sql_ipinterface );
 						while ($row_ipinterface = pg_fetch_assoc($result_ipinterface) )
 						{   

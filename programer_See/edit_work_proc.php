@@ -76,37 +76,83 @@ switch ($mode):
 					$mail->Body = 	'處理編號 : '.$re_time.'<br>問題設備 : '.$title.'<br>選擇項目   :  '.$item_wrong.'<br>內容   :   '.$item_wrong_text;
 					$mail->IsHTML(true);
 					$mail->AddAttachment("", "");
+					/*
 					if($_SESSION['user_id']!='13' or $_SESSION['user_id']!='15')
 					{
 							$mail->AddAddress('yashon@tecom.com.tw','Yashon');
 					}else{
-						
-						//$mail->AddAddress('seanchen@tiis.com.tw','seanchen');
-						//$mail->AddAddress('frankchang@tiis.com.tw','Frank');
-						//$mail->AddAddress('danielwu@tiis.com.tw','Daniel');					
-						//$mail->AddAddress('heaven@fareastone.com.tw','Heaven');
-						//$mail->AddAddress('chhsfang@fareastone.com.tw','Chhsfang');
-						//$mail->AddAddress('danielwu@tiis.com.tw','danielwu');				//總PM收件者信箱
-						$mail->AddAddress('yashon@tecom.com.tw','Yashon');
 						//$mail->AddAddress('uunmask2000@gmail.com','康康');				//收件者信箱
-
-						
+					$mail->AddAddress('seanchen@tiis.com.tw','seanchen');
+					$mail->AddAddress('frankchang@tiis.com.tw','Frank');
+					$mail->AddAddress('danielwu@tiis.com.tw','Daniel');
+					$mail->AddAddress('yashon@tecom.com.tw','Yashon');
+					$mail->AddAddress('heaven@fareastone.com.tw','Heaven');
+					$mail->AddAddress('chhsfang@fareastone.com.tw','Chhsfang');
+					//fareastone
+					$mail->AddAddress('bryanlin@fareastone.com.tw','bryanlin');
+					$mail->AddAddress('ccchiang@fareastone.com.tw','ccchiang');
+					$mail->AddAddress('chitalee@fareastone.com.tw','chitalee');
+					$mail->AddAddress('shichichen@fareastone.com.tw','shichichen');
+					/////org.tw
+					$mail->AddAddress('wiselyli@iii.org.tw','wiselyli');
+					$mail->AddAddress('daffany@iii.org.tw','daffany');
+					$mail->AddAddress('jerryccchen@iii.org.tw','jerryccchen');
+					$mail->AddAddress('mayjen@iii.org.tw','mayjen');
+					$mail->AddAddress('humanchen@iii.org.tw','humanchen');
+					$mail->AddAddress('iseehappy@iii.org.tw','iseehappy');
+					$mail->AddAddress('satinechiang@iii.org.tw','satinechiang');
+					$mail->AddAddress('p129894881@gmail.com','p129894881');
+					
+					//$mail->AddAddress('danielwu@tiis.com.tw','danielwu');				//總PM收件者信箱
+					//danielwu@tiis.com.tw
 					}
-					
-					
-					
+					*/
+						 //tecom
+			$mail->AddAddress('yashon@tecom.com.tw','Yashon');
+			//tiis
+			$mail->AddAddress('seanchen@tiis.com.tw','seanchen');
+			$mail->AddAddress('frankchang@tiis.com.tw','Frank');
+			$mail->AddAddress('charlesh@tiis.com.tw','charlesh');
+			$mail->AddAddress('jason01chang@tiis.com.tw','jason01chang');
+			$mail->AddAddress('danielwu@tiis.com.tw','Daniel');	
+			//fareastone
+			$mail->AddAddress('heaven@fareastone.com.tw','Heaven');
+			$mail->AddAddress('chhsfang@fareastone.com.tw','Chhsfang');
+			$mail->AddAddress('bryanlin@fareastone.com.tw','bryanlin');
+			$mail->AddAddress('ccchiang@fareastone.com.tw','ccchiang');
+			$mail->AddAddress('chitalee@fareastone.com.tw','chitalee');
+			$mail->AddAddress('shichichen@fareastone.com.tw','shichichen');
+			
+			
+			/////org.tw  
+			$mail->AddAddress('fcc@apc.gov.tw','fcc');
+			$mail->AddAddress('wiselyli@iii.org.tw','wiselyli');
+			$mail->AddAddress('daffany@iii.org.tw','daffany');
+			$mail->AddAddress('jerryccchen@iii.org.tw','jerryccchen');
+			$mail->AddAddress('mayjen@iii.org.tw','mayjen');
+			$mail->AddAddress('humanchen@iii.org.tw','humanchen');
+			$mail->AddAddress('iseehappy@iii.org.tw','iseehappy');
+			$mail->AddAddress('satinechiang@iii.org.tw','satinechiang');
+			$mail->AddAddress('p129894881@gmail.com','p129894881');
+			//$mail->AddAddress('jerryccchen@iii.org.tw','jerryccchen');	
+			$mail->AddAddress('na1337@apc.gov.tw','na1337');	
+			$mail->AddAddress('cip1026@apc.gov.tw','cip1026');	
+			$mail->AddAddress('charlie@apc.gov.tw','charlie');	
+			$mail->AddAddress('biungsu1@apc.gov.tw','biungsu1');
 					
 					$addressCC = "uunmask2000@gmail.com";
 					$mail->AddBCC($addressCC, '康康');
 					//exit;
-					if(!$mail->Send())
-					{
-					echo "<p align=center>傳送Error1: ".$errorx=$mail->ErrorInfo."</p>";
-					}else
-					{	
+			
+			if(!$mail->Send())
+			{
+			echo "<p align=center>傳送Error1: ".$errorx=$mail->ErrorInfo."</p>";
+			}else
+			{	
 
-					//echo "<p align=center><b>傳送成功。</b></p>";
-					}
+			//echo "<p align=center><b>傳送成功。</b></p>";
+			}
+			
 					//$Processing_time_A = date("Y-m-d H:i:s"); 
 					$Processing_time_A = $_POST['time'];  // 手動填寫
 					//$calling_bar_id = date("YmdHis"); 
@@ -346,33 +392,82 @@ while ($row_KID   = mysql_fetch_assoc($result_query))
 					$mail->Body = 	'處理編號 : '.$calling_bar_id.'<br>問題設備 : '.$title.'<br>處理資訊 :   :   '.$item_wrong_text;
 					$mail->IsHTML(true);
 					$mail->AddAttachment("", "");
+					/*
 					if($_SESSION['user_id']!='13' or $_SESSION['user_id']!='15')
 					{
 							$mail->AddAddress('yashon@tecom.com.tw','Yashon');
 					}else{
-						$mail->AddAddress('seanchen@tiis.com.tw','seanchen');
-						$mail->AddAddress('frankchang@tiis.com.tw','Frank');
-						$mail->AddAddress('danielwu@tiis.com.tw','Daniel');					
-						$mail->AddAddress('heaven@fareastone.com.tw','Heaven');
-						$mail->AddAddress('chhsfang@fareastone.com.tw','Chhsfang');
-						$mail->AddAddress('danielwu@tiis.com.tw','danielwu');				//總PM收件者信箱
-						$mail->AddAddress('yashon@tecom.com.tw','Yashon');
 						//$mail->AddAddress('uunmask2000@gmail.com','康康');				//收件者信箱
-
-						
+					$mail->AddAddress('seanchen@tiis.com.tw','seanchen');
+					$mail->AddAddress('frankchang@tiis.com.tw','Frank');
+					$mail->AddAddress('danielwu@tiis.com.tw','Daniel');
+					$mail->AddAddress('yashon@tecom.com.tw','Yashon');
+					$mail->AddAddress('heaven@fareastone.com.tw','Heaven');
+					$mail->AddAddress('chhsfang@fareastone.com.tw','Chhsfang');
+					//fareastone
+					$mail->AddAddress('bryanlin@fareastone.com.tw','bryanlin');
+					$mail->AddAddress('ccchiang@fareastone.com.tw','ccchiang');
+					$mail->AddAddress('chitalee@fareastone.com.tw','chitalee');
+					$mail->AddAddress('shichichen@fareastone.com.tw','shichichen');
+					/////org.tw
+					$mail->AddAddress('wiselyli@iii.org.tw','wiselyli');
+					$mail->AddAddress('daffany@iii.org.tw','daffany');
+					$mail->AddAddress('jerryccchen@iii.org.tw','jerryccchen');
+					$mail->AddAddress('mayjen@iii.org.tw','mayjen');
+					$mail->AddAddress('humanchen@iii.org.tw','humanchen');
+					$mail->AddAddress('iseehappy@iii.org.tw','iseehappy');
+					$mail->AddAddress('satinechiang@iii.org.tw','satinechiang');
+					$mail->AddAddress('p129894881@gmail.com','p129894881');
+					
+					//$mail->AddAddress('danielwu@tiis.com.tw','danielwu');				//總PM收件者信箱
+					//danielwu@tiis.com.tw
 					}
+					*/
+					 //tecom
+			$mail->AddAddress('yashon@tecom.com.tw','Yashon');
+			//tiis
+			$mail->AddAddress('seanchen@tiis.com.tw','seanchen');
+			$mail->AddAddress('frankchang@tiis.com.tw','Frank');
+			$mail->AddAddress('charlesh@tiis.com.tw','charlesh');
+			$mail->AddAddress('jason01chang@tiis.com.tw','jason01chang');
+			$mail->AddAddress('danielwu@tiis.com.tw','Daniel');	
+			//fareastone
+			$mail->AddAddress('heaven@fareastone.com.tw','Heaven');
+			$mail->AddAddress('chhsfang@fareastone.com.tw','Chhsfang');
+			$mail->AddAddress('bryanlin@fareastone.com.tw','bryanlin');
+			$mail->AddAddress('ccchiang@fareastone.com.tw','ccchiang');
+			$mail->AddAddress('chitalee@fareastone.com.tw','chitalee');
+			$mail->AddAddress('shichichen@fareastone.com.tw','shichichen');
+			
+			
+			/////org.tw  
+			$mail->AddAddress('fcc@apc.gov.tw','fcc');
+			$mail->AddAddress('wiselyli@iii.org.tw','wiselyli');
+			$mail->AddAddress('daffany@iii.org.tw','daffany');
+			$mail->AddAddress('jerryccchen@iii.org.tw','jerryccchen');
+			$mail->AddAddress('mayjen@iii.org.tw','mayjen');
+			$mail->AddAddress('humanchen@iii.org.tw','humanchen');
+			$mail->AddAddress('iseehappy@iii.org.tw','iseehappy');
+			$mail->AddAddress('satinechiang@iii.org.tw','satinechiang');
+			$mail->AddAddress('p129894881@gmail.com','p129894881');
+			//$mail->AddAddress('jerryccchen@iii.org.tw','jerryccchen');	
+			$mail->AddAddress('na1337@apc.gov.tw','na1337');	
+			$mail->AddAddress('cip1026@apc.gov.tw','cip1026');	
+			$mail->AddAddress('charlie@apc.gov.tw','charlie');	
+			$mail->AddAddress('biungsu1@apc.gov.tw','biungsu1');
 					$addressCC = "uunmask2000@gmail.com";
 					$mail->AddBCC($addressCC, '康康');
 					//exit;
-					if(!$mail->Send())
-					{
-					echo "<p align=center>傳送Error1: ".$errorx=$mail->ErrorInfo."</p>";
-					}else
-					{	
+	 
+	if(!$mail->Send())
+	{
+	echo "<p align=center>傳送Error1: ".$errorx=$mail->ErrorInfo."</p>";
+	}else
+	{	
 
-					//echo "<p align=center><b>傳送成功。</b></p>";
-					}
-		
+	//echo "<p align=center><b>傳送成功。</b></p>";
+	}
+	
 		
 		
 				if($_SESSION['user_id']=='13' or $_SESSION['user_id']=='15')

@@ -54,21 +54,41 @@
 <!-------------------------------------- MAIN -->
 	<div id="main">
 
-		<?php include("../alert/alert2.php");?>
+		<?php 
+			include("../alert/alert2.php");
+			require_once("dbtools.inc.php");
+			$link = create_connection();
+			$link2 = create_connection2();
+		?>
 		
 		<h1 class="report">服務效益日總表</h1>
 	
 		<div class="report_bar">
 	
 		<form action="<?php echo $_SERVER['PHP_SELF'];?>?mode=query" method="post">
-		<select name="A">
-		<option value=" " selected  >請選擇期別</option> 
+<select id="list" name="A" onchange="this.form.submit();">
+<option value="NO" selected disabled="disabled">請選擇期別</option>	
+<?php
+///echo '1231465';
+$sql_prj = "SELECT Project_name,Project_number FROM Project ";
+$result_prj = execute_sql($database_name2, $sql_prj, $link2);
+while ($row_prj = mysql_fetch_assoc($result_prj))
+{
+echo $row_prj['Project_name'] ;
+?>
+<option value="<?=$row_prj['Project_number'] ;?>" <?php if($_POST['A']==$row_prj['Project_number']){echo 'selected'; }?>><?=$row_prj['Project_name'] ;?></option>
+<?php
+}
+/*
+<option value="2" <?php if($_POST['A']==2){echo 'selected'; }?>>2期</option>
+<option value="3" <?php if($_POST['A']==3){echo 'selected'; }?>>3期</option>	
+*/
 
-		<option value="2" <?php if($_POST['A']=='2'){echo 'selected';}else{};	?> >第二期</option>
-		
-		<option value="3" <?php if($_POST['A']=='3'){echo 'selected';}else{};	?> >第三期</option>			
-		
-		</select>
+?>
+
+	
+</select>
+
 
 			<select  name="year" size="1" >
 			<option  disabled selected>請選擇年份</option>
@@ -125,9 +145,7 @@
 	
 		<div class="report">
 <?php
-		require_once("dbtools.inc.php");
-		$link = create_connection();
-		$link2 = create_connection2();
+	
 		
 		$Period =$_POST['A'] ;
 		$year =$_POST['year'] ;

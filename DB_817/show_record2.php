@@ -60,7 +60,7 @@
       $link = create_connection();
 			
       //執行 SQL 命令
-      $sql = "SELECT *  FROM radacct where nasipaddress='172.21.9.131' ORDER BY acctsessiontime DESC";	
+      $sql = "SELECT *  FROM radacct where nasipaddress like '%172.21.70.%' and acctstarttime >= '2017-03-20 00:00:00' ORDER BY acctsessiontime DESC";	
       $result = execute_sql($database_name, $sql, $link);
 			
       //取得欄位數

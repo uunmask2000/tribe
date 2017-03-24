@@ -44,7 +44,8 @@
 					$tribe_member = $row['tribe_member'];
 					$tribe_phone = $row['tribe_phone'];
 					$tribe_note = $row['tribe_note'];
- 
+					$tribe_network_segment  = $row['tribe_network_segment'];
+					$tribe_flow  = $row['tribe_flow'];
 				}
 
 			?>
@@ -62,18 +63,33 @@
 						<td>選擇期別</td>
 						<td>
 						<select id="tribe_label" name="tribe_label" onchange="this.form.submit();">
-						  <?php
-						  if($tribe_label==0)
-						  {
-							?>
-							 <option value="2"    <?php  if($tribe_label=='0'){ echo 'selected';  }          ;?> >無期</option>
-							<?php  
-						  }
-						  
-						  
+<?php
+$sql_Project = "SELECT Project_name,Project_number FROM Project ";
+$result_Project = execute_sql($database_name, $sql_Project, $link);
+while ($row_Project = mysql_fetch_assoc($result_Project))
+{
+?>
+<option value="<?=$row_Project['Project_number'] ;?>"  <?php if($row_Project['Project_number']==$tribe_label){echo 'selected'; }?>><?=$row_Project['Project_name'] ;?></option>
+<?php
+}
+?>	
+
+						
+						
+<?php
+/*
+if($tribe_label==0)
+{
+?>
+<option value="2"    <?php  if($tribe_label=='0'){ echo 'selected';  }          ;?> >無期</option>
+<?php  
+}
+<option value="2"    <?php  if($tribe_label=='2'){ echo 'selected';  }          ;?> >二期</option>
+<option value="3"     <?php  if($tribe_label=='3'){ echo 'selected';  }          ;?>     >三期</option>
+
+*/
+
 						  ?>
-						 <option value="2"    <?php  if($tribe_label=='2'){ echo 'selected';  }          ;?> >二期</option>
-						 <option value="3"     <?php  if($tribe_label=='3'){ echo 'selected';  }          ;?>     >三期</option>
 						
 						</select>
 						</td>
@@ -116,6 +132,14 @@
 				<tr>
 					<td>部落聯絡備註</td>
 					<td><input type="text" name="tribe_note" value="<?=$tribe_note ;?>" ></td>
+				</tr>
+				<tr>
+					<td>部落網段</td>
+					<td><input type="text" name="tribe_network_segment" value="<?=$tribe_network_segment.'0/24';?>" ></td>
+				</tr>
+				<tr>
+					<td>部落流量警戒值(MB)</td>
+					<td><input type="text" name="tribe_flow" value="<?=$tribe_flow ;?>" ></td>
 				</tr>
 				
 				

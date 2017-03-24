@@ -60,11 +60,28 @@ else
 	<form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
 		<input type="hidden" name="cookie_A" value="<?=$_POST['A'];?>">
 		
-		<select id="list" name="A" onchange="this.form.submit();">
-		<option value="NO" selected disabled="disabled">請選擇期別</option>							
-		<option value="2" <?php if($_POST['A']==2){echo 'selected'; }?>>第二期</option>
-		<option value="3" <?php if($_POST['A']==3){echo 'selected'; }?>>第三期</option>							
-		</select>
+<select id="list" name="A" onchange="this.form.submit();">
+<option value="NO" selected disabled="disabled">請選擇期別</option>	
+<?php
+///echo '1231465';
+$sql_prj = "SELECT Project_name,Project_number FROM Project ";
+$result_prj = execute_sql($database_name, $sql_prj, $link);
+while ($row_prj = mysql_fetch_assoc($result_prj))
+{
+echo $row_prj['Project_name'] ;
+?>
+<option value="<?=$row_prj['Project_number'] ;?>" <?php if($_POST['A']==$row_prj['Project_number']){echo 'selected'; }?>><?=$row_prj['Project_name'] ;?></option>
+<?php
+}
+/*
+<option value="2" <?php if($_POST['A']==2){echo 'selected'; }?>>2期</option>
+<option value="3" <?php if($_POST['A']==3){echo 'selected'; }?>>3期</option>	
+*/
+
+?>
+
+					
+</select>
 		
 		<select id="list" name="tribe" onchange="">
 		<?php
@@ -248,7 +265,7 @@ if($_POST['A']==NULL)
 		}
 		?>
 		</td>
-		<td><?=	$ass_ap_name;?></td>
+		<td><a class="tb_link" href="../view_date/view_tribe_AP_date.php?ip=<?=$row_AP['ass_ap_ip'];?>" target=" _blank"><?=	$ass_ap_name;?></a></td>
 		<td><a href="show_ap.php?ip=<?=$row_AP['ass_ap_ip'];?>" target=" _blank"><img src="../images/icon_magnifier.png" class="adm_icon" align="absmiddle"></a>
 		<td>
 		<?php
@@ -331,7 +348,7 @@ if(($_SESSION['user_lv'])==1)
 			}
 			?>
 			</td>
-			<td><?=	$ass_name;?></td>
+			<td><a class="tb_link" href="../view_date/view_tribe_FW_date.php?ip=<?=$row_FW['ass_ip'];?>" target=" _blank"><?=	$ass_name;?></a></td>
 			<td><a href="show_fw.php?ip=<?=$row_FW['ass_ip'];?>" target=" _blank"><img src="../images/icon_magnifier.png" class="adm_icon" align="absmiddle"></a>
 			<td>
 			<?php
@@ -424,7 +441,7 @@ if(($_SESSION['user_lv'])==1)
 		}
 		?>
 		</td>
-		<td><?=	$ass_4Gname;?></td>
+		<td><a class="tb_link" href="../view_date/view_tribe_4G_date.php?ip=<?=$row_4G_Router['ass_4Gip'];?>" target=" _blank"><?=	$ass_4Gname;?></a></td>
 		<td><a href="show_4grouter.php?ip=<?=$row_4G_Router['ass_4Gip'];?>" target=" _blank"><img src="../images/icon_magnifier.png" class="adm_icon" align="absmiddle"></a>
 		<td>
 		<?php
@@ -519,8 +536,8 @@ if(($_SESSION['user_lv'])==1)
 		?>
 		</td>
 
-		<td><?=	$ass_poesw_name;?></td>
-		<td><a href="show_poe_sw.php?ip=<?=$row_POEWS['ass_poesw_ip'];?>" target=" _blank"><img src="../images/icon_magnifier.png" class="adm_icon" align="absmiddle"></a>
+		<td><a class="tb_link" href="../view_date/view_tribe_POE_date.php?ip=<?=$row_POEWS['ass_poesw_ip'];?>" target=" _blank"><?=	$ass_poesw_name;?></a></td>
+		<td><a class="tb_link" href="show_poe_sw.php?ip=<?=$row_POEWS['ass_poesw_ip'];?>" target=" _blank"><img src="../images/icon_magnifier.png" class="adm_icon" align="absmiddle"></a></td>
 		<td>
 		<?php
 		$sql_number = "SELECT *  FROM  ass_change_poe_sw where  	ass_change_own_poe_sw=' $ass_poesw_id'  ";
@@ -611,7 +628,7 @@ if(($_SESSION['user_lv'])==1)
 				}
 				?>
 				</td>
-				<td><?=	$ass_pdu_name;?></td>
+				<td><a class="tb_link" href="../view_date/view_tribe_PDU_date.php?ip=<?=$row_pdu['ass_pdu_ip'];?>" target=" _blank"><?=	$ass_pdu_name;?></a></td>
 				<td><a href="show_pdu.php?ip=<?=$row_pdu['ass_pdu_ip'];?>" target=" _blank"><img src="../images/icon_magnifier.png" class="adm_icon" align="absmiddle"></a>
 				<td>
 				<?php

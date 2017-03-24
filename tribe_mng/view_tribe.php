@@ -46,9 +46,25 @@
 		
 			<form action="<?=$_SERVER['PHP_SELF'];?>" method="post" class="period">
 			　<select name="A" onchange="this.form.submit();">
-				  <option value=" " <?php if($_POST['A']==' '){echo 'selected';}else{};	?>  >全部</option> 
-				　<option value="2" <?php if($_POST['A']=='2'){echo 'selected';}else{};	?> >第二期</option>
-				　<option value="3" <?php if($_POST['A']=='3'){echo 'selected';}else{};	?> >第三期</option>
+<option value=" " <?php if($_POST['A']==' '){echo 'selected';}else{};	?>  >全部</option> 	
+<?php
+$sql_Project = "SELECT Project_name,Project_number FROM Project ";
+$result_Project = execute_sql($database_name, $sql_Project, $link);
+while ($row_Project = mysql_fetch_assoc($result_Project))
+{
+?>
+<option value="<?=$row_Project['Project_number'] ;?>" <?php if($_POST['A']==$row_Project['Project_number']){echo 'selected'; }?>><?=$row_Project['Project_name'] ;?></option>
+<?php
+
+}
+/*
+<option value="2" <?php if($_POST['A']=='2'){echo 'selected';}else{};	?> >第二期</option>
+　<option value="3" <?php if($_POST['A']=='3'){echo 'selected';}else{};	?> >第三期</option>
+*/
+
+?>	
+				 
+				　
 				　
 				</select>
 			</form>

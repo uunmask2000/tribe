@@ -4,7 +4,11 @@
 	<TITLE> ZTREE DEMO - Simple Data</TITLE>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<link rel="stylesheet" href="css/demo.css" type="text/css">
-	<link rel="stylesheet" href="css/zTreeStyle/zTreeStyle.css" type="text/css">
+	<!----
+	<link rel="stylesheet" href="css/zTreeStyle/zTreeStyle.css" type="text/css">	
+	--->
+	<link rel="stylesheet" href="css/metroStyle/metroStyle.css" type="text/css">
+	
 	<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
 	<script type="text/javascript" src="js/jquery.ztree.core.js"></script>
 
@@ -12,10 +16,46 @@
 
 <BODY>
 <?php
-
 include("../SQL/dbtools_ps.php"); 
 include_once("../SQL/dbtools.inc.php");
+//function
+include 'functions.php'; 
+
+
 $link = create_connection();
+$sql_text ="
+			SELECT *
+			FROM outages
+			RIGHT JOIN ifservices AS  ifservices
+			 ON  outages.ifserviceid=ifservices.id
+			RIGHT JOIN service AS  service
+			 ON ifservices.serviceid = service.serviceid
+			where servicename='ICMP' and  ifregainedservice is NULL 
+			";
+$result_outages = pg_query($conn,$sql_text );
+$total_records2 = pg_num_rows($result_outages);
+$j = 0;
+while ($row_outages = pg_fetch_row($result_outages) )
+{
+$events_id=$row_outages[5];
+$sql_events =" SELECT nodeid	FROM events where eventid='$events_id'   ";
+$result_events = pg_query($conn,$sql_events );
+while ($row_events = pg_fetch_row($result_events) )
+{
+	$node_id = $row_events[0];
+	$sql_ipinterface =" SELECT ipaddr	FROM ipinterface where 	nodeid='$node_id' and ipaddr<>'192.168.1.100' ";
+	$result_ipinterface = pg_query($conn,$sql_ipinterface );
+	
+	while ($row_ipinterface = pg_fetch_row($result_ipinterface)  )
+	{
+	$query_ip = $row_ipinterface[0];
+	$array[$j] = $query_ip;
+	$j++;	
+	}
+}
+
+}
+
 ?>	
 <SCRIPT type="text/javascript">
 	var setting = {

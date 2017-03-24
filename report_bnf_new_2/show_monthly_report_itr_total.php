@@ -53,24 +53,40 @@
 <!-------------------------------------- MAIN -->
 	<div id="main">
 
-		<?php include("../alert/alert2.php");?>
+		<?php 
+		include("../alert/alert2.php");
+		require_once("dbtools.inc.php");
+		$link = create_connection();
+		$link2 = create_connection2();
+		?>
 		
 		<h1 class="report">愛部落服務效益月報表</h1>
 	
 		<div class="report_bar">
 		<form action="<?php echo $_SERVER['PHP_SELF'];?>?mode=query" method="post">
-		<select name="A">
-		<option value=" " selected  >請選擇期別</option> 
+<select id="list" name="A">
+<option value="NO" selected disabled="disabled">請選擇期別</option>	
+<?php
+///echo '1231465';
+$sql_prj = "SELECT Project_name,Project_number FROM Project ";
+$result_prj = execute_sql($database_name2, $sql_prj, $link2);
+while ($row_prj = mysql_fetch_assoc($result_prj))
+{
+echo $row_prj['Project_name'] ;
+?>
+<option value="<?=$row_prj['Project_number'] ;?>" <?php if($_POST['A']==$row_prj['Project_number']){echo 'selected'; }?>><?=$row_prj['Project_name'] ;?></option>
+<?php
+}
+/*
+<option value="2" <?php if($_POST['A']==2){echo 'selected'; }?>>2期</option>
+<option value="3" <?php if($_POST['A']==3){echo 'selected'; }?>>3期</option>	
+*/
 
-		<option value="2" <?php if($_POST['A']=='2'){echo 'selected';}else{};	?> >第二期</option>
-		
-		<option value="3" <?php if($_POST['A']=='3'){echo 'selected';}else{};	?> >第三期</option>			
-	
+?>
 
-		?>
+					
+</select>
 
-
-		</select>
 
 		<select  name="year" size="1" >
 			<option  disabled selected>請選擇年份</option>
@@ -118,9 +134,6 @@
 	
 	
 	<?php
-		require_once("dbtools.inc.php");
-		$link = create_connection();
-		$link2 = create_connection2();
 		//$day =date("Y-m", strtotime('-1 month'));
 	if($_GET['mode']=='query')
 	{
@@ -176,7 +189,7 @@
 							<th>總流量(MB)</th>
 							<th>總上行流量(MB)</th>
 							<th>總下行流量(MB)</th>
-							
+							<th>設備妥善率</th>
 							<!---計算
 							<th>設備妥善率</th>
 							<th>平均使用人次使用時間(分)</th>
@@ -199,12 +212,14 @@
 			$area =$row_sum['area'];
 			$tribe =$row_sum['tribe'];
 			
-			//
-			$filter_number =$row_sum['filter_number'];
-			$device_number =$row_sum['device_number'];
-			//1個設備  200 , 分母為 1/ 200
-			$Denominator  = $device_number*200;
-			//
+			//妥善率設備
+				//$filter_number =$row_sum['filter_number'];
+				//$device_number =$row_sum['device_number'];
+				//1個設備  200 , 分母為 1/ 200
+				//$Denominator  = $device_number*200;
+				$Denominator  = $row_sum['device_number'];
+				//
+				 $tribe_sid  = $row_sum['tribe_sid'];
 
 			$Use_of_people =$row_sum['Use_of_people'];
 			$Number_of_users =$row_sum['Number_of_users'];
@@ -217,8 +232,6 @@
 			$Total_usage_time=  ceil($Total_usage_time);
 			$Upload_traffic=  ceil($Upload_traffic);
 			$Download_traffic= ceil($Download_traffic);
-
-
 						
 						
 						?>
@@ -234,7 +247,29 @@
 							<td><?=$SUM_2 ; ?></td>
 							<td><?=$Upload_traffic ; ?></td>
 							<td><?=$Download_traffic ; ?></td>
-							
+							<td>
+							<?php
+							$AAA = $Denominator ;														 
+							$tribe_sidA = $tribe_sid ; 
+							$sql_SUM = "
+									SELECT *, SUM(TIMESTAMPDIFF(second,`alert_ap_date_time_dead`,`alert_ap_date_time_ok`)) 
+									FROM `alert_ap_date_filter` 
+									WHERE `alert_ap_date_setting` LIKE '%-$tribe_sidA%' 
+									and 
+									alert_written_time  LIKE '%$day%'
+										";
+							$result_SUM = execute_sql($database_name2, $sql_SUM, $link2);
+							while ($row_SUM = mysql_fetch_assoc($result_SUM))
+							{
+								 $SUMA = $row_SUM['SUM(TIMESTAMPDIFF(second,`alert_ap_date_time_dead`,`alert_ap_date_time_ok`))'];    
+							}
+							 $SUMA = ceil($SUMA /60) ;  //斷線總小時
+							 $dayCount = date("t",strtotime("$day"));   //本月共有幾天
+							//$SO = ceil($SUMA/($AAA*$dayCount*24))		;//妥善率
+							 $SO = round($SUMA/($AAA*$dayCount*24), 2)		;//妥善率  round(1.95583, 2)
+								echo  100 - $SO ;							 
+							?>
+							</td>
 							<?php
 							//<td>
 							//$AAA = ($array2[$ii][9]+$array1[$ii][9])/2 ;

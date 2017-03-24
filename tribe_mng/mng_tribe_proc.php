@@ -21,8 +21,9 @@ switch ($_GET['mode'])
 					$tribe_member   = trim($_POST['tribe_member']);
 					$tribe_phone   = trim($_POST['tribe_phone']);
 					$tribe_note   = trim($_POST['tribe_note']);
-					
-	$sql = " UPDATE tribe  SET tribe_name='$tribe_name',tribe_x='$tribe_x',tribe_y='$tribe_y',tribe_o='$tribe_o' ,tribe_label='$tribe_label' ,tribe_member='$tribe_member' ,tribe_phone='$tribe_phone' ,tribe_note='$tribe_note'   WHERE  tribe_id='$uid' ";
+					$tribe_flow   = trim($_POST['tribe_flow']);
+					$tribe_network_segment   = trim($_POST['tribe_network_segment']);
+	$sql = " UPDATE tribe  SET tribe_name='$tribe_name',tribe_x='$tribe_x',tribe_y='$tribe_y',tribe_o='$tribe_o' ,tribe_label='$tribe_label' ,tribe_member='$tribe_member' ,tribe_phone='$tribe_phone' ,tribe_note='$tribe_note' ,tribe_network_segment='$tribe_network_segment' ,tribe_flow='$tribe_flow'  WHERE  tribe_id='$uid' ";
 	///echo $sql;
       //exit();
        execute_sql($database_name, $sql, $link);
@@ -47,7 +48,7 @@ switch ($_GET['mode'])
 								$tribe_member   = trim($_POST['tribe_member']);
 								$tribe_phone   = trim($_POST['tribe_phone']);
 								$tribe_note   = trim($_POST['tribe_note']);
-						   
+								$tribe_network_segment   = trim($_POST['tribe_network_segment']);
 						    if(empty($city))
 						 {
 						  ?><script>alert('未選擇縣市!?'); window.history.back();</script><?php
@@ -68,8 +69,8 @@ switch ($_GET['mode'])
 											
 									//$sql = "INSERT INTO tribe( `city_id`, `township_id`, `tribe_name`, `tribe_x`, `tribe_y`, `tribe_o`) VALUES (  '$city','$town','$tribe_name','$tribe_x','$tribe_y','$tribe_o'  }  ";
 									
-										$sql = "	INSERT INTO tribe(city_id, township_id,tribe_name,tribe_x,tribe_y,tribe_o,tribe_label,tribe_member,tribe_phone,tribe_note) 
-										VALUES ( '$city','$town','$tribe_name','$tribe_x','$tribe_y','$tribe_o','$tribe_label','$tribe_member','$tribe_phone','$tribe_note')";
+										$sql = "	INSERT INTO tribe(city_id, township_id,tribe_name,tribe_x,tribe_y,tribe_o,tribe_label,tribe_member,tribe_phone,tribe_note,) 
+										VALUES ( '$city','$town','$tribe_name','$tribe_x','$tribe_y','$tribe_o','$tribe_label','$tribe_member','$tribe_phone','$tribe_note','$tribe_network_segment')";
 											
 								//	echo $sql;
     // exit();	

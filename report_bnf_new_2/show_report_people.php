@@ -66,14 +66,29 @@
 
 		<div class="report_bar">
 		<form action="<?php echo $_SERVER['PHP_SELF'];?>?mode=query" method="post">
-		<select name="A"  onchange="this.form.submit();">
-		<option value=" " selected  >請選擇期別</option> 
+	<select id="list" name="A" onchange="this.form.submit();">
+<option value="NO" selected disabled="disabled">請選擇期別</option>	
+<?php
+///echo '1231465';
+$sql_prj = "SELECT Project_name,Project_number FROM Project ";
+$result_prj = execute_sql($database_name2, $sql_prj, $link2);
+while ($row_prj = mysql_fetch_assoc($result_prj))
+{
+echo $row_prj['Project_name'] ;
+?>
+<option value="<?=$row_prj['Project_number'] ;?>" <?php if($_POST['A']==$row_prj['Project_number']){echo 'selected'; }?>><?=$row_prj['Project_name'] ;?></option>
+<?php
+}
+/*
+<option value="2" <?php if($_POST['A']==2){echo 'selected'; }?>>2期</option>
+<option value="3" <?php if($_POST['A']==3){echo 'selected'; }?>>3期</option>	
+*/
 
-		<option value="2" <?php if($_POST['A']=='2'){echo 'selected';}else{};	?> >第二期</option>
-		
-		<option value="3" <?php if($_POST['A']=='3'){echo 'selected';}else{};	?> >第三期</option>			
-		
-		</select>
+?>
+
+					
+</select>
+
 		
 		<select  name="tribe" size="1"   onchange="this.form.submit();">
 					<option  disabled selected>請選擇部落</option>

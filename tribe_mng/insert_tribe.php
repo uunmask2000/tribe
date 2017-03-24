@@ -87,9 +87,17 @@
 						<td>選擇期別</td>
 						<td>
 						<select id="tribe_label" name="tribe_label">
-						 <option value="2" selected >二期</option>
-						 <option value="3">三期</option>
-						
+<?php
+$sql_Project = "SELECT Project_name,Project_number FROM Project ";
+$result_Project = execute_sql($database_name, $sql_Project, $link);
+while ($row_Project = mysql_fetch_assoc($result_Project))
+{
+?>
+<option value="<?=$row_Project['Project_number'] ;?>"  <?php if($row_Project['Project_number']=='4'){echo 'selected'; }?>><?=$row_Project['Project_name'] ;?></option>
+<?php
+}
+?>	
+				
 						</select>
 						</td>
 					</tr>
@@ -136,7 +144,10 @@
 					<td>部落聯絡備註</td>
 					<td><input type="text" name="tribe_note"  value="" ></td>
 				</tr>
-				
+				<tr>
+					<td>部落網段</td>
+					<td><input type="text" name="tribe_network_segment" ></td>
+				</tr>
 
 				<tr>
 					<td colspan="2" align="center">

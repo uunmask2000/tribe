@@ -58,16 +58,16 @@
 						　<option value="1">最高使用者</option>
 						　<option value="2">網管人員</option>
 						　<option value="3">專管人員</option>
-						　<option value="4"   selected >一般訪客</option>
+						　<option value="4" selected>原民會</option>
 						</select>
 					</td>
 				</tr>
 				
 				<tr>
+						<td>是否為工程師</td>
 						<td>
-						是否為工程師<br>
-						<input type="radio" name="user_engineer_radio" value="0" checked  > 否<br>
-						<input type="radio" name="user_engineer_radio" value="1"   > 是<br>
+						<input type="radio" name="user_engineer_radio" value="0" checked> 否<br>
+						<input type="radio" name="user_engineer_radio" value="1"> 是<br>
 						</td>
 				</tr>
 				

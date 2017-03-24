@@ -423,6 +423,27 @@ if($Processing_status=='首回覆'){
 		}
 		?>
 		</select>
+<br>
+快速填寫處理內容
+<br>
+<select name="FAST_form" onclick="appendText()" id="FAST_form" >
+  <option value="" disabled selected>請選擇處理內容</option>
+			<option value="ISP網路問題">ISP網路問題</option>
+			<option value="設備故障">設備故障 </option>
+			<option value="設備運作不正常">設備運作不正常 </option>
+			<option value="電力問題">電力問題</option>
+			<option value="電力/光纖線問題">電力/光纖線問題</option>
+			<option value="人為破壞">人為破壞 </option>
+			<option value="天災">天災 </option>
+</select>
+<script>
+function appendText()
+{
+//alert('DO');
+//document.form1("item_wrong_text").value = document.form1("FAST_form").value;
+document.getElementById("item_wrong_text").value = document.getElementById('FAST_form').value;
+}
+</script>
 		<br>
 	處理內容 :<textarea style="width:98%;" rows="5" name="item_wrong_text" placeholder="處理內容"></textarea>
 	<input type="hidden" name="key" value="<?=$alert_ap_date_filter_id ;?>">

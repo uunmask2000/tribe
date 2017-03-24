@@ -53,21 +53,40 @@
 <!-------------------------------------- MAIN -->
 	<div id="main">
 
-		<?php include("../alert/alert2.php");?>
+		<?php 
+		include("../alert/alert2.php");
+		require_once("dbtools.inc.php");
+		$link = create_connection();
+		$link2 = create_connection2();
+		?>
 		
 		<h1 class="report">服務效益月總報表</h1>
 	
 		<div class="report_bar">
 		<form action="<?php echo $_SERVER['PHP_SELF'];?>?mode=query" method="post">
-		<select name="A">
-		<option value=" " selected  >請選擇期別</option> 
+<select id="list" name="A">
+<option value="NO" selected disabled="disabled">請選擇期別</option>	
+<?php
+///echo '1231465';
+$sql_prj = "SELECT Project_name,Project_number FROM Project ";
+$result_prj = execute_sql($database_name2, $sql_prj, $link2);
+while ($row_prj = mysql_fetch_assoc($result_prj))
+{
+echo $row_prj['Project_name'] ;
+?>
+<option value="<?=$row_prj['Project_number'] ;?>" <?php if($_POST['A']==$row_prj['Project_number']){echo 'selected'; }?>><?=$row_prj['Project_name'] ;?></option>
+<?php
+}
+/*
+<option value="2" <?php if($_POST['A']==2){echo 'selected'; }?>>2期</option>
+<option value="3" <?php if($_POST['A']==3){echo 'selected'; }?>>3期</option>	
+*/
 
-		<option value="2" <?php if($_POST['A']=='2'){echo 'selected';}else{};	?> >第二期</option>
-		
-		<option value="3" <?php if($_POST['A']=='3'){echo 'selected';}else{};	?> >第三期</option>			
-		
-		</select>
-		
+?>
+
+					
+</select>
+
 		
 		
 			
@@ -112,9 +131,7 @@
 		<div class="report">
 
 	<?php
-		require_once("dbtools.inc.php");
-		$link = create_connection();
-		$link2 = create_connection2();
+		
 		//$day =date("Y-m", strtotime('-1 month'));
 	if($_GET['mode']=='query')
 	{
@@ -173,7 +190,7 @@
 							<th>總流量(MB)</th>
 							<th>總上行流量(MB)</th>
 							<th>總下行流量(MB)</th>
-							
+							<th>設備妥善率</th>
 							
 							<!---計算
 							<th>設備妥善率</th>
@@ -197,11 +214,12 @@
 				$area =$row_sum['area'];
 				$tribe =$row_sum['tribe'];
 
-				//
-				$filter_number =$row_sum['filter_number'];
-				$device_number =$row_sum['device_number'];
+				//妥善率設備
+				//$filter_number =$row_sum['filter_number'];
+				//$device_number =$row_sum['device_number'];
 				//1個設備  200 , 分母為 1/ 200
-				$Denominator  = $device_number*200;
+				//$Denominator  = $device_number*200;
+				$Denominator  = $row_sum['device_number'];
 				//
 
 				$Use_of_people_itw =$row_sum['Use_of_people'];
@@ -209,7 +227,7 @@
 				$Total_usage_time_itw = $row_sum['Total_usage_time'];
 				$Upload_traffic_itw =  $row_sum['Upload_traffic'];
 				$Download_traffic_itw = $row_sum['Download_traffic'];	
-				
+				 $tribe_sid  = $row_sum['tribe_sid'];	
 				$array1[$jj][0] =$Period ;
 				$array1[$jj][1] =$County ;
 				$array1[$jj][2] =$area ;
@@ -219,8 +237,9 @@
 				$array1[$jj][6] =$Total_usage_time_itw ;
 				$array1[$jj][7] =$Upload_traffic_itw ;
 				$array1[$jj][8] =$Download_traffic_itw ;
-				$array1[$jj][9] =ceil($filter_number / $Denominator) ;
-			
+				    //$array1[$jj][9] =ceil($filter_number / $Denominator) ;
+					$array1[$jj][9] =$Denominator;  // 設備數量
+					$array1[$jj][10] =$tribe_sid;	
 				$jj++;
 				}
 				
@@ -235,11 +254,12 @@
 				$area =$row_sum['area'];
 				$tribe =$row_sum['tribe'];
 
-				//
-				$filter_number =$row_sum['filter_number'];
-				$device_number =$row_sum['device_number'];
+				//妥善率設備
+				//$filter_number =$row_sum['filter_number'];
+				//$device_number =$row_sum['device_number'];
 				//1個設備  200 , 分母為 1/ 200
-				$Denominator  = $device_number*200;
+				//$Denominator  = $device_number*200;
+				$Denominator  = $row_sum['device_number'];
 				//
 
 				$Use_of_people_itr =$row_sum['Use_of_people'];
@@ -247,7 +267,7 @@
 				$Total_usage_time_itr = $row_sum['Total_usage_time'];
 				$Upload_traffic_itr =  $row_sum['Upload_traffic'];
 				$Download_traffic_itr = $row_sum['Download_traffic'];	
-			
+			    $tribe_sid  = $row_sum['tribe_sid'];	
 					$array2[$jjj][0] =$Period ;
 					$array2[$jjj][1] =$County ;
 					$array2[$jjj][2] =$area ;
@@ -257,8 +277,9 @@
 					$array2[$jjj][6] =$Total_usage_time_itr ;
 					$array2[$jjj][7] =$Upload_traffic_itr ;
 					$array2[$jjj][8] =$Download_traffic_itr ;
-				$array2[$jjj][9] =ceil($filter_number / $Denominator) ;
-				
+				       //$array2[$jjj][9] =ceil($filter_number / $Denominator) ;
+					$array2[$jjj][9] =$Denominator;  // 設備數量
+					$array2[$jjj][10] =$tribe_sid;	
 				$jjj++;
 			}
 			for($ii=0;$ii < $jjj ;$ii++)
@@ -287,7 +308,29 @@
 							$Download_traffic =($array2[$ii][8]+$array1[$ii][8])/(1024*1000) ;
 							echo ceil($Download_traffic) ;
 							 ?></td>
-							
+							<td>
+							<?php
+							 $AAA = ($array2[$ii][9]+$array1[$ii][9])/2 ;														 
+							$tribe_sidA = $array2[$ii][10];
+							$sql_SUM = "
+									SELECT *, SUM(TIMESTAMPDIFF(second,`alert_ap_date_time_dead`,`alert_ap_date_time_ok`)) 
+									FROM `alert_ap_date_filter` 
+									WHERE `alert_ap_date_setting` LIKE '%-$tribe_sidA%' 
+									and 
+									alert_written_time  LIKE '%$day%'
+										";
+							$result_SUM = execute_sql($database_name2, $sql_SUM, $link2);
+							while ($row_SUM = mysql_fetch_assoc($result_SUM))
+							{
+								 $SUMA = $row_SUM['SUM(TIMESTAMPDIFF(second,`alert_ap_date_time_dead`,`alert_ap_date_time_ok`))'];    
+							}
+							 $SUMA = ceil($SUMA /60) ;  //斷線總小時
+							 $dayCount = date("t",strtotime("$day"));   //本月共有幾天
+							 //$SO = ceil($SUMA/($AAA*$dayCount*24))		;//妥善率
+							 $SO = round($SUMA/($AAA*$dayCount*24), 2)		;//妥善率  round(1.95583, 2)
+								echo  100 - $SO ;							 
+							?>
+							</td>	
 							<?php
 							//<td>
 							//$AAA = ($array2[$ii][9]+$array1[$ii][9])/2 ;

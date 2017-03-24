@@ -111,7 +111,7 @@ if(preg_match("/login/i", $_SERVER['PHP_SELF']))
 			AP狀態</a> | 
 			
 		<?php
-			if( ($_SESSION['user_lv'])==1 or ($_SESSION['user_lv'])==2  or  ($_SESSION['user_lv'])==3   )
+			if( ($_SESSION['user_lv'])==1 or ($_SESSION['user_lv'])==2  or  ($_SESSION['user_lv'])==3  or ($_SESSION['user_id'])=='37' )
 			{
 				?>		
 				<a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/programer_See/See_programer.php"
@@ -122,7 +122,7 @@ if(preg_match("/login/i", $_SERVER['PHP_SELF']))
 			}
 		?>
 		<?php
-			if( ($_SESSION['user_lv'])==1 or ($_SESSION['user_lv'])==2   )
+			if( ($_SESSION['user_lv'])==1 or ($_SESSION['user_lv'])==2 or ($_SESSION['user_id'])=='37'  )
 			{
 				?>		
 				<a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/programer_See/show_AP_date_form.php"
@@ -358,7 +358,7 @@ if(preg_match("/login/i", $_SERVER['PHP_SELF']))
 			?>
 			<a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/PDU_check/pdu_date.php">PDU PING 檢查</a> | 
 			<a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/Topology/veiw_Topology.php" target='_blank'>網站拓譜圖</a> | 
-			<a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/pdu_control/pdu_control.php" target='_blank'>PDU-更換紀錄(2017-03-08)</a> | 
+			<a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/pdu_control/pdu_control.php" target='_blank'>PDU-更換紀錄(<?=date("Y-m-d")?>)</a> | 
 			<?php
 			}
 	?>
